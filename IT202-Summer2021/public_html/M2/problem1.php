@@ -8,6 +8,11 @@ function processArray($arr) {
     echo "<br>Processing Array:<br><pre>" . var_export($arr, true) . "</pre>";
     echo "<br>Odds output:<br>";
     //TODO add logic here to echo out only odd values
+    foreach( $arr as $i){
+        if( $i % 2){
+            echo $i;
+        }
+    }
 
 }
 echo "Problem 1: Odd Output<br>";
