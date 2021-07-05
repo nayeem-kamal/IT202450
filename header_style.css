@@ -1,0 +1,33 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:  #FAFAFA;
+}
+
+.flex-container-header {
+    display: -webkit-flex;
+    display: flex;
+    width: auto;
+    height: auto;
+    background-color: #3f9b6d;
+    padding: 1% 50% 1% 50%;
+}
+
+.flex-item-header {
+    width: auto;
+    height: 100px;
+    margin: 10px;
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+
