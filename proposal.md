@@ -8,7 +8,7 @@ IT 202 Project Proposal
 
 **Website Link:**
 
-**Your Name:**
+**Your Name:** Nayeem Kamal
 
 **Milestone Features:**
 
