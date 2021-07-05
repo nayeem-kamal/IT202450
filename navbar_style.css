@@ -1,0 +1,44 @@
+
+.nav-wrapper {
+    height: 53px;
+    background: #333;
+}
+
+.topnav {
+  background-color: inherit;
+  overflow: hidden;
+  height: 53px;
+  width: 50%;
+  /* padding: 0% 10% 0% 10%; */
+  margin: auto;
+  text-align: center;
+
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #CFD8DC;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: white;
+    border-bottom: thick solid #18FFFF;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+
+.navbar-fixed {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    position: fixed;
+}
