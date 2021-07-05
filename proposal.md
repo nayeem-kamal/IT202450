@@ -16,15 +16,17 @@ IT 202 Project Proposal
 
 - [ ] User will be able to register a new account
   - [ ] Form Fields
-    - [ ] Username, email, password, confirm password (other fields optional)
+    - [x] Username, email, password, confirm password (other fields optional)
     - [ ] Email is required and must be validated
-    - [ ] Username is required
+    - [x] Username is required
     - [ ] Confirm password&#39;s match
+      
+      -https://github.com/nayeemkamal/IT202450/pull/15
   - [ ] Users Table
-    - [ ] Id, username, email, password (60 characters), created, modified
+    - [x] Id, username, email, password (60 characters), created, modified
   - [ ] Password must be hashed (plain text passwords will lose points)
-  - [ ] Email should be unique
-  - [ ] Username should be unique
+  - [x] Email should be unique
+  - [x] Username should be unique
   - [ ] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
     - [ ] The only fields that may be cleared are the password fields
 - [ ] User will be able to login to their account (given they enter the correct credentials)
