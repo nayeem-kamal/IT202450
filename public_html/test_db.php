@@ -2,7 +2,7 @@
 
 require(__DIR__ . "/../lib/db.php");
 
-$query = "SELECT 'test' from dual";
+$query = "SELECT * from users";
 $db = getDB();//this is accessible via the db.php require above
 $stmt = $db->query($query);//tells the DB to run the query defined above
 $result = $stmt->fetch();
