@@ -2,6 +2,10 @@
 include "header.php";
 include "navbar.php";
 if (isset($_POST["submit"])) {
+?>
+<h2>submitted</h2>
+<?php
+
     $email = se($_POST, "email", null, false);
     $password = trim(se($_POST, "password", null, false));
     $confirm = trim(se($_POST, "confirm", null, false));
