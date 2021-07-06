@@ -28,7 +28,7 @@ if (isset($_POST["submit"])) {
     if ($isValid) {
         //do our registration
         $db = getDB();
-        $stmt = $db->prepare("INSERT INTO Users (email, username, password) VALUES (:email, :username, :password)");
+        $stmt = $db->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username, :password)");
         $hash = password_hash($password, PASSWORD_BCRYPT);
         try {
             $stmt->execute([":email" => $email, ":password" => $hash, ":username"=>$username]);
