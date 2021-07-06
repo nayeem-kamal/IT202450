@@ -1,6 +1,6 @@
 <?php
 
-require(__DIR__ . "db.php");
+require("db.php");
 
 $query = "SELECT * from users";
 $db = getDB();//this is accessible via the db.php require above
