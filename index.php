@@ -38,7 +38,9 @@
                         <button type="submit">Login</button>
                     </div>
                     <div class="flex-item">
-                        <a href="./customer_add.php">New Users Click Here To Register</a>
+                        <!-- <a href="./customer_add.php">New Users Click Here To Register</a> -->
+                        <a href="./test.php">New Users Click Here To Register</a>
+
                 </form>
             </div>
         </div>
