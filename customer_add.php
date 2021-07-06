@@ -102,18 +102,15 @@ if (isset($_POST["submit"])) {
                 <button type="submit">Submit</button>
             </div>
 
-            <div class="container">
-                <button type="reset" class="reset" onclick="return confirmReset();">Reset</button>
-            </div>
+            
         </div>
 
     </form>
 
     <script>
-        function confirmReset() {
-            return confirm('Do you really want to reset?')
-        }
+        
     function validate(form) {
+        console.log("validating");
         let email = form.email.value;
         let username = form.username.value;
         let password = form.password.value;
@@ -147,6 +144,7 @@ if (isset($_POST["submit"])) {
             isValid = false;
             alert("Password must be 3 or more characters");
         }
+        console.log(isValid);
         return isValid;
     }
 </script>
