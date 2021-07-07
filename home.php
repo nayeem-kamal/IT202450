@@ -1,7 +1,7 @@
 <?php
 require_once("nav.php");
 if (!is_logged_in()) {
-    die(header("Location: login.php"));
+    die(header("Location: index.php"));
 }
 ?>
 <h1>Home</h1>
