@@ -2,6 +2,7 @@
 include_once "header.php";
 include_once "nav.php";
 include_once "functions.php";
+require_once("flash.php");
 function get_role($stmt,$db,$user)
 {
     $stmt = $db->prepare("SELECT Roles.name FROM Roles 
@@ -131,5 +132,5 @@ if (isset($_POST["submit"])) {
     }
 </script>
 <?php
-require_once("flash.php");
+
 ?>
