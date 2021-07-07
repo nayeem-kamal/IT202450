@@ -50,72 +50,41 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
 <div>
-    <h1>Register</h1>
-    <form method="POST" onsubmit="return validate(this);">
-        <!-- <div>
+         
+         <form method="POST" onsubmit="return validate(this);">
+         <div class="flex-container-form_header">
+            <h1 id="form_header">Register</h1>
+        </div>  
+        <div class="flex-container">
+            <div class=container>
             <label for="email">Email: </label>
             <input type="email" id="email" name="email" required />
         </div>
-        <div>
-            <label for="username">Username: </label>
+        </div>
+        <div class="flex-container">
+            <div class=container>
+                <label for="username">Username: </label>
             <input type="text" id="username" name="username" required />
         </div>
-        <div>
+        </div>
+        <div class="flex-container">
+            <div class=container>
             <label for="pw">Password: </label>
             <input type="password" id="pw" name="password" required />
         </div>
-        <div>
+        </div>
+        <div class="flex-container">
+            <div class=container>
             <label for="cpw">Confirm Password: </label>
             <input type="password" id="cpw" name="confirm" required />
         </div>
-        <div>
+        </div>
+        <div class="flex-container">
+            <div class=container>
             <input type="submit" name="submit" value="Register" />
-        </div> -->
-        <div class="flex-container-form_header">
-            <h1 id="form_header">Register</h1>
         </div>
-
-        <div class="flex-container">
-            <div class=container>
-                <label>UserName :</label><br>
-                <input name="username" size="30" type="text" required />
-            </div>
-
         </div>
-
-
-
-
-
-        <div class="flex-container">
-            <div class=container>
-                <label>Email:</label><br>
-                <input name="email" size="30" type="text" required />
-            </div>
-        </div>
-
-
-        <div class="flex-container">
-            <div class=container>
-                <label>Password :</b></label><br>
-                <input name="password" size="30" type="password" required />
-            </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-                <label>Confirm Password :</b></label><br>
-                <input name="confirm" size="30" type="password" required />
-            </div>
-        </div>
-
-
-        <div class="flex-container">
-            <div class="container">
-                <button type="submit">Submit</button>
-            </div>
-
-            
-        </div>
+       
     </form>
 </div>
 </body>
