@@ -46,12 +46,13 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-   
-
+   <head>    <link rel="stylesheet" href="customer_add_style.css">
+</head>
+<body>
 <div>
     <h1>Register</h1>
     <form method="POST" onsubmit="return validate(this);">
-        <div>
+        <!-- <div>
             <label for="email">Email: </label>
             <input type="email" id="email" name="email" required />
         </div>
@@ -69,9 +70,55 @@ if (isset($_POST["submit"])) {
         </div>
         <div>
             <input type="submit" name="submit" value="Register" />
+        </div> -->
+        <div class="flex-container-form_header">
+            <h1 id="form_header">Register</h1>
+        </div>
+
+        <div class="flex-container">
+            <div class=container>
+                <label>UserName :</label><br>
+                <input name="username" size="30" type="text" required />
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="flex-container">
+            <div class=container>
+                <label>Email:</label><br>
+                <input name="email" size="30" type="text" required />
+            </div>
+        </div>
+
+
+        <div class="flex-container">
+            <div class=container>
+                <label>Password :</b></label><br>
+                <input name="password" size="30" type="password" required />
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class=container>
+                <label>Confirm Password :</b></label><br>
+                <input name="confirm" size="30" type="password" required />
+            </div>
+        </div>
+
+
+        <div class="flex-container">
+            <div class="container">
+                <button type="submit">Submit</button>
+            </div>
+
+            
         </div>
     </form>
 </div>
+</body>
 <script>
     function validate(form) {
         let email = form.email.value;
