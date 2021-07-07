@@ -1,6 +1,6 @@
 <?php
     include "header.php";
-    include "navbar.php";
+    include "nav.php";
 
     if (isset($_GET['loginFailed'])) {
         $message = "Invalid Credentials ! Please try again.";
@@ -39,7 +39,7 @@
                     </div>
                     <div class="flex-item">
                         <!-- <a href="./customer_add.php">New Users Click Here To Register</a> -->
-                        <a href="./test.php">New Users Click Here To Register</a>
+                        <a href="./customer_add.php">New Users Click Here To Register</a>
 
                 </form>
             </div>
