@@ -7,7 +7,7 @@ if (strpos($domain, ":")) {
 }
 session_set_cookie_params([
     "lifetime" => 60 * 60,
-    "path" => "/Project",
+    "path" => "",
     //"domain" => $_SERVER["HTTP_HOST"] || "localhost",
     "domain" => $domain,
     "secure" => true,

@@ -2,7 +2,6 @@
 include_once "header.php";
 include_once "nav.php";
 include_once "functions.php";
-session_start();
 if (isset($_POST["submit"])) {
     $email = se($_POST, "email", null, false);
     $password = trim(se($_POST, "password", null, false));
