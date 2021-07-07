@@ -1,5 +1,7 @@
 <?php
+require_once("header.php");
 require_once("nav.php");
+
 if (!is_logged_in()) {
     die(header("Location: index.php"));
 }
@@ -83,29 +85,53 @@ if (isset($_POST["save"])) {
 $email = get_user_email();
 $username = get_username();
 ?>
+
+<head>
+    <link rel="stylesheet" href="customer_add_style.css">
+</head>
 <form method="POST" onsubmit="return validate(this);">
-    <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?php se($email); ?>" />
+    <div class="flex-container-form_header">
+        <h1 id="form_header">Profile Page</h1>
     </div>
-    <div class="mb-3">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="<?php se($username); ?>" />
+    <div class="flex-container">
+        <div class=container>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<?php se($email); ?>" />
+        </div>
     </div>
-    <div>Password Reset</div>
-    <div class="mb-3">
-        <label for="cp">Current Password</label>
-        <input type="password" name="currentPassword" id="cp" />
+    <div class="flex-container">
+        <div class=container>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" value="<?php se($username); ?>" />
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="np">New Password</label>
-        <input type="password" name="newPassword" id="np" />
+    <div>
+        <h2>Password Reset</h2>
     </div>
-    <div class="mb-3">
-        <label for="conp">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="conp" />
+    <div class="flex-container">
+        <div class=container>
+            <label for="cp">Current Password</label>
+            <input type="password" name="currentPassword" id="cp" />
+        </div>
     </div>
-    <input type="submit" value="Update Profile" name="save" />
+    <div class="flex-container">
+        <div class=container>
+            <label for="np">New Password</label>
+            <input type="password" name="newPassword" id="np" />
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <label for="conp">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="conp" />
+        </div>
+
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <input type="submit" value="Update Profile" name="save" />
+        </div>
+    </div>
 </form>
 
 <script>
