@@ -30,7 +30,7 @@ if (isset($_POST["submit"])) {
     }
     $email = sanitize_email($email);
     if (!is_valid_email($email)) {
-        flash("Email muust be formatted as email@email.com", "warning");
+        flash("Email must be formatted as email@email.com", "warning");
         $isValid = false;
     }
     if ($isValid) {
@@ -55,10 +55,10 @@ if (isset($_POST["submit"])) {
                     //get_or_create_account();//applies directly to the session, make sure it's called after the session is set
                     die(header("Location: home.php"));
                 } else {
-                    se("Username or Password incorrect");
+                    flash("Username or Password incorrect","warning");
                 }
             } else {
-                se("User Could Not Be Found");
+                flash("There is no user with these credentials","warning");
             }
         } catch (Exception $e) {
             echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
