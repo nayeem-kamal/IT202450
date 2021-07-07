@@ -33,13 +33,14 @@ require_once("functions.php");
                 <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
             <?php endif; ?> -->
         <?php if (!is_logged_in()) : ?>
-
+           
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
                     <a href="./index.php">Login</a>
 
                 </div>
             </div>
+
             <!-- </div>                <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li> -->
         <?php endif; ?>
         <!-- <?php if (has_role("Admin")) : ?>
@@ -57,9 +58,13 @@ require_once("functions.php");
         <?php if (is_logged_in()) : ?>
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
+                    <a href="./profile.php">Profile</a>
                     <a href="./logout.php">Logout</a>
 
+
                 </div>
+            </div>
+          
             </div>        <?php endif; ?>
 
 <!-- </nav> -->
