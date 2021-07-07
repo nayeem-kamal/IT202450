@@ -8,8 +8,9 @@ if (isset($_POST["submit"])) {
 
     $isValid = true;
 
-    echo($email);
-    echo($username);
+ ?>
+ <h1>success</h1>
+ <?php
    
 }
 ?>
