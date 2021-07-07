@@ -30,7 +30,7 @@ if (isset($_POST["submit"])) {
     }
     $email = sanitize_email($email);
     if (!is_valid_email($email)) {
-        flash("Invalid email", "warning");
+        flash("Email muust be formatted as email@email.com", "warning");
         $isValid = false;
     }
     if ($isValid) {
