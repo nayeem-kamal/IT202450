@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
                     //save user info
                     $_SESSION["user"] = $user;
                     ?>
-                        <h1><?php echo($_SESSION["user"]);?></h1>
+                        <h1><?php echo($_SESSION["user"]["username"]);?></h1>
                     <?php
                     //lookup roles assigned to this user
                     // $stmt = $db->prepare("SELECT Roles.name FROM Roles 
