@@ -22,12 +22,11 @@ if (isset($_POST["submit"])) {
     }
     $email = sanitize_email($email);
     if (!is_valid_email($email)) {
-        flash("Invalid email", "warning");
+        flash("Email muust be formatted as email@email.com", "warning");
         $isValid = false;
     }
 
     if ($isValid) {
-        //do our registration
         $db = getDB();
         $stmt = $db->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username, :password)");
         $hash = password_hash($password, PASSWORD_BCRYPT);
@@ -129,3 +128,6 @@ if (isset($_POST["submit"])) {
         return isValid;
     }
 </script>
+<?php
+include_once("flash.php");
+?>

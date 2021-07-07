@@ -9,7 +9,6 @@ function get_role($stmt,$db,$user)
                     where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
     $stmt->execute([":user_id" => $user["id"]]);
     $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //save roles or empty array
     if ($roles) {
         $_SESSION["user"]["roles"] = $roles;
     } else {
@@ -48,9 +47,7 @@ if (isset($_POST["submit"])) {
                     unset($user["password"]);
                     $_SESSION["user"] = $user;
                     echo (is_logged_in());
-?>
-                    <h1><?php echo ($_SESSION["user"]["username"]); ?></h1>
-<?php
+
 
                     echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 
@@ -61,7 +58,7 @@ if (isset($_POST["submit"])) {
                     se("Username or Password incorrect");
                 }
             } else {
-                se("User doesn't exist");
+                se("User Could Not Be Found");
             }
         } catch (Exception $e) {
             echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
