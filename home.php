@@ -3,7 +3,7 @@ require_once("nav.php");
 if (!is_logged_in()) {
     //die(header("Location: index.php"));
     ?>
-    <h1><?php echo(print_r($_SESSION)); ?></h1>0
+    <h1><?php print_r($_SESSION); ?></h1>0
     <?php
 }else{
 ?>
