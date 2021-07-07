@@ -1,7 +1,7 @@
 <?php
 /*put this at the bottom of the page so any templates
  populate the flash variable and then display at the proper timing*/
- require("functions.php")
+ require_once("functions.php")
 ?>
 <div class="container" id="flash">
     <?php $messages = getMessages(); ?>
