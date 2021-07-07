@@ -59,7 +59,7 @@ if (isset($_POST["save"])) {
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 if (isset($result["password"])) {
                     if (password_verify($current_password, $result["password"])) {
-                        $query = "UPDATE Users set password = :password where id = :id";
+                        $query = "UPDATE users set password = :password where id = :id";
                         $stmt = $db->prepare($query);
                         $stmt->execute([
                             ":id" => get_user_id(),
