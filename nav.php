@@ -57,7 +57,7 @@ require_once("functions.php");
         <?php if (is_logged_in()) : ?>
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
-                    <a href="./logout.php">Login</a>
+                    <a href="./logout.php">Logout</a>
 
                 </div>
             </div>        <?php endif; ?>
