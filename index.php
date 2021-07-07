@@ -2,6 +2,20 @@
 include_once "header.php";
 include_once "nav.php";
 include_once "functions.php";
+function get_role($stmt,$db,$user)
+{
+    $stmt = $db->prepare("SELECT Roles.name FROM Roles 
+                    JOIN UserRoles on Roles.id = UserRoles.role_id 
+                    where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
+    $stmt->execute([":user_id" => $user["id"]]);
+    $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //save roles or empty array
+    if ($roles) {
+        $_SESSION["user"]["roles"] = $roles;
+    } else {
+        $_SESSION["user"]["roles"] = [];
+    }
+}
 if (isset($_POST["submit"])) {
     $email = se($_POST, "email", null, false);
     $password = trim(se($_POST, "password", null, false));
@@ -21,10 +35,8 @@ if (isset($_POST["submit"])) {
         $isValid = false;
     }
     if ($isValid) {
-        //do our registration
         $db = getDB();
-        //$stmt = $db->prepare("INSERT INTO Users (email, password) VALUES (:email, :password)");
-        //$hash = password_hash($password, PASSWORD_BCRYPT);
+       
         $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username`, password from users where email = :email or username = :email LIMIT 1");
         try {
             $stmt->execute([":email" => $email]);
@@ -34,28 +46,15 @@ if (isset($_POST["submit"])) {
                 if (password_verify($password, $upass)) {
                     flash("Login successful", "success");
                     unset($user["password"]);
-                    //save user info
                     $_SESSION["user"] = $user;
-                    echo(is_logged_in());
-                    ?>
-                        <h1><?php echo($_SESSION["user"]["username"]);?></h1>
-                    <?php
-                    //lookup roles assigned to this user
-                    // $stmt = $db->prepare("SELECT Roles.name FROM Roles 
-                    // JOIN UserRoles on Roles.id = UserRoles.role_id 
-                    // where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
-                    // $stmt->execute([":user_id" => $user["id"]]);
-                    // $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    // //save roles or empty array
-                    // if ($roles) {
-                    //     $_SESSION["user"]["roles"] = $roles;
-                    // } else {
-                    //     $_SESSION["user"]["roles"] = [];
-                    // }
+                    echo (is_logged_in());
+?>
+                    <h1><?php echo ($_SESSION["user"]["username"]); ?></h1>
+<?php
+
                     echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 
                     //fetch account info, or create an account if the user existed before this feature was added
-                    //in my project, a user will have only 1 account associated with them so it's a 1:1 relationship
                     //get_or_create_account();//applies directly to the session, make sure it's called after the session is set
                     die(header("Location: home.php"));
                 } else {
@@ -72,6 +71,7 @@ if (isset($_POST["submit"])) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="home_style.css">
 </head>
@@ -79,35 +79,36 @@ if (isset($_POST["submit"])) {
 <body>
     <!--  -->
 
-        <div class="flex-container">
-            <div class="flex-item-1">
-                <form method="POST" onsubmit="return validate(this);">
-                    <div class="flex-item-login">
-                        <h2>Welcome</h2>
-                    </div>
+    <div class="flex-container">
+        <div class="flex-item-1">
+            <form method="POST" onsubmit="return validate(this);">
+                <div class="flex-item-login">
+                    <h2>Welcome</h2>
+                </div>
 
-                    <div class="flex-item">
-                        <input type="text" name="email" id="email" placeholder="Enter your Email" required>
-                    </div>
+                <div class="flex-item">
+                    <input type="text" name="email" id="email" placeholder="Enter your Email" required>
+                </div>
 
-                    <div class="flex-item">
-                        <input type="password" name="password" id="pw" placeholder="Enter your Password" required>
-                    </div>
+                <div class="flex-item">
+                    <input type="password" name="password" id="pw" placeholder="Enter your Password" required>
+                </div>
 
-                    <div class="flex-item">
-                        <button type="submit" name="submit">Login</button>
-                    </div>
-                    <div class="flex-item">
-                        <!-- <a href="./customer_add.php">New Users Click Here To Register</a> -->
-                        <a href="./customer_add.php">New Users Click Here To Register</a>
+                <div class="flex-item">
+                    <button type="submit" name="submit">Login</button>
+                </div>
+                <div class="flex-item">
+                    <!-- <a href="./customer_add.php">New Users Click Here To Register</a> -->
+                    <a href="./customer_add.php">New Users Click Here To Register</a>
 
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 
     </div>
 
 </body>
+
 </html>
 
 <script>
