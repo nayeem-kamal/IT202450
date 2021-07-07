@@ -1,6 +1,7 @@
 <?php
 include "header.php";
 include "navbar.php";
+require_once("functions.php");
 if (isset($_POST["submit"])) {
 ?>
 <h2>submitted</h2>
