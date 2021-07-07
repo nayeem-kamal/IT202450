@@ -59,14 +59,12 @@ require_once("functions.php");
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
                     <a href="./profile.php">Profile</a>
+                    <a href="./logout.php">Logout</a>
+
 
                 </div>
             </div>
-            <div class="nav-wrapper">
-                <div class="topnav" id="theTopNav">
-                    <a href="./logout.php">Logout</a>
-
-                </div>
+          
             </div>        <?php endif; ?>
 
 <!-- </nav> -->

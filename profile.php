@@ -96,7 +96,7 @@ $username = get_username();
     <div class="flex-container">
         <div class=container>
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="<?php se($email); ?>" />
+            <input type="text" name="email" id="email" value="<?php se($email); ?>" />
         </div>
     </div>
     <div class="flex-container">
@@ -105,8 +105,10 @@ $username = get_username();
             <input type="text" name="username" id="username" value="<?php se($username); ?>" />
         </div>
     </div>
-    <div>
+    <div class="flex-container">
+                <div class=container>
         <h2>Password Reset</h2>
+    </div>
     </div>
     <div class="flex-container">
         <div class=container>
