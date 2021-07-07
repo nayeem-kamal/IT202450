@@ -1,4 +1,5 @@
 <?php
+
 //Note: this is to resolve cookie issues with port numbers
 $domain = $_SERVER["HTTP_HOST"];
 if (strpos($domain, ":")) {
@@ -25,12 +26,7 @@ require_once("functions.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<div class="flex-container-header">
-        
-        <div class="flex-item-header">
-            <h1>NJIT BANK</h1>
-        </div>
-    </div>
+
     <div class="nav-wrapper">
     <div class="topnav" id="theTopNav">
         <a href="./index.php">HOME</a>

@@ -1,4 +1,5 @@
 <?php
+include "header.php";
 include "nav.php";
 if (isset($_POST["submit"])) {
     $email = se($_POST, "email", null, false);
