@@ -36,6 +36,9 @@ if (isset($_POST["submit"])) {
                     unset($user["password"]);
                     //save user info
                     $_SESSION["user"] = $user;
+                    ?>
+                        <h1>success</h1>
+                    <?php
                     //lookup roles assigned to this user
                     // $stmt = $db->prepare("SELECT Roles.name FROM Roles 
                     // JOIN UserRoles on Roles.id = UserRoles.role_id 
@@ -53,7 +56,7 @@ if (isset($_POST["submit"])) {
                     //fetch account info, or create an account if the user existed before this feature was added
                     //in my project, a user will have only 1 account associated with them so it's a 1:1 relationship
                     //get_or_create_account();//applies directly to the session, make sure it's called after the session is set
-                    die(header("Location: home.php"));
+                    //die(header("Location: home.php"));
                 } else {
                     se("Passwords don't match");
                 }
