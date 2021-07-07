@@ -1,5 +1,6 @@
 
 <?php
+include_once "flash.php";
 session_start();
 session_unset();
 session_destroy();
@@ -7,5 +8,5 @@ session_destroy();
 require_once(__DIR__ . "/../../partials/nav.php");
 flash("You have been logged out", "success");
 //echo "<pre>" . var_export($_SESSION, true) . "</pre>";
-die(header("Location: login.php"));
+die(header("Location: index.php"));
 ?>
