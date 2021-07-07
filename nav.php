@@ -14,7 +14,7 @@ session_set_cookie_params([
     "samesite" => "lax"
 ]);
 session_start();
-require_once(__DIR__ . "/../lib/functions.php");
+require_once("functions.php");
 
 ?>
 <!-- CSS only -->
