@@ -46,7 +46,7 @@ IT 202 Project Proposal
   - [x] User should see a message that they&#39;ve successfully logged out
   - [x] Session should be destroyed (so the back button doesn&#39;t allow them access back in)
      - https://github.com/nayeemkamal/IT202450/pull/17 (in comments)
-- [ ] Basic security rules implemented
+- [x] Basic security rules implemented
   - [x] Authentication:
     - [x] Function to check if user is logged in
     - [x] Function should be called on appropriate pages that only allow logged in users
@@ -62,14 +62,14 @@ IT 202 Project Proposal
   - [x] e., forms/input, navigation bar, etc
 - [ ] Any output messages/errors should be &quot;user friendly&quot;
   - [ ] Any technical errors or debug output displayed will result in a loss of points
-- [ ] User will be able to see their profile
-  - [ ] Email, username, etc
-- [ ] User will be able to edit their profile
-  - [ ] Changing username/email should properly check to see if it&#39;s available before allowing the change
-  - [ ] Any other fields should be properly validated
-  - [ ] Allow password reset (only if the existing correct password is provided)
+- [x] User will be able to see their profile
+  - [x] Email, username, etc
+- [x] User will be able to edit their profile
+  - [x] Changing username/email should properly check to see if it&#39;s available before allowing the change
+  - [x] Any other fields should be properly validated
+  - [x] Allow password reset (only if the existing correct password is provided)
     - [ ] Hint: logic for the password check would be similar to login
-
+      - https://github.com/nayeemkamal/IT202450/pull/19
 **Milestone 2:**
 
 - [ ] Create the Accounts table (id, account\_number [unique, always 12 characters], user\_id, balance (default 0), account\_type, created, modified)
