@@ -1,7 +1,7 @@
 <?php
 require_once("nav.php");
 if (!is_logged_in()) {
-    die(header("Location: login.php"));
+    die(header("Location: index.php"));
 }
 ?>
 <?php
@@ -11,13 +11,13 @@ if (isset($_POST["save"])) {
 
     $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
     $db = getDB();
-    $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+    $stmt = $db->prepare("UPDATE users set email = :email, username = :username where id = :id");
     try {
         $stmt->execute($params);
     } catch (Exception $e) {
         if ($e->errorInfo[1] === 1062) {
             //https://www.php.net/manual/en/function.preg-match.php
-            preg_match("/Users.(\w+)/", $e->errorInfo[2], $matches);
+            preg_match("/users.(\w+)/", $e->errorInfo[2], $matches);
             if (isset($matches[1])) {
                 flash("The chosen " . $matches[1] . " is not available.", "warning");
             } else {
@@ -29,13 +29,11 @@ if (isset($_POST["save"])) {
             echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
         }
     }
-    //select fresh data from table
-    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username` from Users where id = :id LIMIT 1");
+    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username` from users where id = :id LIMIT 1");
     try {
         $stmt->execute([":id" => get_user_id()]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user) {
-            //$_SESSION["user"] = $user;
             $_SESSION["user"]["email"] = $user["email"];
             $_SESSION["user"]["username"] = $user["username"];
         } else {
@@ -47,14 +45,13 @@ if (isset($_POST["save"])) {
     }
 
 
-    //check/update password
     $current_password = se($_POST, "currentPassword", null, false);
     $new_password = se($_POST, "newPassword", null, false);
     $confirm_password = se($_POST, "confirmPassword", null, false);
     if (isset($current_password) && isset($new_password) && isset($confirm_password)) {
         if ($new_password === $confirm_password) {
             //TODO validate current
-            $stmt = $db->prepare("SELECT password from Users where id = :id");
+            $stmt = $db->prepare("SELECT password from users where id = :id");
             try {
                 $stmt->execute([":id" => get_user_id()]);
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -95,7 +92,6 @@ $username = get_username();
         <label for="username">Username</label>
         <input type="text" name="username" id="username" value="<?php se($username); ?>" />
     </div>
-    <!-- DO NOT PRELOAD PASSWORD -->
     <div>Password Reset</div>
     <div class="mb-3">
         <label for="cp">Current Password</label>
