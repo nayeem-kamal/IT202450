@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
 
     $isValid = true;
     if (!isset($email) || !isset($password) || !isset($confirm) || !isset($username)) {
-        flash("Must provide email, username, password, and confirm password","warning");
+        flash("Must provide email, username, password, and confirm password", "warning");
         $isValid = false;
     }
     if ($password !== $confirm) {
@@ -31,7 +31,7 @@ if (isset($_POST["submit"])) {
         $stmt = $db->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username, :password)");
         $hash = password_hash($password, PASSWORD_BCRYPT);
         try {
-            $stmt->execute([":email" => $email, ":password" => $hash, ":username"=>$username]);
+            $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
             flash("You've successfully registered, please login");
             die(header("Location: index.php"));
         } catch (PDOException $e) {
@@ -46,47 +46,49 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
-   <head>    <link rel="stylesheet" href="customer_add_style.css">
+<head>
+    <link rel="stylesheet" href="customer_add_style.css">
 </head>
+
 <body>
-<div>
-         
-         <form method="POST" onsubmit="return validate(this);">
-         <div class="flex-container-form_header">
-            <h1 id="form_header">Register</h1>
-        </div>  
-        <div class="flex-container">
-            <div class=container>
-            <label for="email">Email: </label>
-            <input type="email" id="email" name="email" required />
-        </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-                <label for="username">Username: </label>
-            <input type="text" id="username" name="username" required />
-        </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-            <label for="pw">Password: </label>
-            <input type="password" id="pw" name="password" required />
-        </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-            <label for="cpw">Confirm Password: </label>
-            <input type="password" id="cpw" name="confirm" required />
-        </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-            <input type="submit" name="submit" value="Register" />
-        </div>
-        </div>
-       
-    </form>
-</div>
+    <div>
+
+        <form method="POST" onsubmit="return validate(this);">
+            <div class="flex-container-form_header">
+                <h1 id="form_header">Register</h1>
+            </div>
+            <div class="flex-container">
+                <div class=container>
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" name="email" required />
+                </div>
+            </div>
+            <div class="flex-container">
+                <div class=container>
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" required />
+                </div>
+            </div>
+            <div class="flex-container">
+                <div class=container>
+                    <label for="pw">Password: </label>
+                    <input type="password" id="pw" name="password" required />
+                </div>
+            </div>
+            <div class="flex-container">
+                <div class=container>
+                    <label for="cpw">Confirm Password: </label>
+                    <input type="password" id="cpw" name="confirm" required />
+                </div>
+            </div>
+            <div class="flex-container">
+                <div class=container>
+                    <input type="submit" name="submit" value="Register" />
+                </div>
+            </div>
+
+        </form>
+    </div>
 </body>
 <script>
     function validate(form) {
@@ -98,7 +100,7 @@ if (isset($_POST["submit"])) {
         if (email) {
             email = email.trim();
         }
-        if(username)    {
+        if (username) {
             username = username.trim();
         }
         if (password) {
@@ -107,8 +109,8 @@ if (isset($_POST["submit"])) {
         if (confirm) {
             confirm = confirm.trim();
         }
-        if(!username || username.length === 0)    {
-            isValid    =    false;
+        if (!username || username.length === 0) {
+            isValid = false;
             alert("Must provide a username");
         }
         if (email.indexOf("@") === -1) {
