@@ -5,7 +5,7 @@ if (isset($_POST["submit"])) {
     $password = trim(se($_POST, "password", null, false));
     $confirm = trim(se($_POST, "confirm", null, false));
     $username = trim(se($_POST, "username", null, false));
-}
+
     $isValid = true;
     if (!isset($email) || !isset($password) || !isset($confirm) || !isset($username)) {
         flash("Must provide email, username, password, and confirm password","warning");
@@ -31,6 +31,7 @@ if (isset($_POST["submit"])) {
  <h1>success</h1>
  <?php
    
+}
 }
 ?>
 
