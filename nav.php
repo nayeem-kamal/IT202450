@@ -27,36 +27,35 @@ require_once("functions.php");
 
 <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 
-    <div class="nav-wrapper">
-    <div class="topnav" id="theTopNav">
-        <a href="./index.php">HOME</a>
-        
-    </div>
-    </div>
-    <!-- <div class="container-fluid">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <?php if (is_logged_in()) : ?>
+
+
+        <!-- <?php if (is_logged_in()) : ?>
                 <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
-            <?php endif; ?>
-            <?php if (!is_logged_in()) : ?>
-                <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li>
-            <?php endif; ?>
-            <?php if (has_role("Admin")) : ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Admin
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="add_item.php">Add Item</a></li>
-                        <li><a class="dropdown-item" href="add_score.php">Add Score</a></li>
-                        <li><a class="dropdown-item" href="view_user_accounts.php">View Accounts</a></li>
-                    </ul>
-                </li>
-            <?php endif; ?>
-            <?php if (is_logged_in()) : ?>
-                <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-            <?php endif; ?>
-        </ul>
-    </div> -->
+            <?php endif; ?> -->
+        <?php if (!is_logged_in()) : ?>
+
+            <div class="nav-wrapper">
+                <div class="topnav" id="theTopNav">
+                    <a href="./index.php">Login</a>
+
+                </div>
+            </div>
+            <!-- </div>                <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li> -->
+        <?php endif; ?>
+        <!-- <?php if (has_role("Admin")) : ?>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="add_item.php">Add Item</a></li>
+                    <li><a class="dropdown-item" href="add_score.php">Add Score</a></li>
+                    <li><a class="dropdown-item" href="view_user_accounts.php">View Accounts</a></li>
+                </ul>
+            </li>
+        <?php endif; ?> -->
+        <!-- <?php if (is_logged_in()) : ?>
+            <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+        <?php endif; ?> -->
+
 <!-- </nav> -->
