@@ -24,7 +24,7 @@ require_once("functions.php");
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 <div class="flex-container-header">
         
         <div class="flex-item-header">
@@ -63,4 +63,4 @@ require_once("functions.php");
             <?php endif; ?>
         </ul>
     </div> -->
-</nav>
+<!-- </nav> -->
