@@ -30,20 +30,22 @@ IT 202 Project Proposal
   - [x] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
     - [ ] The only fields that may be cleared are the password fields
       - https://github.com/nayeemkamal/IT202450/pull/16
-- [ ] User will be able to login to their account (given they enter the correct credentials)
-  - [ ] Form
-    - [ ] User can login with **email** or **username**
-      - [ ] This can be done as a single field or as two separate fields
-    - [ ] Password is required
-  - [ ] User should see friendly error messages when an account either doesn&#39;t exist or if passwords don&#39;t match
-  - [ ] Logging in should fetch the user&#39;s details (and roles) and save them into the session.
-  - [ ] User will be directed to a landing page upon login
-    - [ ] This is a protected page (non-logged in users shouldn&#39;t have access)
-    - [ ] This can be home, profile, a dashboard, etc
-- [ ] User will be able to logout
-  - [ ] Logging out will redirect to login page
-  - [ ] User should see a message that they&#39;ve successfully logged out
-  - [ ] Session should be destroyed (so the back button doesn&#39;t allow them access back in)
+- [x] User will be able to login to their account (given they enter the correct credentials)
+  - [x] Form
+    - [x] User can login with **email** or **username**
+      - [x] This can be done as a single field or as two separate fields
+    - [x] Password is required
+  - [x] User should see friendly error messages when an account either doesn&#39;t exist or if passwords don&#39;t match
+  - [x] Logging in should fetch the user&#39;s details (and roles) and save them into the session.
+  - [x] User will be directed to a landing page upon login
+    - [x] This is a protected page (non-logged in users shouldn&#39;t have access)
+    - [x] This can be home, profile, a dashboard, etc
+      - https://github.com/nayeemkamal/IT202450/pull/17
+- [x] User will be able to logout
+  - [x] Logging out will redirect to login page
+  - [x] User should see a message that they&#39;ve successfully logged out
+  - [x] Session should be destroyed (so the back button doesn&#39;t allow them access back in)
+     - https://github.com/nayeemkamal/IT202450/pull/17 (in comments)
 - [ ] Basic security rules implemented
   - [ ] Authentication:
     - [ ] Function to check if user is logged in
