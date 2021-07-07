@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
 
     echo($email);
     echo($username);
-    include "flash.php";
+   
 }
 ?>
 
