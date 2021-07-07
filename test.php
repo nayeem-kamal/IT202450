@@ -5,8 +5,27 @@ if (isset($_POST["submit"])) {
     $password = trim(se($_POST, "password", null, false));
     $confirm = trim(se($_POST, "confirm", null, false));
     $username = trim(se($_POST, "username", null, false));
-
+}
     $isValid = true;
+    if (!isset($email) || !isset($password) || !isset($confirm) || !isset($username)) {
+        flash("Must provide email, username, password, and confirm password","warning");
+        $isValid = false;
+    }
+    if ($password !== $confirm) {
+        flash("Passwords don't match", "warning");
+        $isValid = false;
+    }
+    if (strlen($password) < 3) {
+        flash("Password must be 3 or more characters", "warning");
+        $isValid = false;
+    }
+    $email = sanitize_email($email);
+    if (!is_valid_email($email)) {
+        flash("Invalid email", "warning");
+        $isValid = false;
+    }
+
+    if($isValid){
 
  ?>
  <h1>success</h1>
