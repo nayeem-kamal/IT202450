@@ -73,7 +73,6 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-<a href="test_db.php">test db</a>
     <!--  -->
 
         <div class="flex-container">
