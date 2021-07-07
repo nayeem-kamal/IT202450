@@ -14,8 +14,8 @@ IT 202 Project Proposal
 
 **Milestone 1:**
 
-- [ ] User will be able to register a new account
-  - [ ] Form Fields
+- [x] User will be able to register a new account
+  - [x] Form Fields
     - [x] Username, email, password, confirm password (other fields optional)
     - [x] Email is required and must be validated
     - [x] Username is required
@@ -47,17 +47,19 @@ IT 202 Project Proposal
   - [x] Session should be destroyed (so the back button doesn&#39;t allow them access back in)
      - https://github.com/nayeemkamal/IT202450/pull/17 (in comments)
 - [ ] Basic security rules implemented
-  - [ ] Authentication:
-    - [ ] Function to check if user is logged in
-    - [ ] Function should be called on appropriate pages that only allow logged in users
-  - [ ] Roles/Authorization:
-    - [ ] Have a roles table (see below)
-- [ ] Basic Roles implemented
-  - [ ] Have a Roles table (id, name, description, is\_active, modified, created)
-  - [ ] Have a User Roles table (id, user\_id, role\_id, is\_active, created, modified)
-  - [ ] Include a function to check if a user has a specific role (we won&#39;t use it for this milestone but it should be usable in the future)
-- [ ] Site should have basic styles/theme applied; everything should be styled
-  - [ ] e., forms/input, navigation bar, etc
+  - [x] Authentication:
+    - [x] Function to check if user is logged in
+    - [x] Function should be called on appropriate pages that only allow logged in users
+      - https://github.com/nayeemkamal/IT202450/pull/18 (in comments)
+  - [x] Roles/Authorization:
+    - [x] Have a roles table (see below)
+- [x] Basic Roles implemented
+  - [x] Have a Roles table (id, name, description, is\_active, modified, created)
+  - [x] Have a User Roles table (id, user\_id, role\_id, is\_active, created, modified)
+  - [x] Include a function to check if a user has a specific role (we won&#39;t use it for this milestone but it should be usable in the future)
+    - https://github.com/nayeemkamal/IT202450/pull/18
+- [x] Site should have basic styles/theme applied; everything should be styled
+  - [x] e., forms/input, navigation bar, etc
 - [ ] Any output messages/errors should be &quot;user friendly&quot;
   - [ ] Any technical errors or debug output displayed will result in a loss of points
 - [ ] User will be able to see their profile
