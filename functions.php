@@ -1,7 +1,26 @@
 <?php
 require_once("db.php");
 $BASE_PATH = '';//This is going to be a helper for redirecting to our base project path since it's nested in another folder
-
+require("functions.php");
+function se($v, $k = null, $default = "", $isEcho = true) {
+    if (is_array($v) && isset($k) && isset($v[$k])) {
+        $returnValue = $v[$k];
+    } else if (is_object($v) && isset($k) && isset($v->$k)) {
+        $returnValue = $v->$k;
+    } else {
+        $returnValue = $v;
+    }
+    if (!isset($returnValue)) {
+        $returnValue = $default;
+    }
+    if ($isEcho) {
+        //https://www.php.net/manual/en/function.htmlspecialchars.php
+        echo htmlspecialchars($returnValue, ENT_QUOTES);
+    } else {
+        //https://www.php.net/manual/en/function.htmlspecialchars.php
+        return htmlspecialchars($returnValue, ENT_QUOTES);
+    }
+}
 function sanitize_email($email = "") {
     return filter_var(trim($email), FILTER_SANITIZE_EMAIL);
 }
