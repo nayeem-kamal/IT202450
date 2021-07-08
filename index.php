@@ -19,9 +19,7 @@ function get_role($stmt,$db,$user)
 if (isset($_POST["submit"])) {
     $email = se($_POST, "email", null, false);
     $password = trim(se($_POST, "password", null, false));
-    ?>
-    <h1><?php echo($email);?></h1>
-    <?php
+    
     $isValid = true;
     if (!isset($email) || !isset($password)) {
         
@@ -29,6 +27,9 @@ if (isset($_POST["submit"])) {
         $isValid = false;
     }
     if (strlen($password) < 3) {
+        ?>
+    <h1><?php echo($email);?></h1>
+    <?php
         flash("Password must be 3 or more characters", "warning");
         $isValid = false;
     }
