@@ -83,7 +83,8 @@ if (isset($_POST["submit"])) {
 
     <div class="flex-container">
         <div class="flex-item-1">
-            <form method="POST" onsubmit="return validate(this);">
+            <form method="POST" >
+            <!-- onsubmit="return validate(this);" -->
                 <div class="flex-item-login">
                     <h2>Welcome</h2>
                 </div>
