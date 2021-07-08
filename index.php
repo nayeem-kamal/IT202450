@@ -22,6 +22,9 @@ if (isset($_POST["submit"])) {
 
     $isValid = true;
     if (!isset($email) || !isset($password)) {
+        ?>
+        <h1><?php echo($email);?>
+        <?php
         flash("Must provide email and password", "warning");
         $isValid = false;
     }
