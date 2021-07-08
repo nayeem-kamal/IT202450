@@ -122,11 +122,11 @@ if (isset($_POST["submit"])) {
         }
         if (email.indexOf("@") === -1) {
             isValid = false;
-            alert("Invalid email");
+            //alert("Invalid email");
         }
         if (password.length < 3) {
             isValid = false;
-            alert("Password must be 3 or more characters");
+            //alert("Password must be 3 or more characters");
         }
         return isValid;
     }
