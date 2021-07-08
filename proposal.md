@@ -4,9 +4,9 @@ IT 202 Project Proposal
 
 **Project Summary: This project will create a bank simulation for users. They&#39;ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user&#39;s accounts)/external(other user&#39;s accounts) transfers, and creating/closing accounts.**
 
-**Github Link:**
+**Github Link:** https://github.com/nayeemkamal/IT202450
 
-**Website Link:**
+**Website Link:** https://nhk6finalproj.herokuapp.com/index.php
 
 **Your Name:** Nayeem Kamal
 
