@@ -27,9 +27,7 @@ if (isset($_POST["submit"])) {
         $isValid = false;
     }
     if (strlen($password) < 3) {
-        ?>
-    <h1><?php echo($email);?></h1>
-    <?php
+      
         flash("Password must be 3 or more characters", "warning");
         $isValid = false;
     }
