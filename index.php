@@ -84,7 +84,6 @@ if (isset($_POST["submit"])) {
     <div class="flex-container">
         <div class="flex-item-1">
             <form method="POST" >
-            <!-- onsubmit="return validate(this);" -->
                 <div class="flex-item-login">
                     <h2>Welcome</h2>
                 </div>
@@ -114,28 +113,7 @@ if (isset($_POST["submit"])) {
 
 </html>
 
-<script>
-    function validate(form) {
-        let email = form.email.value;
-        let password = form.password.value;
-        let isValid = true;
-        if (email) {
-            email = email.trim();
-        }
-        if (password) {
-            password = password.trim();
-        }
-        if (email.indexOf("@") === -1) {
-            isValid = false;
-            //alert("Invalid email");
-        }
-        if (password.length < 3) {
-            isValid = false;
-            //alert("Password must be 3 or more characters");
-        }
-        return isValid;
-    }
-</script>
+
 <?php
 
 ?>

@@ -39,7 +39,7 @@ if (isset($_POST["save"])) {
             $_SESSION["user"]["email"] = $user["email"];
             $_SESSION["user"]["username"] = $user["username"];
         } else {
-            flash("User doesn't exist", "danger");
+            flash("User Could Not Be Found", "danger");
         }
     } catch (Exception $e) {
         flash("An unexpected error occurred, please try again", "danger");
