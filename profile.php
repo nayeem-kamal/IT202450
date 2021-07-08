@@ -39,7 +39,7 @@ if (isset($_POST["save"])) {
             $_SESSION["user"]["email"] = $user["email"];
             $_SESSION["user"]["username"] = $user["username"];
         } else {
-            flash("User doesn't exist", "danger");
+            flash("User Could Not Be Found", "danger");
         }
     } catch (Exception $e) {
         flash("An unexpected error occurred, please try again", "danger");
@@ -156,7 +156,7 @@ $username = get_username();
             //apply the CSS (these are bootstrap classes which we'll learn later)
             innerDiv.className = "alert alert-warning";
             //set the content
-            innerDiv.innerText = "Password and Confirm password must match";
+            innerDiv.innerText = "New Password and Confirm password must match";
 
             outerDiv.appendChild(innerDiv);
             //add the element to the DOM (if we don't it merely exists in memory)

@@ -2,6 +2,7 @@
 include_once "header.php";
 include_once "nav.php";
 include_once "functions.php";
+require_once("flash.php");
 function get_role($stmt,$db,$user)
 {
     $stmt = $db->prepare("SELECT Roles.name FROM Roles 
@@ -9,7 +10,6 @@ function get_role($stmt,$db,$user)
                     where UserRoles.user_id = :user_id and Roles.is_active = 1 and UserRoles.is_active = 1");
     $stmt->execute([":user_id" => $user["id"]]);
     $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //save roles or empty array
     if ($roles) {
         $_SESSION["user"]["roles"] = $roles;
     } else {
@@ -19,19 +19,21 @@ function get_role($stmt,$db,$user)
 if (isset($_POST["submit"])) {
     $email = se($_POST, "email", null, false);
     $password = trim(se($_POST, "password", null, false));
-
+    
     $isValid = true;
     if (!isset($email) || !isset($password)) {
+        
         flash("Must provide email and password", "warning");
         $isValid = false;
     }
     if (strlen($password) < 3) {
+      
         flash("Password must be 3 or more characters", "warning");
         $isValid = false;
     }
     $email = sanitize_email($email);
     if (!is_valid_email($email)) {
-        flash("Invalid email", "warning");
+        flash("Email must be formatted as email@email.com", "warning");
         $isValid = false;
     }
     if ($isValid) {
@@ -48,9 +50,7 @@ if (isset($_POST["submit"])) {
                     unset($user["password"]);
                     $_SESSION["user"] = $user;
                     echo (is_logged_in());
-?>
-                    <h1><?php echo ($_SESSION["user"]["username"]); ?></h1>
-<?php
+
 
                     echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 
@@ -58,10 +58,10 @@ if (isset($_POST["submit"])) {
                     //get_or_create_account();//applies directly to the session, make sure it's called after the session is set
                     die(header("Location: home.php"));
                 } else {
-                    se("Username or Password incorrect");
+                    flash("Username or Password incorrect","warning");
                 }
             } else {
-                se("User doesn't exist");
+                flash("There is no user with these credentials","warning");
             }
         } catch (Exception $e) {
             echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
@@ -81,7 +81,7 @@ if (isset($_POST["submit"])) {
 
     <div class="flex-container">
         <div class="flex-item-1">
-            <form method="POST" onsubmit="return validate(this);">
+            <form method="POST" >
                 <div class="flex-item-login">
                     <h2>Welcome</h2>
                 </div>
@@ -111,28 +111,7 @@ if (isset($_POST["submit"])) {
 
 </html>
 
-<script>
-    function validate(form) {
-        let email = form.email.value;
-        let password = form.password.value;
-        let isValid = true;
-        if (email) {
-            email = email.trim();
-        }
-        if (password) {
-            password = password.trim();
-        }
-        if (email.indexOf("@") === -1) {
-            isValid = false;
-            alert("Invalid email");
-        }
-        if (password.length < 3) {
-            isValid = false;
-            alert("Password must be 3 or more characters");
-        }
-        return isValid;
-    }
-</script>
+
 <?php
-require_once("flash.php");
+
 ?>

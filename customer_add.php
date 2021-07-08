@@ -22,12 +22,11 @@ if (isset($_POST["submit"])) {
     }
     $email = sanitize_email($email);
     if (!is_valid_email($email)) {
-        flash("Invalid email", "warning");
+        flash("Email must be formatted as email@email.com", "warning");
         $isValid = false;
     }
 
     if ($isValid) {
-        //do our registration
         $db = getDB();
         $stmt = $db->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username, :password)");
         $hash = password_hash($password, PASSWORD_BCRYPT);
@@ -54,7 +53,7 @@ if (isset($_POST["submit"])) {
 <body>
     <div>
 
-        <form method="POST" onsubmit="return validate(this);">
+        <form method="POST" >
             <div class="flex-container-form_header">
                 <h1 id="form_header">Register</h1>
             </div>
@@ -91,41 +90,7 @@ if (isset($_POST["submit"])) {
         </form>
     </div>
 </body>
-<script>
-    function validate(form) {
-        let email = form.email.value;
-        let username = form.username.value;
-        let password = form.password.value;
-        let confirm = form.confirm.value;
-        let isValid = true;
-        if (email) {
-            email = email.trim();
-        }
-        if (username) {
-            username = username.trim();
-        }
-        if (password) {
-            password = password.trim();
-        }
-        if (confirm) {
-            confirm = confirm.trim();
-        }
-        if (!username || username.length === 0) {
-            isValid = false;
-            alert("Must provide a username");
-        }
-        if (email.indexOf("@") === -1) {
-            isValid = false;
-            alert("Invalid email");
-        }
-        if (password !== confirm) {
-            isValid = false;
-            alert("Passwords don't match");
-        }
-        if (password.length < 3) {
-            isValid = false;
-            alert("Password must be 3 or more characters");
-        }
-        return isValid;
-    }
-</script>
+
+<?php
+include_once("flash.php");
+?>
