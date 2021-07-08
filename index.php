@@ -19,12 +19,12 @@ function get_role($stmt,$db,$user)
 if (isset($_POST["submit"])) {
     $email = se($_POST, "email", null, false);
     $password = trim(se($_POST, "password", null, false));
-
+    ?>
+    <h1><?php echo($email);?>
+    <?php
     $isValid = true;
     if (!isset($email) || !isset($password)) {
-        ?>
-        <h1><?php echo($email);?>
-        <?php
+        
         flash("Must provide email and password", "warning");
         $isValid = false;
     }
