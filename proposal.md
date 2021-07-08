@@ -28,7 +28,7 @@ IT 202 Project Proposal
   - [x] Email should be unique
   - [x] Username should be unique
   - [x] System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
-    - [ ] The only fields that may be cleared are the password fields
+    - [x] The only fields that may be cleared are the password fields
       - https://github.com/nayeemkamal/IT202450/pull/16
 - [x] User will be able to login to their account (given they enter the correct credentials)
   - [x] Form
@@ -60,16 +60,19 @@ IT 202 Project Proposal
     - https://github.com/nayeemkamal/IT202450/pull/18
 - [x] Site should have basic styles/theme applied; everything should be styled
   - [x] e., forms/input, navigation bar, etc
-- [ ] Any output messages/errors should be &quot;user friendly&quot;
-  - [ ] Any technical errors or debug output displayed will result in a loss of points
+- [x] Any output messages/errors should be &quot;user friendly&quot;
+  - [x] Any technical errors or debug output displayed will result in a loss of points
+    - https://github.com/nayeemkamal/IT202450/pull/20
 - [x] User will be able to see their profile
   - [x] Email, username, etc
 - [x] User will be able to edit their profile
   - [x] Changing username/email should properly check to see if it&#39;s available before allowing the change
   - [x] Any other fields should be properly validated
   - [x] Allow password reset (only if the existing correct password is provided)
-    - [ ] Hint: logic for the password check would be similar to login
+    - [x] Hint: logic for the password check would be similar to login
       - https://github.com/nayeemkamal/IT202450/pull/19
+
+
 **Milestone 2:**
 
 - [ ] Create the Accounts table (id, account\_number [unique, always 12 characters], user\_id, balance (default 0), account\_type, created, modified)
