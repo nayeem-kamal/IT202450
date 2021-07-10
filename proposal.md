@@ -75,7 +75,8 @@ IT 202 Project Proposal
 
 **Milestone 2:**
 
-- [ ] Create the Accounts table (id, account\_number [unique, always 12 characters], user\_id, balance (default 0), account\_type, created, modified)
+- [x] Create the Accounts table (id, account\_number [unique, always 12 characters], user\_id, balance (default 0), account\_type, created, modified)
+  - https://github.com/nayeemkamal/IT202450/pull/22
 - [ ] Project setup steps:
   - [ ] Create these as initial setup scripts in the sql folder
     - [ ] Create a system user if they don&#39;t exist (this will never be logged into, it&#39;s just to keep things working per system requirements)
