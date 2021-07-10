@@ -29,3 +29,17 @@ CREATE TABLE `userroles` (
   CONSTRAINT `userroles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `userroles_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Accounts` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `account_number` varchar(12) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `balance` float DEFAULT '0',
+  `account_type` varchar(255) DEFAULT NULL,
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `account_number` (`account_number`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `Accounts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
