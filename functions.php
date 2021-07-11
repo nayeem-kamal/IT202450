@@ -115,7 +115,7 @@ function get_or_create_account() {
                 //it shouldn't be too likely to occur with a length of 12, but it's still worth handling such a scenario
 
                 //you only need to prepare once
-                $query = "INSERT INTO Accounts (account, user_id) VALUES (:an, :uid)";
+                $query = "INSERT INTO Accounts (account_number, user_id) VALUES (:an, :uid)";
                 $stmt = $db->prepare($query);
                 $user_id = get_user_id(); //caching a reference
                 $account_number = "";
