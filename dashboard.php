@@ -18,28 +18,23 @@ if (!is_logged_in()) {
 
 <body>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <a><p class="card-text">Create Account</p></a>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Create Account</h5>
+        <p class="card-text">Use this page to create a new Account at NJIT Bank</p>
+        <a href="#" class="btn btn-primary">Get Started Now</a>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">My Accounts</h5>
+        <p class="card-text">Use this page to view your accounts</p>
+        <a href="#" class="btn btn-primary">View Accounts</a>
       </div>
     </div>
   </div>
