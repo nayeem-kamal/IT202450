@@ -25,7 +25,7 @@ if (!is_logged_in()) {
       <div class="card-body">
         <h5 class="card-title">Create Account</h5>
         <p class="card-text">Use this page to create a new Account at NJIT Bank</p>
-        <a href="#" class="btn btn-primary">Get Started Now</a>
+        <a href="./add_account.php" class="btn btn-primary">Get Started Now</a>
       </div>
     </div>
   </div>

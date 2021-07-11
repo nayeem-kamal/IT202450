@@ -148,7 +148,7 @@ function get_or_create_account() {
                 $account["balance"] = $result["balance"];
             }
         } catch (PDOException $e) {
-            flash("Technical error: " . var_export($e->errorInfo, true), "danger");
+            flash("Error: We are unable to create or access your account at this time", "danger");
         }
         $_SESSION["user"]["account"] = $account; //storing the account info as a key under the user session
         //Note: if there's an error it'll initialize to the "empty" definition around line 84
