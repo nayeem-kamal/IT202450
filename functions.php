@@ -116,14 +116,14 @@ function get_or_create_account() {
 
                 //you only need to prepare once
                 $at="Checking";
-                $query = "INSERT INTO Accounts (account_number, user_id,account_type) VALUES (:an, :uid,:at)";
+                $query = "INSERT INTO Accounts (account_number, user_id) VALUES (:an, :uid)";
                 $stmt = $db->prepare($query);
                 $user_id = get_user_id(); //caching a reference
                 $account_number = "";
                 while (!$created) {
                     try {
                         $account_number = get_random_str(12);
-                        $stmt->execute([":an" => $account_number, ":uid" => $user_id, ":at" => $at]);
+                        $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
                         $created = true; //if we got here it was a success, let's exit
                         flash("Welcome! Your account has been created successfully", "success");
                     } catch (PDOException $e) {
