@@ -115,14 +115,15 @@ function get_or_create_account() {
                 //it shouldn't be too likely to occur with a length of 12, but it's still worth handling such a scenario
 
                 //you only need to prepare once
-                $query = "INSERT INTO Accounts (account_number, user_id,account_type) VALUES (:an, :uid,\"Checking\")";
+                $at="Checking";
+                $query = "INSERT INTO Accounts (account_number, user_id,account_type) VALUES (:an, :uid,:at)";
                 $stmt = $db->prepare($query);
                 $user_id = get_user_id(); //caching a reference
                 $account_number = "";
                 while (!$created) {
                     try {
                         $account_number = get_random_str(12);
-                        $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
+                        $stmt->execute([":an" => $account_number, ":uid" => $user_id, ":at" => $at]);
                         $created = true; //if we got here it was a success, let's exit
                         flash("Welcome! Your account has been created successfully", "success");
                     } catch (PDOException $e) {
