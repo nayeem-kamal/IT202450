@@ -5,7 +5,8 @@ include_once "functions.php";
 require_once("flash.php");
 if (!is_logged_in()) {
     die(header("Location: index.php"));
-    flash("Cannot access this page without logging in","warning")
+    flash("Cannot access this page without logging in","warning");
+}
 ?>
 
 <head>
