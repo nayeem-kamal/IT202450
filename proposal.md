@@ -86,9 +86,10 @@ IT 202 Project Proposal
       - [x] Account type must be &quot;world&quot;
 - [x] Create the Transactions table (see reference below)
   - https://github.com/nayeemkamal/IT202450/pull/23
-- [ ] Dashboard page
-  - [ ] Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
-    - [ ] Links that don&#39;t have pages yet should just have href=&quot;#&quot;, you&#39;ll update them later
+- [x] Dashboard page
+  - [x] Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
+    - [x] Links that don&#39;t have pages yet should just have href=&quot;#&quot;, you&#39;ll update them later
+      -  https://github.com/nayeemkamal/IT202450/pull/24
 - [ ] User will be able to create a checking account
   - [ ] System will generate a unique 12 digit account number
     - [ ] **Options (strike out the option you won&#39;t do):**
