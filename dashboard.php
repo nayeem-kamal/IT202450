@@ -38,5 +38,33 @@ if (!is_logged_in()) {
       </div>
     </div>
   </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Deposit</h5>
+        <p class="card-text">Use this page to make a deposit</p>
+        <a href="#" class="btn btn-primary">Make a Deposit</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Transfer/Withdraw</h5>
+        <p class="card-text">Use this page to withdraw or transfer money from your account</p>
+        <a href="#" class="btn btn-primary">Make a Transfer/Withdrawal</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">My Profile</h5>
+        <p class="card-text">Use this page to view your profile and change your password</p>
+        <a href="./profile.php" class="btn btn-primary">View Profile</a>
+      </div>
+    </div>
+  </div>
+  <!-- deposit withdraw/transfer profile -->
 </div>
 </body>
