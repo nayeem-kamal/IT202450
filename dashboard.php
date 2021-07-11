@@ -20,7 +20,7 @@ if (!is_logged_in()) {
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <p class="card-text">Create Account</p>
+    <a><p class="card-text">Create Account</p></a>
   </div>
 </div>
 
