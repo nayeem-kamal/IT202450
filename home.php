@@ -2,7 +2,7 @@
 require_once("header.php");
 require_once("nav.php");
 if (!is_logged_in()) {
-    //die(header("Location: index.php"));
+    die(header("Location: index.php"));
     ?>
         <h1><?php echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 ?></h1>
