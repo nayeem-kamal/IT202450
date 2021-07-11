@@ -77,14 +77,15 @@ IT 202 Project Proposal
 
 - [x] Create the Accounts table (id, account\_number [unique, always 12 characters], user\_id, balance (default 0), account\_type, created, modified)
   - https://github.com/nayeemkamal/IT202450/pull/22
-- [ ] Project setup steps:
+- [x] Project setup steps:
   - [ ] Create these as initial setup scripts in the sql folder
-    - [ ] Create a system user if they don&#39;t exist (this will never be logged into, it&#39;s just to keep things working per system requirements)
-    - [ ] Create a world account in the Accounts table created below (if it doesn&#39;t exist)
-      - [ ] Account\_number must be &quot;000000000000&quot;
-      - [ ] User\_id must be the id of the system user
-      - [ ] Account type must be &quot;world&quot;
-- [ ] Create the Transactions table (see reference below)
+    - [x] Create a system user if they don&#39;t exist (this will never be logged into, it&#39;s just to keep things working per system requirements)
+    - [x] Create a world account in the Accounts table created below (if it doesn&#39;t exist)
+      - [x] Account\_number must be &quot;000000000000&quot;
+      - [x] User\_id must be the id of the system user
+      - [x] Account type must be &quot;world&quot;
+- [x] Create the Transactions table (see reference below)
+  - https://github.com/nayeemkamal/IT202450/pull/23
 - [ ] Dashboard page
   - [ ] Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
     - [ ] Links that don&#39;t have pages yet should just have href=&quot;#&quot;, you&#39;ll update them later
