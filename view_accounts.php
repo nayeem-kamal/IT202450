@@ -12,7 +12,7 @@ if (!is_logged_in()) {
         $stmt = $db->prepare($query);
         try {
             $stmt->execute([":uid" => get_user_id()]);
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (!$result) {
                 flash("Error: We are unable to access your accounts at this time", "danger");
             }else{
