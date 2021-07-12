@@ -25,8 +25,11 @@ if (isset($_POST["submit"])) {
              //if we got here it was a success, let's exit
              flash("Your account has been created successfully", "success");
             if(transaction(1,$lastID,5,"transfer")){
-                
-            $created = true;}
+
+            $created = true;
+            die(header("Location: dashboard.php"));
+
+        }
             else{
                 flash("Error: We are unable to fund your account at this time", "danger");
                 $created = true;
@@ -42,7 +45,6 @@ if (isset($_POST["submit"])) {
         }
             }
         }
-        // die(header("Location: dashboard.php"));
     }
 
 
