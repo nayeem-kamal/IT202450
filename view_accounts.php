@@ -23,13 +23,13 @@ if (!is_logged_in()) {
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{$i}" aria-expanded="true" aria-controls="collapse{$i}">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i;?>" aria-expanded="true" aria-controls="collapse<?php echo $i;?>">
                                 <?php echo $acctinfo["account_number"]; ?>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapse{$i}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse<?php echo $i;?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                             <?php echo $acctinfo["balance"]; ?>                            </div>
                         </div>
