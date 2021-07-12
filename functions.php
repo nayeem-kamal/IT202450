@@ -174,7 +174,7 @@ function transaction($src, $dst, $amt, $type){
             flash("successfully entered first transaction","success");
         }catch (PDOException $e) {
             error_log($e);
-            flash("Error: Transaction could not be completed at this time", "danger");
+            flash("Error: Transaction could not be completed at this time".$e, "danger");
             return false;
         }
         $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
@@ -185,7 +185,7 @@ function transaction($src, $dst, $amt, $type){
             flash("successfully entered first transaction","success");
 
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time", "danger");
+            flash("Error: Transaction could not be completed at this time".$e, "danger");
             return false;
         }
         $srcinfo = get_acct_info($src);
@@ -199,7 +199,7 @@ function transaction($src, $dst, $amt, $type){
             $stmt->execute([":src" => $src, ":srcbal" => $srcbal]);
             
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time", "danger");
+            flash("Error: Transaction could not be completed at this time".$e, "danger");
             return false;
         }
         //update dst
@@ -209,7 +209,7 @@ function transaction($src, $dst, $amt, $type){
             $stmt->execute([":src" => $dst, ":srcbal" => $dstbal]);
             
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time", "danger");
+            flash("Error: Transaction could not be completed at this time".$e, "danger");
             return false;
         }
 
