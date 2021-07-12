@@ -74,7 +74,7 @@ if (isset($_POST["submit"])) {
 
             <div class="flex-container">
                 <div class=container>
-                    <input type="submit" name="submit" value="Register" />
+                    <input type="submit" name="submit" value="Create Account" />
                 </div>
             </div>
 
