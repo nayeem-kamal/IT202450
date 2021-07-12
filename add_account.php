@@ -41,6 +41,7 @@ if (isset($_POST["submit"])) {
         }
             }
         }
+        die(header("Location: dashboard.php"));
     }
 
 
