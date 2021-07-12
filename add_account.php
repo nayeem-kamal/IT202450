@@ -9,13 +9,14 @@ if (!is_logged_in()) {
 }else{
 
 if (isset($_POST["submit"])) {
+    $db = getDB();
+
     $type = se($_POST, "accountType", null, false);
     $created = false;
     $query = "INSERT INTO Accounts (account_number, user_id, account_type) VALUES (:an, :uid, :at)";
     $stmt = $db->prepare($query);
     $user_id = get_user_id();
     $account_number = "";
-    $db = getDB();
         while (!$created) {
         try {
             $account_number = get_random_str(12);
