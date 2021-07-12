@@ -2,7 +2,7 @@
 include_once "header.php";
 include_once "nav.php";
 include_once "functions.php";
-require_once("flash.php");
+include_once "flash.php";
 if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
             $lastID = $db->lastInsertID();
              //if we got here it was a success, let's exit
              flash("Your account has been created successfully", "success");
-
+            flash("".$lastID,"warning");
             if(transaction(1,$lastID,5,"transfer")){
             $created = true;}
             else{
