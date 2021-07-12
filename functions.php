@@ -172,8 +172,10 @@ function transaction($src, $dst, $amt, $type){
         $dstinfo = get_acct_info($dst);
         $srcbal = $srcinfo["balance"]-$amt;
         $dstbal = $dstinfo["balance"]+$amt;
+        $amt2 = $amt-($amt*2);
+
         try{
-            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt), ":typ" => $type, ":tot" => $srcbal]);
+            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt2), ":typ" => $type, ":tot" => $srcbal]);
         }catch (PDOException $e) {
             error_log($e);
             flash("Error: Transaction could not be completed at this time", "danger");
@@ -181,9 +183,8 @@ function transaction($src, $dst, $amt, $type){
         }
         $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal) VALUES (:src, :dst, :amt, :typ, :tot)";
         $stmt = $db->prepare($query);
-        $amt2 = $amt-($amt*2);
         try{
-            $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => $amt2, ":typ" => $type, ":tot" => $dstbal]);
+            $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => strval($amt), ":typ" => $type, ":tot" => $dstbal]);
 
         }catch (PDOException $e) {
             flash("Error: Transaction could not be completed at this time", "danger");
