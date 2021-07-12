@@ -16,6 +16,7 @@ if (!is_logged_in()) {
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
+            ?><h3>View Accounts</h3><?php
             foreach ($result as $acctinfo) {
                 $i=1;
 ?>
@@ -53,6 +54,5 @@ if (!is_logged_in()) {
 </head>
 
 <body>
-    <h3>View Accounts</h3>
 
 </body>
