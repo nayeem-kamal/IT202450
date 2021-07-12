@@ -166,7 +166,7 @@ function get_account_balance() {
 function transaction($src, $dst, $amt, $type){
     if (isset($src) && isset($dst)){
         $db = getDB();
-        $query = "INSERT INTO tranactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
+        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
         $stmt = $db->prepare($query);
 
         try{
@@ -174,10 +174,10 @@ function transaction($src, $dst, $amt, $type){
             flash("successfully entered first transaction","success");
         }catch (PDOException $e) {
             error_log($e);
-            flash("Error: Transaction could not be completed at this time" . $e, "danger");
+            flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
-        $query = "INSERT INTO tranactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
+        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
         $stmt = $db->prepare($query);
         $amt2 = $amt-($amt*2);
         try{
