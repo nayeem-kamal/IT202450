@@ -171,12 +171,7 @@ function transaction($src, $dst, $amt, $type){
 
         try{
             $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => $amt, ":typ" => $type]);
-            $query2="UPDATE Accounts SET balance";
-
-            
-
-
-
+            flash("successfully entered first transaction","success");
         }catch (PDOException $e) {
             flash("Error: Transaction could not be completed at this time", "danger");
             return false;
@@ -186,12 +181,37 @@ function transaction($src, $dst, $amt, $type){
         $amt2 = $amt-($amt*2);
         try{
             $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => $amt2, ":typ" => $type]);
-
+            flash("successfully entered first transaction","success");
 
         }catch (PDOException $e) {
             flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
+        $srcinfo = get_acct_info($src);
+        $dstinfo = get_acct_info($dst);
+        $srcbal = $srcinfo["balance"]-$amt;
+        $dstbal = $dstinfo["balance"]+$amt;
+        $query2="UPDATE Accounts SET balance = :srcbal where id = :src";
+        $stmt = $db->prepare($query2);
+        //update src
+        try{
+            $stmt->execute([":src" => $src, ":srcbal" => $srcbal]);
+            
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+        //update dst
+        $query2="UPDATE Accounts SET balance = :srcbal where id = :dst";
+        $stmt = $db->prepare($query2);
+        try{
+            $stmt->execute([":src" => $dst, ":srcbal" => $dstbal]);
+            
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+
         return true;
     }
 }
@@ -209,7 +229,7 @@ function transaction($src, $dst, $amt, $type){
 function get_acct_info($acctnum){
     if(isset($acctnum)){
 
-    $query = "SELECT * from Accounts where account_number = :acct LIMIT 1";
+    $query = "SELECT * from Accounts where id = :acct LIMIT 1";
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
@@ -217,6 +237,7 @@ function get_acct_info($acctnum){
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }catch(PDOException $e){
+        flash("failed to get acct", "warning");
         return false;
     }
     
