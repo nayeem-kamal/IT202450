@@ -21,8 +21,16 @@ if (isset($_POST["submit"])) {
         try {
             $account_number = get_random_str(12);
             $stmt->execute([":an" => $account_number, ":uid" => $user_id, ":at" => $type]);
-            $created = true; //if we got here it was a success, let's exit
-            flash("Your account has been created successfully", "success");
+            $lastID = $db->lastInsertID();
+             //if we got here it was a success, let's exit
+            if(transaction(1,$lastID,5,"transfer")){
+            $created = true;
+            flash("Your account has been created successfully", "success");}
+            else{
+                flash("Error: We are unable to fund your account at this time", "danger");
+                $created = true;
+
+            }
         } catch (PDOException $e) {
             $code = se($e->errorInfo, 0, "00000", false);
             if (

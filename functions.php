@@ -163,3 +163,63 @@ function get_account_balance() {
     }
     return 0;
 }
+function transaction($src, $dst, $amt, $type){
+    if (isset($src) && isset($dst)){
+        $db = getDB();
+        $query = "INSERT INTO tranactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
+        $stmt = $db->prepare($query);
+
+        try{
+            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => $amt, ":typ" => $type]);
+            $query2="UPDATE Accounts SET balance";
+
+            
+
+
+
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+        $query = "INSERT INTO tranactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
+        $stmt = $db->prepare($query);
+        $amt2 = $amt-($amt*2);
+        try{
+            $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => $amt2, ":typ" => $type]);
+
+
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+        return true;
+    }
+}
+// UPDATE `nhk6`.`Accounts`
+// SET
+// `id` = <{id: }>,
+// `account_number` = <{account_number: }>,
+// `user_id` = <{user_id: }>,
+// `balance` = <{balance: 0}>,
+// `account_type` = <{account_type: }>,
+// `created` = <{created: CURRENT_TIMESTAMP}>,
+// `modified` = <{modified: }>
+// WHERE `id` = <{expr}>;
+
+function get_acct_info($acctnum){
+    if(isset($acctnum)){
+
+    $query = "SELECT * from Accounts where account_number = :acct LIMIT 1";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":acct" => $acctnum]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }catch(PDOException $e){
+        return false;
+    }
+    
+}
+return false;
+}
