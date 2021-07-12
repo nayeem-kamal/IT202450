@@ -16,8 +16,11 @@ if (!is_logged_in()) {
             if (!$result) {
                 flash("Error: We are unable to access your accounts at this time", "danger");
             }else{
-                ?> <h1 style="color:black"> <?php echo (var_export($result)); ?> success</h1> <?php
-
+                foreach($result as $acctinfo){
+                    ?>
+                    <h4><?php echo $acctinfo["account_number"];?> </h4>
+                    <?php
+                }
             }
 
         }catch (PDOException $e) {
