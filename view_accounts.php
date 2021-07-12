@@ -31,7 +31,7 @@ if (!is_logged_in()) {
 
                         <div id="collapse<?php echo $i;?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                            <?php echo $acctinfo["balance"]; ?>                            </div>
+                            <?php echo $acctinfo["account_type"]. " : " . $acctinfo["balance"]; ?>                            </div>
                         </div>
                     </div>
 
