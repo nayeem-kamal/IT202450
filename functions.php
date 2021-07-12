@@ -235,6 +235,7 @@ function get_acct_info($acctnum){
     try {
         $stmt->execute([":acct" => $acctnum]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        flash("".var_export($result),"danger");
         return $result;
     }catch(PDOException $e){
         flash("failed to get acct", "warning");

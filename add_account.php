@@ -24,8 +24,8 @@ if (isset($_POST["submit"])) {
             $lastID = $db->lastInsertID();
              //if we got here it was a success, let's exit
              flash("Your account has been created successfully", "success");
-            flash("".$lastID,"warning");
             if(transaction(1,$lastID,5,"transfer")){
+                
             $created = true;}
             else{
                 flash("Error: We are unable to fund your account at this time", "danger");
