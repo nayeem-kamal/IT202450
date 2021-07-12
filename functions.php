@@ -170,7 +170,7 @@ function transaction($src, $dst, $amt, $type){
         $stmt = $db->prepare($query);
 
         try{
-            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => $amt, ":typ" => $type]);
+            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt), ":typ" => $type]);
             flash("successfully entered first transaction","success");
         }catch (PDOException $e) {
             flash("Error: Transaction could not be completed at this time", "danger");
