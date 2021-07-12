@@ -49,7 +49,6 @@ if (isset($_POST["submit"])) {
                     flash("Login successful", "success");
                     unset($user["password"]);
                     $_SESSION["user"] = $user;
-                    echo (is_logged_in());
 
 
                     echo "<pre>" . var_export($_SESSION, true) . "</pre>";

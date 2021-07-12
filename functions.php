@@ -125,7 +125,13 @@ function get_or_create_account() {
                         $account_number = get_random_str(12);
                         $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
                         $created = true; //if we got here it was a success, let's exit
+                        $lastID = $db->lastInsertID();
+
+                        if(transaction(1,$lastID,5,"transfer")){
                         flash("Welcome! Your account has been created successfully", "success");
+                        }else{
+                            flash("Welcome! Your account was created but not funded","success");
+                        }
                     } catch (PDOException $e) {
                         $code = se($e->errorInfo, 0, "00000", false);
                         //if it's a duplicate error, just let the loop happen
