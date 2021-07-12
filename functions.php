@@ -174,10 +174,9 @@ function transaction($src, $dst, $amt, $type){
         $dstbal = $dstinfo["balance"]+$amt;
         try{
             $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt), ":typ" => $type, ":tot" => $srcbal]);
-            flash("successfully entered first transaction","success");
         }catch (PDOException $e) {
             error_log($e);
-            flash("Error: Transaction could not be completed at this time".$e, "danger");
+            flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
         $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal) VALUES (:src, :dst, :amt, :typ, :tot)";
@@ -185,16 +184,12 @@ function transaction($src, $dst, $amt, $type){
         $amt2 = $amt-($amt*2);
         try{
             $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => $amt2, ":typ" => $type, ":tot" => $dstbal]);
-            flash("successfully entered first transaction","success");
 
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time".$e, "danger");
+            flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
-        $srcinfo = get_acct_info($src);
-        $dstinfo = get_acct_info($dst);
-        $srcbal = $srcinfo["balance"]-$amt;
-        $dstbal = $dstinfo["balance"]+$amt;
+        
         $query2="UPDATE Accounts SET balance = :srcbal where id = :src";
         $stmt = $db->prepare($query2);
         //update src
@@ -202,17 +197,17 @@ function transaction($src, $dst, $amt, $type){
             $stmt->execute([":src" => $src, ":srcbal" => $srcbal]);
             
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time".$e, "danger");
+            flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
         //update dst
         $query2="UPDATE Accounts SET balance = :srcbal where id = :dst";
         $stmt = $db->prepare($query2);
         try{
-            $stmt->execute([":src" => $dst, ":srcbal" => $dstbal]);
+            $stmt->execute([":dst" => $dst, ":srcbal" => $dstbal]);
             
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time".$e, "danger");
+            flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
 
@@ -242,7 +237,7 @@ function get_acct_info($acctnum){
         flash("".var_export($result),"danger");
         return $result;
     }catch(PDOException $e){
-        flash("failed to get acct".$e, "warning");
+        flash("failed to get acct info", "warning");
         return false;
     }
     
