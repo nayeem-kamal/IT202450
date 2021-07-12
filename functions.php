@@ -173,7 +173,8 @@ function transaction($src, $dst, $amt, $type){
             $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt), ":typ" => $type]);
             flash("successfully entered first transaction","success");
         }catch (PDOException $e) {
-            flash("Error: Transaction could not be completed at this time", "danger");
+            error_log($e);
+            flash("Error: Transaction could not be completed at this time" . $e, "danger");
             return false;
         }
         $query = "INSERT INTO tranactions (accountsrc, accountdst, balanceChange, transactionType) VALUES (:src, :dst, :amt, :typ)";
