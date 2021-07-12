@@ -90,22 +90,24 @@ IT 202 Project Proposal
   - [x] Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
     - [x] Links that don&#39;t have pages yet should just have href=&quot;#&quot;, you&#39;ll update them later
       -  https://github.com/nayeemkamal/IT202450/pull/24
-- [ ] User will be able to create a checking account
-  - [ ] System will generate a unique 12 digit account number
-    - [ ] **Options (strike out the option you won&#39;t do):**
-      - [ ] **Option 1:** Generate a random 12 digit/character value; must regenerate if a duplicate collision occurs
-      - [ ] **Option 2:** Generate the number based on the id column; requires inserting a null first to get the last insert id, then update the record immediately after
-  - [ ] System will associate the account to the user
-  - [ ] Account type will be set as checking
-  - [ ] Will require a minimum deposit of $5 (from the world account)
-    - [ ] Entry will be recorded in the Transaction table as a transaction pair (per notes below)
-    - [ ] Account Balance will be updated based on SUM of **BalanceChange** of **AccountSrc**
-  - [ ] User will see user-friendly error messages when appropriate
-  - [ ] User will see user-friendly success message when account is created successfully
-    - [ ] Redirect user to their Accounts page
-- [ ] User will be able to list their accounts
-  - [ ] Limit results to 5 for now
-  - [ ] Show account number, account type and balance
+- [x] User will be able to create a checking account
+  - [x] System will generate a unique 12 digit account number
+    - [x] **Options (strike out the option you won&#39;t do):**
+      - [x] **Option 1:** Generate a random 12 digit/character value; must regenerate if a duplicate collision occurs
+  - [x] System will associate the account to the user
+  - [x] Account type will be set as checking
+  - [x] Will require a minimum deposit of $5 (from the world account)
+    - [x] Entry will be recorded in the Transaction table as a transaction pair (per notes below)
+    - [x] Account Balance will be updated based on SUM of **BalanceChange** of **AccountSrc**
+  - [x] User will see user-friendly error messages when appropriate
+  - [x] User will see user-friendly success message when account is created successfully
+    - [x] Redirect user to their Accounts page
+
+  - https://github.com/nayeemkamal/IT202450/pull/25
+- [x] User will be able to list their accounts
+  - [x] Limit results to 5 for now
+  - [x] Show account number, account type and balance
+  - https://github.com/nayeemkamal/IT202450/pull/25
 - [ ] User will be able to click an account for more information (a.ka. Transaction History page)
   - [ ] Show account number, account type, balance, opened/created date
   - [ ] Show transaction history (from Transactions table)
