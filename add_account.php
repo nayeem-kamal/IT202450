@@ -27,7 +27,7 @@ if (isset($_POST["submit"])) {
             if(transaction(1,$lastID,5,"transfer")){
 
             $created = true;
-            die(header("Location: dashboard.php"));
+            die(header("Location: view_accounts.php"));
 
         }
             else{
