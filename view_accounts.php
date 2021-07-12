@@ -24,7 +24,7 @@ if (!is_logged_in()) {
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i;?>" aria-expanded="true" aria-controls="collapse<?php echo $i;?>">
-                                <?php echo $acctinfo["account_type"]. " : " . $acctinfo["account_number"]; ?>
+                                <?php echo $acctinfo["account_type"]. " : " . $acctinfo["account_number"] . "        Balance:" .  $acctinfo["balance"]; ?>
                                 </button>
                             </h5>
                         </div>
