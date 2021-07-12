@@ -52,12 +52,12 @@ if (isset($_POST["submit"])) {
 
 <body>
     <div>
-
+    <h1 class="display-4">Create an Account</h1>
         <form method="POST">
             <!-- <div class="flex-container-form_header">
                 <h1 id="form_header">Create an account</h1>
             </div> -->
-            <h1 class="display-4">Create an Account</h1>
+           
 
             <div class="flex-container">
                 <div class=container>
