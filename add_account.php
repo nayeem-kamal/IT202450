@@ -76,11 +76,11 @@ if (isset($_POST["submit"])) {
                 <div class=container>
                     <label for="email">Account Type: </label>
                     <input list="AccountType" id="accountType" name="accountType" required />
-                    <datalist id="AccountType">
+                    <select id="AccountType">
                         <option value="Checking">
                         <option value="Savings">
                         
-                    </datalist>
+</select>
                 </div>
             </div>
 
