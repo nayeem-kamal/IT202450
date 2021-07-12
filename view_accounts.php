@@ -17,18 +17,19 @@ if (!is_logged_in()) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
             foreach ($result as $acctinfo) {
+                $i=1;
 ?>
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{$i}" aria-expanded="true" aria-controls="collapse{$i}">
                                 <?php echo $acctinfo["account_number"]; ?>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse{$i}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                             <?php echo $acctinfo["balance"]; ?>                            </div>
                         </div>
@@ -37,6 +38,7 @@ if (!is_logged_in()) {
                 </div>
   
 <?php
+            $i+=1;
             }
         }
     } catch (PDOException $e) {
