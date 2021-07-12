@@ -49,13 +49,12 @@ if (isset($_POST["submit"])) {
                     flash("Login successful", "success");
                     unset($user["password"]);
                     $_SESSION["user"] = $user;
-                    echo (is_logged_in());
 
 
                     echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 
                     //fetch account info, or create an account if the user existed before this feature was added
-                    //get_or_create_account();//applies directly to the session, make sure it's called after the session is set
+                    get_or_create_account();//applies directly to the session, make sure it's called after the session is set
                     die(header("Location: home.php"));
                 } else {
                     flash("Username or Password incorrect","warning");

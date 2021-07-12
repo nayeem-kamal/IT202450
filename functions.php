@@ -102,7 +102,7 @@ function get_or_create_account() {
         //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
         $account = ["id" => -1, "account_number" => false, "balance" => 0];
         //this should always be 0 or 1, but being safe
-        $query = "SELECT id, account, balance from Accounts where user_id = :uid LIMIT 1";
+        $query = "SELECT id, account_number, balance from Accounts where user_id = :uid LIMIT 1";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
@@ -115,7 +115,8 @@ function get_or_create_account() {
                 //it shouldn't be too likely to occur with a length of 12, but it's still worth handling such a scenario
 
                 //you only need to prepare once
-                $query = "INSERT INTO Accounts (account, user_id) VALUES (:an, :uid)";
+                $at="Checking";
+                $query = "INSERT INTO Accounts (account_number, user_id) VALUES (:an, :uid)";
                 $stmt = $db->prepare($query);
                 $user_id = get_user_id(); //caching a reference
                 $account_number = "";
@@ -124,7 +125,13 @@ function get_or_create_account() {
                         $account_number = get_random_str(12);
                         $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
                         $created = true; //if we got here it was a success, let's exit
+                        $lastID = $db->lastInsertID();
+
+                        if(transaction(1,$lastID,5,"transfer")){
                         flash("Welcome! Your account has been created successfully", "success");
+                        }else{
+                            flash("Welcome! Your account was created but not funded","success");
+                        }
                     } catch (PDOException $e) {
                         $code = se($e->errorInfo, 0, "00000", false);
                         //if it's a duplicate error, just let the loop happen
@@ -143,11 +150,11 @@ function get_or_create_account() {
             } else {
                 //$account = $result; //just copy it over
                 $account["id"] = $result["id"];
-                $account["account_number"] = $result["account"];
+                $account["account_number"] = $result["account_number"];
                 $account["balance"] = $result["balance"];
             }
         } catch (PDOException $e) {
-            flash("Technical error: " . var_export($e->errorInfo, true), "danger");
+            flash("Error: We are unable to create or access your account at this time", "danger");
         }
         $_SESSION["user"]["account"] = $account; //storing the account info as a key under the user session
         //Note: if there's an error it'll initialize to the "empty" definition around line 84
@@ -161,4 +168,86 @@ function get_account_balance() {
         return se($_SESSION["user"]["account"], "balance", 0, false);
     }
     return 0;
+}
+function transaction($src, $dst, $amt, $type){
+    if (isset($src) && isset($dst)){
+        $db = getDB();
+        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal) VALUES (:src, :dst, :amt, :typ, :tot)";
+        $stmt = $db->prepare($query);
+        $srcinfo = get_acct_info($src);
+        $dstinfo = get_acct_info($dst);
+        $srcbal = $srcinfo["balance"]-$amt;
+        $dstbal = $dstinfo["balance"]+$amt;
+        $amt2 = $amt-($amt*2);
+
+        try{
+            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt2), ":typ" => $type, ":tot" => $srcbal]);
+        }catch (PDOException $e) {
+            error_log($e);
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal) VALUES (:src, :dst, :amt, :typ, :tot)";
+        $stmt = $db->prepare($query);
+        try{
+            $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => strval($amt), ":typ" => $type, ":tot" => $dstbal]);
+
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+        
+        $query2="UPDATE Accounts SET balance = :srcbal where id = :src";
+        $stmt = $db->prepare($query2);
+        //update src
+        try{
+            $stmt->execute([":src" => $src, ":srcbal" => $srcbal]);
+            
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+        //update dst
+        $query2="UPDATE Accounts SET balance = :srcbal where id = :dst";
+        $stmt = $db->prepare($query2);
+        try{
+            $stmt->execute([":dst" => $dst, ":srcbal" => $dstbal]);
+            
+        }catch (PDOException $e) {
+            flash("Error: Transaction could not be completed at this time", "danger");
+            return false;
+        }
+
+        return true;
+    }
+}
+// UPDATE `nhk6`.`Accounts`
+// SET
+// `id` = <{id: }>,
+// `account_number` = <{account_number: }>,
+// `user_id` = <{user_id: }>,
+// `balance` = <{balance: 0}>,
+// `account_type` = <{account_type: }>,
+// `created` = <{created: CURRENT_TIMESTAMP}>,
+// `modified` = <{modified: }>
+// WHERE `id` = <{expr}>;
+
+function get_acct_info($acctnum){
+    if(isset($acctnum)){
+
+    $query = "SELECT * from Accounts where id = :acct LIMIT 1";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":acct" => $acctnum]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        flash("".var_export($result),"danger");
+        return $result;
+    }catch(PDOException $e){
+        flash("failed to get acct info", "warning");
+        return false;
+    }
+    
+}
+return false;
 }
