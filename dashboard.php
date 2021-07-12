@@ -34,7 +34,7 @@ if (!is_logged_in()) {
       <div class="card-body">
         <h5 class="card-title">My Accounts</h5>
         <p class="card-text">Use this page to view your accounts</p>
-        <a href="#" class="btn btn-primary">View Accounts</a>
+        <a href="./view_accounts.php" class="btn btn-primary">View Accounts</a>
       </div>
     </div>
   </div>
