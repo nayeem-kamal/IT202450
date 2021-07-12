@@ -6,7 +6,7 @@ require_once("flash.php");
 if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
-}
+}else{
 
 if (isset($_POST["submit"])) {
     $type = se($_POST, "accountType", null, false);
@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
     $stmt = $db->prepare($query);
     $user_id = get_user_id();
     $account_number = "";
-    
+    $db = getDB();
         while (!$created) {
         try {
             $account_number = get_random_str(12);
@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
 
 
 
-
+}
 
 ?>
 
