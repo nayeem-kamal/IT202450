@@ -108,10 +108,11 @@ IT 202 Project Proposal
   - [x] Limit results to 5 for now
   - [x] Show account number, account type and balance
   - https://github.com/nayeemkamal/IT202450/pull/25
-- [ ] User will be able to click an account for more information (a.ka. Transaction History page)
-  - [ ] Show account number, account type, balance, opened/created date
-  - [ ] Show transaction history (from Transactions table)
-    - [ ] For now limit results to 10 latest
+- [x] User will be able to click an account for more information (a.ka. Transaction History page)
+  - [x] Show account number, account type, balance, opened/created date
+  - [x] Show transaction history (from Transactions table)
+    - [x] For now limit results to 10 latest
+      -https://github.com/nayeemkamal/IT202450/pull/26
 - [ ] User will be able to deposit/withdraw from their account(s)
   - [ ] Form should have a dropdown of _their_ accounts to pick from
     - [ ] World account should not be in the dropdown
