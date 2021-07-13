@@ -7,8 +7,8 @@ if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
 } else {
-    $id=$_GET("id");
-    $acct=$_GET("num");
+    $id=$_GET["id"];
+    $acct=$_GET["num"];
     $acctinfo = get_acct_info($id);
     $query = "SELECT * from transactions where accountsrc = :acc LIMIT 10";
     $db = getDB();
