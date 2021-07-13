@@ -16,27 +16,31 @@ if (!is_logged_in()) {
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
-?><h3>View Accounts</h3>
+?><div class="container">
+                <div class="row justify-content-center">
+                    <h3>View Accounts</h3>
+                </div>
+            </div>
             <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Account</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Balance</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <?php
-                foreach ($result as $acctinfo) {
-                    $i = 1;
-                ?>
+                <thead class="thead-dark">
                     <tr>
-                        <th scope="row"><a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"><?php echo $acctinfo["account_number"] ?></a></th>
-                        <td><?php echo $acctinfo["account_type"] ?></td>
-                        <td>$<?php echo $acctinfo["balance"] ?></td>
+                        <th scope="col">Account</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Balance</th>
                     </tr>
-                    <!-- <div id="accordion">
+                </thead>
+                <tbody>
+
+                    <?php
+                    foreach ($result as $acctinfo) {
+                        $i = 1;
+                    ?>
+                        <tr>
+                            <th scope="row"><a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"><?php echo $acctinfo["account_number"] ?></a></th>
+                            <td><?php echo $acctinfo["account_type"] ?></td>
+                            <td>$<?php echo $acctinfo["balance"] ?></td>
+                        </tr>
+                        <!-- <div id="accordion">
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
@@ -54,26 +58,26 @@ if (!is_logged_in()) {
 
                     </div> -->
 
-    <?php
-                    $i += 1;
-                }
-                ?>
+                    <?php
+                        $i += 1;
+                    }
+                    ?>
                 </tbody>
             </table>
-                <?php
-            }
-        } catch (PDOException $e) {
-            flash("Error: We are unable to access your accounts at this time", "danger");
+<?php
         }
+    } catch (PDOException $e) {
+        flash("Error: We are unable to access your accounts at this time", "danger");
     }
-    ?>
+}
+?>
 
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    </head>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</head>
 
-    <body>
+<body>
 
-    </body>
+</body>
