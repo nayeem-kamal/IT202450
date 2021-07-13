@@ -33,7 +33,7 @@ if (!is_logged_in()) {
 
                             <?php
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["id"]; ?>"><?php echo $acct["account_number"]; ?></option>
+                            ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
                                 <?php
                             }
                                 ?>
