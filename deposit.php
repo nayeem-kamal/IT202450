@@ -38,12 +38,13 @@ if (!is_logged_in()) {
                             }
                                 ?>
                 </datalist>
+            </div>
+        </div>
                 <legend class="text-center header">Choose an Amount to Deposit</legend>
 
                 <div class="flex-container">
                     <div class=container>
                         <label for="amount">Amount ($): </label>
-                        <input type="number" min="0" step="any" id="amount" name="amount" required />
                         <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100"  />
                     </div>
                 </div>
