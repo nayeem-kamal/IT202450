@@ -17,7 +17,7 @@ if (!is_logged_in()) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
 ?><h3>View Accounts</h3>
-            table class="table">
+            <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Account</th>
@@ -36,7 +36,7 @@ if (!is_logged_in()) {
                         <td><?php echo $acctinfo["account_type"] ?></td>
                         <td>$<?php echo $acctinfo["balance"] ?></td>
                     </tr>
-                    <div id="accordion">
+                    <!-- <div id="accordion">
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
@@ -52,11 +52,15 @@ if (!is_logged_in()) {
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
 
     <?php
                     $i += 1;
                 }
+                ?>
+                </tbody>
+            </table>
+                <?php
             }
         } catch (PDOException $e) {
             flash("Error: We are unable to access your accounts at this time", "danger");
