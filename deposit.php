@@ -8,7 +8,6 @@ if (!is_logged_in()) {
     flash("Cannot access this page without logging in", "warning");
 } else {
 
-    if (isset($_POST["submit"])) {
         $db = getDB();
         $query = "SELECT account_number from Accounts where user_id = :uid LIMIT 5";
 
@@ -57,7 +56,7 @@ if (!is_logged_in()) {
                 
             }
         }
-    }
+    
 }
 
 ?>
