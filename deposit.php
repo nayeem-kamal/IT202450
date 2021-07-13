@@ -82,6 +82,7 @@ if (!is_logged_in()) {
                         flash("Your deposit did not complete","danger");
                     }
                 }
+            }
 
 ?>
 
