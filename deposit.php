@@ -48,20 +48,21 @@ if (!is_logged_in()) {
                 $lastID = $db->lastInsertID();
                 //if we got here it was a success, let's exit
                 flash("Your account has been created successfully", "success");
-                if (transaction(1, $lastID, 5, "transfer")) {
+                // if (transaction(1, $lastID, 5, "transfer")) {
 
-                    $created = true;
-                    die(header("Location: view_accounts.php"));
-                } else {
-                    flash("Error: We are unable to fund your account at this time", "danger");
-                    $created = true;
-                }
+                //     $created = true;
+                //     die(header("Location: view_accounts.php"));
+                // } else {
+                //     flash("Error: We are unable to fund your account at this time", "danger");
+                //     $created = true;
+                // }
+                $created = true;
             } catch (PDOException $e) {
                 $code = se($e->errorInfo, 0, "00000", false);
                 if (
                     $code !== "23000"
                 ) {
-                    flash("Error: We are unable to create or access your account at this time", "danger");
+                    flash("Error: We are unable to create or access your account at this time".$e, "danger");
                 }
             }
         }
