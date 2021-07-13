@@ -71,7 +71,10 @@ if (!is_logged_in()) {
 
                     }
                     if (isset($_POST["submit"])) {
-                        $destid=get_acct_info($user_id)["id"];
+                        $destider=get_acct_info($user_id);
+                        if(!$destider){
+                         $destid=$destider["id"];
+                        }
                         $destination = $_POST["accountdst"];
                         $amount = $_POST["amount"];
                         if(transaction(1,$destid,$amount,"deposit")){
