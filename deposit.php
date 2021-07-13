@@ -49,19 +49,37 @@ if (!is_logged_in()) {
                     </div>
                 </div>
 
+                <div class="flex-container">
+                <div class=container>
+                    <input type="submit" name="submit" value="Create Account" />
+                </div>
+            </div>
 
 
     </form>
 <?php
 
+
+
                             //if we got here it was a success, let's exit
-                            flash("Your account has been created successfully", "success");
 
                             $created = true;
                         } catch (PDOException $e) {
 
                             flash("Error: We are unable to create or access your account at this time" . $e, "danger");
                         }
+
+                    }
+                    if (isset($_POST["submit"])) {
+                        $destination = $_POST["accountdst"];
+                        $amount = $_POST["amount"];
+                        if(transaction(1,$user_id,$amount,"deposit")){
+                            flash("Your deposit has been created successfully", "success");
+
+
+                    }
+                    else{
+                        flash("Your deposit did not complete","danger");
                     }
                 }
 
