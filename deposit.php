@@ -15,7 +15,6 @@ if (!is_logged_in()) {
         $created = false;
         $stmt = $db->prepare($query);
         $user_id = get_user_id();
-        $account_number = "";
         while (!$created) {
             try {
                 $stmt->execute([":uid" => $user_id]);
@@ -58,12 +57,9 @@ if (!is_logged_in()) {
                 // }
                 $created = true;
             } catch (PDOException $e) {
-                $code = se($e->errorInfo, 0, "00000", false);
-                if (
-                    $code !== "23000"
-                ) {
+               
                     flash("Error: We are unable to create or access your account at this time".$e, "danger");
-                }
+                
             }
         }
     }
