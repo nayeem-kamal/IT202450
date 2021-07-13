@@ -40,8 +40,8 @@ if (!is_logged_in()) {
                         <tr>
                             <th scope="row"><?php echo $transaction["accountdst"] ?></th>
                             <td><?php echo $transaction["transactionType"] ?></td>
-                            <td><?php echo $transaction["balanceChange"] ?></td>
-                            <td><?php echo $transaction["expectedTotal"] ?></td>
+                            <td>$<?php echo $transaction["balanceChange"] ?></td>
+                            <td>$<?php echo $transaction["expectedTotal"] ?></td>
                         </tr>
 
 
