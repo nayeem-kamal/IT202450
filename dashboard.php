@@ -43,7 +43,7 @@ if (!is_logged_in()) {
       <div class="card-body">
         <h5 class="card-title">Deposit</h5>
         <p class="card-text">Use this page to make a deposit</p>
-        <a href="#" class="btn btn-primary">Make a Deposit</a>
+        <a href="./deposit.php" class="btn btn-primary">Make a Deposit</a>
       </div>
     </div>
   </div>
