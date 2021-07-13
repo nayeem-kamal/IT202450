@@ -7,18 +7,25 @@ if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
 } else {
-    $query = "SELECT * from Accounts where user_id = :uid LIMIT 5";
+    $id = $_GET["id"];
+    $acct = $_GET["num"];
+
+    $acctinfo = get_acct_info($id);
+    $query = "SELECT * from transactions where accountsrc = :acc LIMIT 10";
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
-        $stmt->execute([":uid" => get_user_id()]);
+        $stmt->execute([":acc" => $id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
 ?><div class="container">
                 <div class="row justify-content-center">
-                    <h3>View Accounts</h3>
+                    <h3>Transaction History for <?php echo $acct ?></h3>
+                    <h4>Account Type: <?php echo $acctinfo["account_type"] ?></h4>
+                    <h4> Balance: $<?php echo $acctinfo["balance"] ?> </h4>
+                    <h4>Date Created: <?php echo $acctinfo["created"] ?> </h4>
                 </div>
             </div>
             <table class="table">
@@ -26,41 +33,28 @@ if (!is_logged_in()) {
                     <tr>
                         <th scope="col">Account</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Amount</th>
                         <th scope="col">Balance</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php
-                    foreach ($result as $acctinfo) {
+
+                    foreach ($result as $transaction) {
                         $i = 1;
                     ?>
                         <tr>
-                            <th scope="row"><a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"><?php echo $acctinfo["account_number"] ?></a></th>
-                            <td><?php echo $acctinfo["account_type"] ?></td>
-                            <td>$<?php echo $acctinfo["balance"] ?></td>
+                            <th scope="row"><?php echo get_acct_info($transaction["accountdst"])["account_number"]; ?></th>
+                            <td><?php echo $transaction["transactionType"] ?></td>
+                            <td>$<?php echo $transaction["balanceChange"] ?></td>
+                            <td>$<?php echo $transaction["expectedTotal"] ?></td>
                         </tr>
-                        <!-- <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"> <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
-                                            <?php echo $acctinfo["account_type"] . " : " . $acctinfo["account_number"] . "        Balance:" .  $acctinfo["balance"]; ?>
-                                        </button></a>
-                                </h5>
-                            </div>
 
-                            <div id="collapse<?php echo $i; ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                    <?php echo $acctinfo["balance"]; ?> </div>
-                            </div>
-                        </div>
-
-                    </div> -->
 
                     <?php
                         $i += 1;
                     }
+
                     ?>
                 </tbody>
             </table>
@@ -79,5 +73,7 @@ if (!is_logged_in()) {
 </head>
 
 <body>
+
+
 
 </body>
