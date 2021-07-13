@@ -44,7 +44,7 @@ if (!is_logged_in()) {
                         $i = 1;
                     ?>
                         <tr>
-                            <th scope="row"><?php echo $transaction["accountdst"] ?></th>
+                            <th scope="row"><?php echo get_acct_info($transaction["accountdst"])["account_number"]; ?></th>
                             <td><?php echo $transaction["transactionType"] ?></td>
                             <td>$<?php echo $transaction["balanceChange"] ?></td>
                             <td>$<?php echo $transaction["expectedTotal"] ?></td>
