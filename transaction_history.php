@@ -24,7 +24,7 @@ if (!is_logged_in()) {
                 <div class="row justify-content-center">
                     <h3>Transaction History for <?php echo $acct ?></h3>
                     <h4>Account Type: <?php echo $acctinfo["account_type"] ?></h4>
-                    <h4> Balance: <?php echo $acctinfo["balance"] ?> </h4>
+                    <h4> Balance: $<?php echo $acctinfo["balance"] ?> </h4>
                     <h4>Date Created: <?php echo $acctinfo["created"] ?> </h4>
                 </div>
             </div>
