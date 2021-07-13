@@ -44,7 +44,7 @@ if (!is_logged_in()) {
                     <div class=container>
                         <label for="amount">Amount ($): </label>
                         <input type="number" min="0" step="any" id="amount" name="amount" required />
-                        <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="currency" id="c1" />
+                        <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100"  />
                     </div>
                 </div>
 
