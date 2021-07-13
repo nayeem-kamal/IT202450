@@ -7,33 +7,37 @@ if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
 } else {
-    $query = "SELECT * from Accounts where user_id = :uid LIMIT 5";
+    $id=$_GET("id");
+    $acct=$_GET("num");
+    $acctinfo = get_acct_info($id);
+    $query = "SELECT * from transactions where accountsrc = :acc LIMIT 10";
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
-        $stmt->execute([":uid" => get_user_id()]);
+        $stmt->execute([":acc" => $id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
-            ?><h3>View Accounts</h3><?php
-            foreach ($result as $acctinfo) {
+            ?><h3>Transaction History for <?php echo $acct?></h3>
+            <h2>Account Type: <?php echo $acctinfo["account_type"]?>   Balance: <?php echo $acctinfo["balance"]?>    Created: <?php echo $acctinfo["created"]?>  </h2>
+            
+            <?php
+            
+            foreach ($result as $transaction) {
                 $i=1;
 ?>
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                              <a href="./transaction_history.php?id=<?php echo $acctinfo["id"];?>&num=<?php echo $acctinfo["account_number"]?>"> <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i;?>" aria-expanded="true" aria-controls="collapse<?php echo $i;?>">
-                                <?php echo $acctinfo["account_type"]. " : " . $acctinfo["account_number"] . "        Balance:" .  $acctinfo["balance"]; ?>
-                                </button></a>
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i;?>" aria-expanded="true" aria-controls="collapse<?php echo $i;?>">
+                                <?php echo $transaction["transactionType"]. " : " . $transaction["accountdst"] . "        Amount:" .  $transaction["balance"]; ?>
+                                </button>
                             </h5>
                         </div>
 
-                        <div id="collapse<?php echo $i;?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                            <?php echo $acctinfo["balance"]; ?>                            </div>
-                        </div>
+                       
                     </div>
 
                 </div>
