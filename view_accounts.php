@@ -32,7 +32,7 @@ if (!is_logged_in()) {
                     $i = 1;
                 ?>
                     <tr>
-                        <th scope="row"><?php echo $acctinfo["account_number"] ?></th>
+                        <th scope="row"><a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"><?php echo $acctinfo["account_number"] ?></a></th>
                         <td><?php echo $acctinfo["account_type"] ?></td>
                         <td>$<?php echo $acctinfo["balance"] ?></td>
                     </tr>
