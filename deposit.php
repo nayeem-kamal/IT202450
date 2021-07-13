@@ -15,20 +15,23 @@ if (!is_logged_in()) {
         $created = false;
         $stmt = $db->prepare($query);
         $user_id = get_user_id();
+        ?>
+         <form method="POST" style="margin: 100px;">
+
+<legend class="text-center header">Choose an Account to deposit into</legend>
+
+<div class="flex-container">
+    <div class=container>
+        <label for="accountdst">Account: </label>
+        <input list="Accountdst" id="accountdst" name="accountdst" required />
+        <datalist id="Accountdst">
+            <?php
         while (!$created) {
             try {
                 $stmt->execute([":uid" => $user_id]);
                 $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-                <form method="POST" style="margin: 100px;">
-
-                    <legend class="text-center header">Choose an Account to deposit into</legend>
-
-                    <div class="flex-container">
-                        <div class=container>
-                            <label for="accountdst">Account: </label>
-                            <input list="Accountdst" id="accountdst" name="accountdst" required />
-                            <datalist id="Accountdst">
+               
                                 <?php
                                 foreach ($accountnumbers as $acct) {
                                 ?> <option value="<?php echo $acct["account_number"]; ?>">
@@ -44,17 +47,9 @@ if (!is_logged_in()) {
                 </form>
 <?php
 
-                $lastID = $db->lastInsertID();
                 //if we got here it was a success, let's exit
                 flash("Your account has been created successfully", "success");
-                // if (transaction(1, $lastID, 5, "transfer")) {
-
-                //     $created = true;
-                //     die(header("Location: view_accounts.php"));
-                // } else {
-                //     flash("Error: We are unable to fund your account at this time", "danger");
-                //     $created = true;
-                // }
+              
                 $created = true;
             } catch (PDOException $e) {
                
