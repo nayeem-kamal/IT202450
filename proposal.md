@@ -113,24 +113,24 @@ IT 202 Project Proposal
   - [x] Show transaction history (from Transactions table)
     - [x] For now limit results to 10 latest
       -https://github.com/nayeemkamal/IT202450/pull/26
-- [ ] User will be able to deposit/withdraw from their account(s)
-  - [ ] Form should have a dropdown of _their_ accounts to pick from
-    - [ ] World account should not be in the dropdown
-  - [ ] Form should have a field to enter a positive numeric value
-    - [ ] For now, allow any deposit value (0 - inf)
+- [x] User will be able to deposit/withdraw from their account(s)
+  - [x] Form should have a dropdown of _their_ accounts to pick from
+    - [x] World account should not be in the dropdown
+  - [x] Form should have a field to enter a positive numeric value
+    - [x] For now, allow any deposit value (0 - inf)
   - [ ] For withdraw, add a check to make sure they can&#39;t withdraw more money than the account has
   - [ ] Form should allow the user to record a memo for the transaction
-  - [ ] Each transaction is recorded as a transaction pair in the Transaction table per the details below
-    - [ ] These will reflect on the transaction history page (Account page&#39;s &quot;more info&quot;)
-    - [ ] After each transaction pair, make sure to update the Account Balance by SUMing the **BalanceChange** for the **AccountSrc**
-      - [ ] This will be done after the insert
-    - [ ] Deposits will be **from** the &quot;world account&quot;
-      - [ ] Must fetch the world account to get the id (do not hard code the id as it may change if the application migrates or gets rebuilt)
+  - [x] Each transaction is recorded as a transaction pair in the Transaction table per the details below
+    - [x] These will reflect on the transaction history page (Account page&#39;s &quot;more info&quot;)
+    - [x] After each transaction pair, make sure to update the Account Balance by SUMing the **BalanceChange** for the **AccountSrc**
+      - [x] This will be done after the insert
+    - [x] Deposits will be **from** the &quot;world account&quot;
+      - [x] Must fetch the world account to get the id (do not hard code the id as it may change if the application migrates or gets rebuilt)
     - [ ] Withdraws will be **to** the &quot;world account&quot;
       - [ ] Must fetch the world account to get the id (do not hard code the id as it may change if the application migrates or gets rebuilt)
-    - [ ] Transaction type should show accordingly (deposit/withdraw)
-  - [ ] Show appropriate user-friendly error messages
-  - [ ] Show user-friendly success messages
+    - [x] Transaction type should show accordingly (deposit/withdraw)
+  - [x] Show appropriate user-friendly error messages
+  - [x] Show user-friendly success messages
 
 **Milestone 3:**
 
