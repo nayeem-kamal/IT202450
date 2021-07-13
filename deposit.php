@@ -33,7 +33,7 @@ if (!is_logged_in()) {
 
                             <?php
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["account_number"]; ?>">
+                            ?> <option value="<?php echo $acct["id"]; ?>"><?php echo $acct["account_number"]; ?></option>
                                 <?php
                             }
                                 ?>
@@ -72,9 +72,8 @@ if (!is_logged_in()) {
                     }
                     if (isset($_POST["submit"])) {
                         $destination = $_POST["accountdst"];
-                        $destid = get_acct_id($destination);
                         $amount = $_POST["amount"];
-                        if(transaction(1,$destid,$amount,"deposit")){
+                        if(transaction(1,$destination,$amount,"deposit")){
                             flash("Your deposit has been created successfully", "success");
 
 
