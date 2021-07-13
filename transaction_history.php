@@ -9,6 +9,7 @@ if (!is_logged_in()) {
 } else {
     $id=$_GET["id"];
     $acct=$_GET["num"];
+
     $acctinfo = get_acct_info($id);
     $query = "SELECT * from transactions where accountsrc = :acc LIMIT 10";
     $db = getDB();
@@ -20,7 +21,7 @@ if (!is_logged_in()) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
             ?><h3>Transaction History for <?php echo $acct?></h3>
-            <h2>Account Type: <?php echo $acctinfo["account_type"]?>   Balance: <?php echo $acctinfo["balance"]?>    Created: <?php echo $acctinfo["created"]?>  </h2>
+            <h4>Account Type: <?php echo $acctinfo["account_type"]?>   Balance: <?php echo $acctinfo["balance"]?>    Created: <?php echo $acctinfo["created"]?>  </h4>
             
             <?php
             
@@ -32,7 +33,7 @@ if (!is_logged_in()) {
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i;?>" aria-expanded="true" aria-controls="collapse<?php echo $i;?>">
-                                <?php echo $transaction["transactionType"]. " : " . $transaction["accountdst"] . "        Amount:" .  $transaction["balance"]; ?>
+                                <?php echo $transaction["transactionType"]. " : " . $transaction["accountdst"] . "        Amount:" .  $transaction["balanceChange"]; ?>
                                 </button>
                             </h5>
                         </div>
