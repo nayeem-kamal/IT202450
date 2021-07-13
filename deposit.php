@@ -71,11 +71,8 @@ if (!is_logged_in()) {
 
                     }
                     if (isset($_POST["submit"])) {
-                        $destider=get_acct_info($user_id);
-                        if(!$destider){
-                         $destid=$destider["id"];
-                        }
                         $destination = $_POST["accountdst"];
+                        $destid = get_acct_id($destination);
                         $amount = $_POST["amount"];
                         if(transaction(1,$destid,$amount,"deposit")){
                             flash("Your deposit has been created successfully", "success");
