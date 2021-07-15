@@ -250,3 +250,22 @@ function get_acct_info($acctnum){
 }
 return false;
 }
+
+function get_acct_id($acctnum){
+    if(isset($acctnum)){
+
+    $query = "SELECT id from Accounts where account_number = :acct LIMIT 1";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":acct" => $acctnum]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }catch(PDOException $e){
+        flash("failed to get acct info", "warning");
+        return false;
+    }
+    
+}
+return false;
+}
