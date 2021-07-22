@@ -24,7 +24,7 @@ if (!is_logged_in()) {
 
         <div class="flex-container">
             <div class=container>
-                <label for="accountdst">Source Account: </label>
+                <label for="accountdst">Destination Account: </label>
                 <input list="Accountdst" id="accountdst" name="accountdst" required />
                 <datalist id="Accountdst">
                     <?php
@@ -49,7 +49,7 @@ if (!is_logged_in()) {
         </div>
         <div class="flex-container">
             <div class=container>
-                <label for="accountsrc">Destination Account: </label>
+                <label for="accountsrc">Source Account: </label>
                 <input list="Accountsrc" id="accountsrc" name="accountsrc" required />
                 <datalist id="Accountsrc">
                     <?php
@@ -98,17 +98,18 @@ if (!is_logged_in()) {
                     }
                     if (isset($_POST["submit"])) {
                         $destination = $_POST["accountdst"];
+                        $src = $_POST["accountsrc"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
 
-                        if(transaction(1,$destination,$amount,"deposit", $memo)){
+                        if(transaction($src,$destination,$amount,"deposit", $memo)){
                             flash("Your transfer has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
 
 
                     }
                     else{
-                        flash("Your deposit did not complete","danger");
+                        flash("Your transfer did not complete. Possibly insufficient funds.","danger");
                     }
                 }
             }
