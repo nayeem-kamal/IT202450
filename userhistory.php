@@ -7,33 +7,52 @@ if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
 } else {
-    ?>
+?>
 
     <form method="POST" style="margin: 100px;">
-    <legend class="text-center header">Choose a Transfer Type</legend>
-    <div class="flex-container">
-                <div class=container>
-                    <label for="accountdst">Type: </label>
-                    <input list="Accountdst" id="accountdst" name="accountdst" required />
-                    <datalist id="Accountdst">
-                        <option value="deposit"> </option>
-                        <option value="withdraw" ></option>
-                        <option value="transfer" ></option>
-    
-                           
-                    </datalist>
-                </div>
-    </div>
-    <div class="flex-container">
+        <div class="flex-container">
             <div class=container>
-                <input type="submit" name="submit" value="deposit" />
+                <label for="accountdst">Transfer Type: </label>
+                <input list="transferType" id="transferType" name="transferType" required />
+                <datalist id="transferType">
+                    <option value="deposit"> </option>
+                    <option value="withdraw"></option>
+                    <option value="transfer"></option>
+
+
+                </datalist>
             </div>
         </div>
-    
+
+
+        <div class="flex-container">
+            <div class=container>
+                <label for="start">Start date:</label>
+
+                <input type="date" id="start" name="start" value="2018-07-22" min="2018-01-01" max="2022-12-31">
+
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class=container>
+                <label for="end">End date:</label>
+
+                <input type="date" id="end" name="end" value="2021-09-22" min="2018-01-01" max="2022-12-31">
+
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class=container>
+                <input type="submit" name="submit" value="Filter" />
+            </div>
+        </div>
+
     </form>
-    
+
     <?php
-    $uid=get_user_id();
+    $uid = get_user_id();
 
     $query = "SELECT * from transactions where accountsrc in (select id from Accounts where user_id = :uid);";
     $db = getDB();
@@ -44,12 +63,12 @@ if (!is_logged_in()) {
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
-           
 
-?><div class="container">
+
+    ?><div class="container">
                 <div class="row justify-content-center">
                     <h3>Transaction History for <?php echo get_username(); ?></h3>
-                    
+
                 </div>
             </div>
             <table class="table">
@@ -69,8 +88,8 @@ if (!is_logged_in()) {
 
                     foreach ($result as $transaction) {
                         $i = 1;
-                        $datetime=date_create($transaction["created"]);
-                        $date =date_format($datetime,"Y/m/d");
+                        $datetime = date_create($transaction["created"]);
+                        $date = date_format($datetime, "Y/m/d");
                     ?>
                         <tr>
                             <th scope="row"><?php echo get_acct_info($transaction["accountdst"])["account_number"]; ?></th>
