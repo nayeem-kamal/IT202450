@@ -102,7 +102,7 @@ if (!is_logged_in()) {
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
 
-                        if(transaction($src,$destination,$amount,"deposit", $memo)){
+                        if(transaction($src,$destination,$amount,"transfer", $memo)){
                             flash("Your transfer has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
 
