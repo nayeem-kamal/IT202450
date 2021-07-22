@@ -169,6 +169,8 @@ function get_account_balance() {
     }
     return 0;
 }
+
+
 function transaction($src, $dst, $amt, $type,$memo){
     if (isset($src) && isset($dst)){
         $db = getDB();
@@ -176,9 +178,14 @@ function transaction($src, $dst, $amt, $type,$memo){
         $stmt = $db->prepare($query);
         $srcinfo = get_acct_info($src);
         $dstinfo = get_acct_info($dst);
+        if($srcinfo["balance"]>$amt || $srcinfo["id"] == 1){
         $srcbal = $srcinfo["balance"]-$amt;
         $dstbal = $dstinfo["balance"]+$amt;
         $amt2 = $amt-($amt*2);
+    }else{
+        flash("Source account does not have sufficient funds","dange");
+        return false;
+    }
 
         try{
             $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt2), ":typ" => $type, ":tot" => $srcbal, ":memo" => $memo]);
