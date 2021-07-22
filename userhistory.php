@@ -7,6 +7,32 @@ if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
 } else {
+    ?>
+
+    <form method="POST" style="margin: 100px;">
+    <legend class="text-center header">Choose a Transfer Type</legend>
+    <div class="flex-container">
+                <div class=container>
+                    <label for="accountdst">Type: </label>
+                    <input list="Accountdst" id="accountdst" name="accountdst" required />
+                    <datalist id="Accountdst">
+                        <option value="deposit"> </option>
+                        <option value="withdraw" ></option>
+                        <option value="transfer" ></option>
+    
+                           
+                    </datalist>
+                </div>
+    </div>
+    <div class="flex-container">
+            <div class=container>
+                <input type="submit" name="submit" value="deposit" />
+            </div>
+        </div>
+    
+    </form>
+    
+    <?php
     $uid=get_user_id();
 
     $query = "SELECT * from transactions where accountsrc in (select id from Accounts where user_id = :uid);";
@@ -18,27 +44,7 @@ if (!is_logged_in()) {
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
-            ?>
-
-<form method="POST" style="margin: 100px;">
-<legend class="text-center header">Choose a Transfer Type</legend>
-<div class="flex-container">
-            <div class=container>
-                <label for="accountdst">Type: </label>
-                <input list="Accountdst" id="accountdst" name="accountdst" required />
-                <datalist id="Accountdst">
-                    <option value="deposit" label="Deposit"></option>
-                    <option value="withdraw" label="Withdraw"></option>
-                    <option value="transfer" label="Transfer"></option>
-
-                       
-                </datalist>
-            </div>
-</div>
-
-</form>
-
-<?php
+           
 
 ?><div class="container">
                 <div class="row justify-content-center">
@@ -51,6 +57,7 @@ if (!is_logged_in()) {
                     <tr>
                         <th scope="col">Source Account</th>
                         <th scope="col">Destination Account</th>
+                        <th scope="col">Date</th>
 
                         <th scope="col">Type</th>
                         <th scope="col">Amount</th>
@@ -62,10 +69,13 @@ if (!is_logged_in()) {
 
                     foreach ($result as $transaction) {
                         $i = 1;
+                        $datetime=date_create($transaction["created"]);
+                        $date =date_format($datetime,"Y/m/d");
                     ?>
                         <tr>
                             <th scope="row"><?php echo get_acct_info($transaction["accountdst"])["account_number"]; ?></th>
                             <th scope="row"><?php echo get_acct_info($transaction["accountsrc"])["account_number"]; ?></th>
+                            <th scope="row"><?php echo $date; ?></th>
 
                             <td><?php echo $transaction["transactionType"] ?></td>
                             <td>$<?php echo $transaction["balanceChange"] ?></td>
