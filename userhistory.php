@@ -28,7 +28,9 @@ if (!is_logged_in()) {
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Account</th>
+                        <th scope="col">Source Account</th>
+                        <th scope="col">Destination Account</th>
+
                         <th scope="col">Type</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Balance</th>
@@ -42,6 +44,8 @@ if (!is_logged_in()) {
                     ?>
                         <tr>
                             <th scope="row"><?php echo get_acct_info($transaction["accountdst"])["account_number"]; ?></th>
+                            <th scope="row"><?php echo get_acct_info($transaction["accountsrc"])["account_number"]; ?></th>
+
                             <td><?php echo $transaction["transactionType"] ?></td>
                             <td>$<?php echo $transaction["balanceChange"] ?></td>
                             <td>$<?php echo $transaction["expectedTotal"] ?></td>
