@@ -13,8 +13,10 @@ if (!is_logged_in()) {
         <div class="flex-container">
             <div class=container>
                 <label for="accountdst">Transfer Type: </label>
-                <input list="transferType" id="transferType" name="transferType" required />
+                <input list="transferType" id="transferType" name="transferType" value="all" />
                 <datalist id="transferType">
+                     <option value="all"> </option>
+
                     <option value="deposit"> </option>
                     <option value="withdraw"></option>
                     <option value="transfer"></option>
@@ -53,8 +55,26 @@ if (!is_logged_in()) {
 
     <?php
     $uid = get_user_id();
+    $filter = " ";
+    if (isset($_POST["submit"])) {
+        $transferType= $_POST["transferType"];
+        $start= $_POST["start"];
+        $end= $_POST["end"];
 
-    $query = "SELECT * from transactions where accountsrc in (select id from Accounts where user_id = :uid);";
+        if (isset($transferType) && $transferType != "all"){
+
+            $filter = $filter . " and transactionType = " . $transferType;
+        }
+        if (isset($start) && isset($end)){
+            $filter = $filter . " and created between " . $start . "and " . $end;
+        }
+
+
+
+    }
+    $filter = $filter . ";";
+
+    $query = "SELECT * from transactions where accountsrc in (select id from Accounts where user_id = :uid)" . $filter;
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
