@@ -110,6 +110,8 @@ if (!is_logged_in()) {
                     }
                     else{
                         flash("Your transfer did not complete. Possibly insufficient funds.","danger");
+                        die(header("Location: ./dashboard.php"));
+
                     }
                 }
             }
