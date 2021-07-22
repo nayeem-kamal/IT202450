@@ -18,6 +18,27 @@ if (!is_logged_in()) {
         if (!$result) {
             flash("Error: We are unable to access your accounts at this time", "danger");
         } else {
+            ?>
+
+<form method="POST" style="margin: 100px;">
+<legend class="text-center header">Choose a Transfer Type</legend>
+<div class="flex-container">
+            <div class=container>
+                <label for="accountdst">Type: </label>
+                <input list="Accountdst" id="accountdst" name="accountdst" required />
+                <datalist id="Accountdst">
+                    <option value="deposit" label="Deposit"></option>
+                    <option value="withdraw" label="Withdraw"></option>
+                    <option value="transfer" label="Transfer"></option>
+
+                       
+                </datalist>
+            </div>
+</div>
+
+</form>
+
+<?php
 
 ?><div class="container">
                 <div class="row justify-content-center">
@@ -33,7 +54,7 @@ if (!is_logged_in()) {
 
                         <th scope="col">Type</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Balance</th>
+                        <th scope="col">Destination Balance</th>
                     </tr>
                 </thead>
                 <tbody>
