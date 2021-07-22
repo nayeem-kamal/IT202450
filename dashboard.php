@@ -73,6 +73,13 @@ if (!is_logged_in()) {
         <a href="./profile.php" class="btn btn-primary">View Profile</a>
       </div>
     </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Transaction History</h5>
+        <p class="card-text">Use this page to view your transaction history</p>
+        <a href="./userhistory.php" class="btn btn-primary">View History</a>
+      </div>
+    </div>
   </div>
   <!-- deposit withdraw/transfer profile -->
 </div>
