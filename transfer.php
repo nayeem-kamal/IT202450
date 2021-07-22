@@ -24,7 +24,7 @@ if (!is_logged_in()) {
 
         <div class="flex-container">
             <div class=container>
-                <label for="accountdst">Account: </label>
+                <label for="accountdst">Source Account: </label>
                 <input list="Accountdst" id="accountdst" name="accountdst" required />
                 <datalist id="Accountdst">
                     <?php
@@ -49,7 +49,7 @@ if (!is_logged_in()) {
         </div>
         <div class="flex-container">
             <div class=container>
-                <label for="accountsrc">Account: </label>
+                <label for="accountsrc">Destination Account: </label>
                 <input list="Accountsrc" id="accountsrc" name="accountsrc" required />
                 <datalist id="Accountsrc">
                     <?php
@@ -63,7 +63,7 @@ if (!is_logged_in()) {
                 </datalist>
             </div>
         </div>
-                <legend class="text-center header">Choose an Amount to Deposit</legend>
+                <legend class="text-center header">Choose an Amount to Transfer</legend>
 
                 <div class="flex-container">
                     <div class=container>
@@ -71,10 +71,16 @@ if (!is_logged_in()) {
                         <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100"  />
                     </div>
                 </div>
+                <div class="flex-container">
+                    <div class=container>
+                        <label for="memo">Memo: </label>
+                        <input type="text" value=" " id="memo" name="memo" />
+                    </div>
+                </div>
 
                 <div class="flex-container">
                 <div class=container>
-                    <input type="submit" name="submit" value="deposit" />
+                    <input type="submit" name="submit" value="Transfer" />
                 </div>
             </div>
 
@@ -93,8 +99,8 @@ if (!is_logged_in()) {
                     if (isset($_POST["submit"])) {
                         $destination = $_POST["accountdst"];
                         $amount = $_POST["amount"];
-                        if(transaction(1,$destination,$amount,"deposit")){
-                            flash("Your deposit has been created successfully", "success");
+                        if(transaction(1,$destination,$amount,"deposit", $memo)){
+                            flash("Your transfer has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
 
 

@@ -127,7 +127,7 @@ function get_or_create_account() {
                         $created = true; //if we got here it was a success, let's exit
                         $lastID = $db->lastInsertID();
 
-                        if(transaction(1,$lastID,5,"transfer")){
+                        if(transaction(1,$lastID,5,"transfer"," ")){
                         flash("Welcome! Your account has been created successfully", "success");
                         }else{
                             flash("Welcome! Your account was created but not funded","success");
@@ -169,10 +169,10 @@ function get_account_balance() {
     }
     return 0;
 }
-function transaction($src, $dst, $amt, $type){
+function transaction($src, $dst, $amt, $type,$memo){
     if (isset($src) && isset($dst)){
         $db = getDB();
-        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal) VALUES (:src, :dst, :amt, :typ, :tot)";
+        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal, memo) VALUES (:src, :dst, :amt, :typ, :tot, :memo)";
         $stmt = $db->prepare($query);
         $srcinfo = get_acct_info($src);
         $dstinfo = get_acct_info($dst);
@@ -181,16 +181,16 @@ function transaction($src, $dst, $amt, $type){
         $amt2 = $amt-($amt*2);
 
         try{
-            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt2), ":typ" => $type, ":tot" => $srcbal]);
+            $stmt->execute([":src" => $src, ":dst" => $dst, ":amt" => strval($amt2), ":typ" => $type, ":tot" => $srcbal, ":memo" => $memo]);
         }catch (PDOException $e) {
             error_log($e);
             flash("Error: Transaction could not be completed at this time", "danger");
             return false;
         }
-        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal) VALUES (:src, :dst, :amt, :typ, :tot)";
+        $query = "INSERT INTO transactions (accountsrc, accountdst, balanceChange, transactionType, expectedTotal, memo) VALUES (:src, :dst, :amt, :typ, :tot, :memo )";
         $stmt = $db->prepare($query);
         try{
-            $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => strval($amt), ":typ" => $type, ":tot" => $dstbal]);
+            $stmt->execute([":src" => $dst, ":dst" => $src, ":amt" => strval($amt), ":typ" => $type, ":tot" => $dstbal, ":memo" => $memo]);
 
         }catch (PDOException $e) {
             flash("Error: Transaction could not be completed at this time", "danger");
@@ -269,3 +269,4 @@ function get_acct_id($acctnum){
 }
 return false;
 }
+

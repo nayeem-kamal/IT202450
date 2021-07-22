@@ -50,8 +50,14 @@ if (!is_logged_in()) {
                 </div>
 
                 <div class="flex-container">
+                    <div class=container>
+                        <label for="memo">Memo: </label>
+                        <input type="text" value=" " id="memo" name="memo" />
+                    </div>
+                </div>
+                <div class="flex-container">
                 <div class=container>
-                    <input type="submit" name="submit" value="deposit" />
+                    <input type="submit" name="submit" value="Deposit" />
                 </div>
             </div>
 
@@ -73,7 +79,8 @@ if (!is_logged_in()) {
                     if (isset($_POST["submit"])) {
                         $destination = $_POST["accountdst"];
                         $amount = $_POST["amount"];
-                        if(transaction(1,$destination,$amount,"deposit")){
+                        $memo = $_POST["memo"];
+                        if(transaction(1,$destination,$amount,"deposit",$memo)){
                             flash("Your deposit has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
 
