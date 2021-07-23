@@ -13,8 +13,8 @@ if (!is_logged_in()) {
         <div class="flex-container">
             <div class=container>
                 <label for="accountdst">Transfer Type: </label>
-                <input id="transferType" name="transferType"  />
-                <select id="transferType">
+                <!-- <input id="transferType" name="transferType"  /> -->
+                <select id="transferType" name="transferType">
                      <option value="all">All</option>
 
                     <option value="deposit">Deposit </option>
@@ -23,6 +23,7 @@ if (!is_logged_in()) {
 
 
                 </select>
+            
             </div>
         </div>
 
