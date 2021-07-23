@@ -10,10 +10,11 @@ if (!is_logged_in()) {
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
-
+    $firstName = se($_POST, "firstName", null, false);
+    $lastName = se($_POST, "lastName", null, false);
     $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
     $db = getDB();
-    $stmt = $db->prepare("UPDATE users set email = :email, username = :username where id = :id");
+    $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username where id = :id");
     try {
         $stmt->execute($params);
     } catch (Exception $e) {
@@ -84,7 +85,8 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
-
+$fname= fname();
+$lname= lname();
 ?>
 
 <head>
@@ -97,13 +99,13 @@ $username = get_username();
     <div class="flex-container">
         <div class=container>
             <label for="email">First Name</label>
-            <input type="text" name="firstName" id="firstName" value="<?php se($email); ?>" />
+            <input type="text" name="firstName" id="firstName" value="<?php se($fname); ?>" />
         </div>
     </div>
     <div class="flex-container">
         <div class=container>
             <label for="email">Last Name</label>
-            <input type="text" name="lastName" id="lastName" value="<?php se($email); ?>" />
+            <input type="text" name="lastName" id="lastName" value="<?php se($lname); ?>" />
         </div>
     </div>
     <div class="flex-container">
