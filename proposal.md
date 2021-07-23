@@ -6,7 +6,7 @@ IT 202 Project Proposal
 
 **Github Link:** https://github.com/nayeemkamal/IT202450
 
-**Website Link:** https://nhk6finalproj.herokuapp.com/index.php
+**Website Link:** https://nhk6-prod.herokuapp.com/
 
 **Your Name:** Nayeem Kamal
 
