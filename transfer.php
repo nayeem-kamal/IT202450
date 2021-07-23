@@ -8,20 +8,23 @@ if (!is_logged_in()) {
     flash("Cannot access this page without logging in", "warning");
 } else {
 
+
     $db = getDB();
     $query = "SELECT * from Accounts where user_id = :uid LIMIT 5";
 
     $created = false;
     $stmt = $db->prepare($query);
     $user_id = get_user_id();
+    $accountnumbers=[];
+
 ?>
     <form method="POST" style="margin: 100px;">
 
-        <legend class="text-center header">Choose an Account to deposit into</legend>
+        <legend class="text-center header">Choose an Account to transfer into</legend>
 
         <div class="flex-container">
             <div class=container>
-                <label for="accountdst">Account: </label>
+                <label for="accountdst">Destination Account: </label>
                 <input list="Accountdst" id="accountdst" name="accountdst" required />
                 <datalist id="Accountdst">
                     <?php
@@ -36,30 +39,50 @@ if (!is_logged_in()) {
                             ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
                                 <?php
                             }
+                        } catch (PDOException $e) {
+
+                            flash("Error: We are unable to create or access your account at this time" . $e, "danger");
+                        }
                                 ?>
                 </datalist>
             </div>
         </div>
-        <legend class="text-center header">Choose an Amount to Deposit</legend>
+        <div class="flex-container">
+            <div class=container>
+                <label for="accountsrc">Source Account: </label>
+                <input list="Accountsrc" id="accountsrc" name="accountsrc" required />
+                <datalist id="Accountsrc">
+                    <?php
+                    while (!$created) {
+                      
+                            foreach ($accountnumbers as $acct) {
+                            ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
+                                <?php
+                            }
+                                ?>
+                </datalist>
+            </div>
+        </div>
+                <legend class="text-center header">Choose an Amount to Transfer</legend>
 
-        <div class="flex-container">
-            <div class=container>
-                <label for="amount">Amount ($): </label>
-                <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100" />
-            </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-                <label for="memo">Memo: </label>
-                <input type="text" value=" " id="memo" name="memo" />
-            </div>
-        </div>
+                <div class="flex-container">
+                    <div class=container>
+                        <label for="amount">Amount ($): </label>
+                        <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100"  />
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div class=container>
+                        <label for="memo">Memo: </label>
+                        <input type="text" value=" " id="memo" name="memo" />
+                    </div>
+                </div>
 
-        <div class="flex-container">
-            <div class=container>
-                <input type="submit" name="submit" value="deposit" />
+                <div class="flex-container">
+                <div class=container>
+                    <input type="submit" name="submit" value="Transfer" />
+                </div>
             </div>
-        </div>
 
 
     </form>
@@ -70,26 +93,32 @@ if (!is_logged_in()) {
                             //if we got here it was a success, let's exit
 
                             $created = true;
-                        } catch (PDOException $e) {
+                        
 
-                            flash("Error: We are unable to create or access your account at this time" . $e, "danger");
-                        }
                     }
                     if (isset($_POST["submit"])) {
                         $destination = $_POST["accountdst"];
+                        $src = $_POST["accountsrc"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
 
-                        if (transaction(1, $destination, $amount, "deposit", $memo)) {
-                            flash("Your deposit has been created successfully", "success");
+                        if(transaction($src,$destination,$amount,"transfer", $memo)){
+                            flash("Your transfer has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
-                        } else {
-                            flash("Your deposit did not complete", "danger");
-                        }
+
+
+                    }
+                    else{
+                        flash("Your transfer did not complete. Possibly insufficient funds.","danger");
+                        die(header("Location: ./dashboard.php"));
+
                     }
                 }
+            }
+        }
 
 ?>
+
 
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

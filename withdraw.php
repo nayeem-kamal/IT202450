@@ -17,7 +17,7 @@ if (!is_logged_in()) {
 ?>
     <form method="POST" style="margin: 100px;">
 
-        <legend class="text-center header">Choose an Account to deposit into</legend>
+        <legend class="text-center header">Choose an Account to Withdraw from</legend>
 
         <div class="flex-container">
             <div class=container>
@@ -40,26 +40,26 @@ if (!is_logged_in()) {
                 </datalist>
             </div>
         </div>
-        <legend class="text-center header">Choose an Amount to Deposit</legend>
+                <legend class="text-center header">Choose an Amount to Withdraw</legend>
 
-        <div class="flex-container">
-            <div class=container>
-                <label for="amount">Amount ($): </label>
-                <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100" />
-            </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-                <label for="memo">Memo: </label>
-                <input type="text" value=" " id="memo" name="memo" />
-            </div>
-        </div>
+                <div class="flex-container">
+                    <div class=container>
+                        <label for="amount">Amount ($): </label>
+                        <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100"  />
+                    </div>
+                </div>
 
-        <div class="flex-container">
-            <div class=container>
-                <input type="submit" name="submit" value="deposit" />
+                <div class="flex-container">
+                    <div class=container>
+                        <label for="memo">Memo: </label>
+                        <input type="text" value=" " id="memo" name="memo" />
+                    </div>
+                </div>
+                <div class="flex-container">
+                <div class=container>
+                    <input type="submit" name="submit" value="Deposit" />
+                </div>
             </div>
-        </div>
 
 
     </form>
@@ -74,20 +74,23 @@ if (!is_logged_in()) {
 
                             flash("Error: We are unable to create or access your account at this time" . $e, "danger");
                         }
+
                     }
                     if (isset($_POST["submit"])) {
                         $destination = $_POST["accountdst"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
-
-                        if (transaction(1, $destination, $amount, "deposit", $memo)) {
+                        if(transaction(1,$destination,$amount,"deposit",$memo)){
                             flash("Your deposit has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
-                        } else {
-                            flash("Your deposit did not complete", "danger");
-                        }
+
+
+                    }
+                    else{
+                        flash("Your deposit did not complete","danger");
                     }
                 }
+            }
 
 ?>
 
