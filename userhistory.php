@@ -8,7 +8,10 @@ if (!is_logged_in()) {
     flash("Cannot access this page without logging in", "warning");
 } else {
 ?>
+<div class="row justify-content-center">
+                    <h3>Transaction History for <?php echo get_username(); ?></h3>
 
+                </div>
     <form method="POST" style="margin: 100px;">
         <div class="flex-container">
             <div class=container>
@@ -87,10 +90,7 @@ if (!is_logged_in()) {
 
 
     ?><div class="container">
-                <div class="row justify-content-center">
-                    <h3>Transaction History for <?php echo get_username(); ?></h3>
-
-                </div>
+                
             </div>
             <table class="table">
                 <thead class="thead-dark">
