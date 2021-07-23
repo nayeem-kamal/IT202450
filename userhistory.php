@@ -14,15 +14,15 @@ if (!is_logged_in()) {
             <div class=container>
                 <label for="accountdst">Transfer Type: </label>
                 <input list="transferType" id="transferType" name="transferType"  />
-                <datalist id="transferType">
-                     <option value="all"> </option>
+                <select id="transferType">
+                     <option value="all">All</option>
 
-                    <option value="deposit"> </option>
-                    <option value="withdraw"></option>
-                    <option value="transfer"></option>
+                    <option value="deposit">Deposit </option>
+                    <option value="withdraw">Withdraw</option>
+                    <option value="transfer">Transfer</option>
 
 
-                </datalist>
+                </select>
             </div>
         </div>
 
