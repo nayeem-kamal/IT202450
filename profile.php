@@ -84,6 +84,7 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
+
 ?>
 
 <head>
@@ -92,6 +93,18 @@ $username = get_username();
 <form method="POST" onsubmit="return validate(this);">
     <div class="flex-container-form_header">
         <h1 id="form_header">Profile Page</h1>
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <label for="email">First Name</label>
+            <input type="text" name="firstName" id="firstName" value="<?php se($email); ?>" />
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <label for="email">Last Name</label>
+            <input type="text" name="lastName" id="lastName" value="<?php se($email); ?>" />
+        </div>
     </div>
     <div class="flex-container">
         <div class=container>
