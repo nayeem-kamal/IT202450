@@ -10,10 +10,16 @@ if (!is_logged_in()) {
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
+    $firstName = $_POST["firstName"];
 
-    $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+    $lastName = $_POST["lastName"];
+    $_SESSION["user"]["firstName"] = $firstName;
+    $_SESSION["user"]["lastName"] = $lastName;
+
+
+    $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
     $db = getDB();
-    $stmt = $db->prepare("UPDATE users set email = :email, username = :username where id = :id");
+    $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username where id = :id");
     try {
         $stmt->execute($params);
     } catch (Exception $e) {
@@ -84,6 +90,8 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
+$fname= fname();
+$lname= lname();
 ?>
 
 <head>
@@ -92,6 +100,18 @@ $username = get_username();
 <form method="POST" onsubmit="return validate(this);">
     <div class="flex-container-form_header">
         <h1 id="form_header">Profile Page</h1>
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <label for="email">First Name</label>
+            <input type="text" name="firstName" id="firstName" value="<?php se($fname); ?>" />
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <label for="email">Last Name</label>
+            <input type="text" name="lastName" id="lastName" value="<?php se($lname); ?>" />
+        </div>
     </div>
     <div class="flex-container">
         <div class=container>
