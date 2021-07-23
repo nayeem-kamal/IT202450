@@ -12,7 +12,7 @@ if (isset($_POST["save"])) {
     $username = se($_POST, "username", null, false);
     $firstName = se($_POST, "firstName", null, false);
     $lastName = se($_POST, "lastName", null, false);
-    $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+    $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
     $db = getDB();
     $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username where id = :id");
     try {
