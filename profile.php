@@ -11,7 +11,11 @@ if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
     $firstName = $_POST["firstName"];
+
     $lastName = $_POST["lastName"];
+    $_SESSION["user"]["firstName"] = $firstName;
+    $_SESSION["user"]["lastName"] = $lastName;
+
 
     $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
     $db = getDB();
