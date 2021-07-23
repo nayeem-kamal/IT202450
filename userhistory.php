@@ -76,7 +76,6 @@ if (!is_logged_in()) {
     $filter = $filter . ";";
 
     $query = "SELECT * from transactions where accountsrc in (select id from Accounts where user_id = :uid)" . $filter;
-    flash($query,"danger");
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
