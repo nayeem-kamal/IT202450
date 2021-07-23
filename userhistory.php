@@ -67,7 +67,7 @@ if (!is_logged_in()) {
             $filter = $filter . " and transactionType = \"" . $transferType . "\"";
         }
         if (isset($start) && isset($end)){
-            $filter = $filter . " and created between " . $start . " and " . $end;
+            $filter = $filter . " and date(created) between \"" . $start . "\" and \"" . $end . "\"";
         }
 
 
