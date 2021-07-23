@@ -10,9 +10,9 @@ if (!is_logged_in()) {
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
-    $firstName = $_POST["lastName"];
+    $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
-    
+
     $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
     $db = getDB();
     $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username where id = :id");
