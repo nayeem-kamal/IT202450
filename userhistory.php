@@ -15,7 +15,7 @@ if (!is_logged_in()) {
                 <label for="accountdst">Transfer Type: </label>
                 <input list="transferType" id="transferType" name="transferType"  />
                 <datalist id="transferType">
-                     <option selected="selected" value="all"> </option>
+                     <option value="all"> </option>
 
                     <option value="deposit"> </option>
                     <option value="withdraw"></option>
