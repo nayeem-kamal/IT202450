@@ -134,20 +134,26 @@ IT 202 Project Proposal
 
 **Milestone 3:**
 
-- [ ] User will be able to transfer between their accounts
-  - [ ] Form should include a dropdown first **AccountSrc** and a dropdown for **AccountDest** (only accounts the user owns; no world account)
-  - [ ] Form should include a field for a positive numeric value
-  - [ ] System shouldn&#39;t allow the user to transfer more funds than what&#39;s available in **AccountSrc**
-  - [ ] Form should allow the user to record a memo for the transaction
-  - [ ] Each transaction is recorded as a transaction pair in the Transaction table
-    - [ ] These will reflect in the transaction history page
-  - [ ] Show appropriate user-friendly error messages
-  - [ ] Show user-friendly success messages
-- [ ] Transaction History page
-  - [ ] Will show the latest 10 transactions by default
-  - [ ] User will be able to filter transactions between two dates
-  - [ ] User will be able to filter transactions by type (deposit, withdraw, transfer)
+- [x] User will be able to transfer between their accounts
+  - [x] Form should include a dropdown first **AccountSrc** and a dropdown for **AccountDest** (only accounts the user owns; no world account)
+  - [x] Form should include a field for a positive numeric value
+  - [x] System shouldn&#39;t allow the user to transfer more funds than what&#39;s available in **AccountSrc**
+  - [x] Form should allow the user to record a memo for the transaction
+  - [x] Each transaction is recorded as a transaction pair in the Transaction table
+    - [x] These will reflect in the transaction history page
+  - [x] Show appropriate user-friendly error messages
+  - [x] Show user-friendly success messages
+
+https://github.com/nayeemkamal/IT202450/pull/30
+
+- [x] Transaction History page
+  - [x] Will show the latest 10 transactions by default
+  - [x] User will be able to filter transactions between two dates
+  - [x] User will be able to filter transactions by type (deposit, withdraw, transfer)
   - [ ] Transactions should paginate results after the initial 10
+
+https://github.com/nayeemkamal/IT202450/pull/30
+
 - [ ] User&#39;s profile page should record/show First and Last name
 - [ ] User will be able to transfer funds to another user&#39;s account
   - [ ] Form should include a dropdown of the current user&#39;s accounts (as **AccountSrc** )
