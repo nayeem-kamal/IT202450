@@ -13,9 +13,9 @@ if (!is_logged_in()) {
         <div class="flex-container">
             <div class=container>
                 <label for="accountdst">Transfer Type: </label>
-                <input list="transferType" id="transferType" name="transferType" value="all" />
+                <input list="transferType" id="transferType" name="transferType"  />
                 <datalist id="transferType">
-                     <option value="all"> </option>
+                     <option selected="selected" value="all"> </option>
 
                     <option value="deposit"> </option>
                     <option value="withdraw"></option>
