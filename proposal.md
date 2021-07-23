@@ -154,7 +154,8 @@ https://github.com/nayeemkamal/IT202450/pull/30
 
 https://github.com/nayeemkamal/IT202450/pull/30
 
-- [ ] User&#39;s profile page should record/show First and Last name
+- [x] User&#39;s profile page should record/show First and Last name
+  - https://github.com/nayeemkamal/IT202450/pull/31
 - [ ] User will be able to transfer funds to another user&#39;s account
   - [ ] Form should include a dropdown of the current user&#39;s accounts (as **AccountSrc** )
   - [ ] Form should include a field for the destination user&#39;s last name
