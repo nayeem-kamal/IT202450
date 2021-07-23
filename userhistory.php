@@ -82,7 +82,7 @@ if (!is_logged_in()) {
         $stmt->execute([":uid" => $uid]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (!$result) {
-            flash("Error: We are unable to access your accounts at this time", "danger");
+            flash("No results at this time", "danger");
         } else {
 
 
@@ -133,7 +133,7 @@ if (!is_logged_in()) {
 <?php
         }
     } catch (PDOException $e) {
-        flash("Error: We are unable to access your accounts at this time", "danger");
+        flash("Error: We are unable to access your accounts at this time" . $e, "danger");
     }
 }
 ?>
