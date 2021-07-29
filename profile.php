@@ -18,7 +18,7 @@ if (isset($_POST["save"])) {
     $_SESSION["user"]["lastName"] = $lastName;
 
 
-    $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id(), ":public" => $public];
+    $params = ["fname" => $firstName, "lname" => $lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id(), ":public" => $public];
     $db = getDB();
     $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username, Public = :public where id = :id");
     try {
@@ -91,8 +91,8 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
-$fname= fname();
-$lname= lname();
+$fname = fname();
+$lname = lname();
 ?>
 
 <head>
@@ -129,17 +129,17 @@ $lname= lname();
     <div class="flex-container">
         <div class=container>
             <label for="visibility">Visibility</label>
-            <input list="visibility" id="visibility" name="visibility"/>
-                    <datalist id="AccountType">
-                        <option value="Public">
-                        <option value="Private">
-                        
-                    </datalist>        </div>
+            <select list="visibility" id="visibility" name="visibility">
+                    <option value="Public">
+                    <option value="Private">
+
+            </select>
+        </div>
     </div>
     <div class="flex-container">
-                <div class=container>
-        <h2>Password Reset</h2>
-    </div>
+        <div class=container>
+            <h2>Password Reset</h2>
+        </div>
     </div>
     <div class="flex-container">
         <div class=container>
