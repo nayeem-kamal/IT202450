@@ -13,13 +13,14 @@ if (isset($_POST["save"])) {
     $firstName = $_POST["firstName"];
 
     $lastName = $_POST["lastName"];
+    $public = $_POST["visibility"] == "Public";
     $_SESSION["user"]["firstName"] = $firstName;
     $_SESSION["user"]["lastName"] = $lastName;
 
 
-    $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
+    $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id(), ":public" => $public];
     $db = getDB();
-    $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username where id = :id");
+    $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username, Public = :public where id = :id");
     try {
         $stmt->execute($params);
     } catch (Exception $e) {
@@ -124,6 +125,16 @@ $lname= lname();
             <label for="username">Username</label>
             <input type="text" name="username" id="username" value="<?php se($username); ?>" />
         </div>
+    </div>
+    <div class="flex-container">
+        <div class=container>
+            <label for="visibility">Visibility</label>
+            <input list="visibility" id="visibility" name="visibility"/>
+                    <datalist id="AccountType">
+                        <option value="Public">
+                        <option value="Private">
+                        
+                    </datalist>        </div>
     </div>
     <div class="flex-container">
                 <div class=container>
