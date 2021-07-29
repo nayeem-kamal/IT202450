@@ -129,7 +129,9 @@ $lname = lname();
     <div class="flex-container">
         <div class=container>
             <label for="visibility">Visibility</label>
-            <select list="visibility" id="visibility" name="visibility">
+            <input list="visibility" id="visibility" name="visibility" />
+
+            <select >
                     <option value="Public">
                     <option value="Private">
 
