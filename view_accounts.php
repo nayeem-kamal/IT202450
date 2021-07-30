@@ -27,6 +27,8 @@ if (!is_logged_in()) {
                         <th scope="col">Account</th>
                         <th scope="col">Type</th>
                         <th scope="col">Balance</th>
+                        <th scope="col">APY(%)</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +41,8 @@ if (!is_logged_in()) {
                             <th scope="row"><a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"><?php echo $acctinfo["account_number"] ?></a></th>
                             <td><?php echo $acctinfo["account_type"] ?></td>
                             <td>$<?php echo $acctinfo["balance"] ?></td>
+                            <td>$<?php echo $acctinfo["apy"] ?></td>
+
                         </tr>
                         <!-- <div id="accordion">
                         <div class="card">
