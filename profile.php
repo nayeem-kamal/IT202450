@@ -13,7 +13,12 @@ if (isset($_POST["save"])) {
     $firstName = $_POST["firstName"];
 
     $lastName = $_POST["lastName"];
-    $public = $_POST["visibility"] == "Public";
+    if($_POST["visibility"] == "Public"){
+        $public = 1;
+    }else{
+        $public = 0;
+        
+    }
     $_SESSION["user"]["firstName"] = $firstName;
     $_SESSION["user"]["lastName"] = $lastName;
 
@@ -128,6 +133,7 @@ $lname = lname();
     </div>
     <div class="flex-container">
         <div class=container>
+        <label for="Profile Visibility">Profile Visibility</label>
 
             <select list="visibility" id="visibility" name="visibility"  >
                     <option value="Public" selected>Public</option>
