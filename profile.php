@@ -13,13 +13,19 @@ if (isset($_POST["save"])) {
     $firstName = $_POST["firstName"];
 
     $lastName = $_POST["lastName"];
+    if($_POST["visibility"] == "Public"){
+        $public = 1;
+    }else{
+        $public = 0;
+        
+    }
     $_SESSION["user"]["firstName"] = $firstName;
     $_SESSION["user"]["lastName"] = $lastName;
 
 
-    $params = ["fname" => $firstName, "lname" =>$lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
+    $params = ["fname" => $firstName, "lname" => $lastName, ":email" => $email, ":username" => $username, ":id" => get_user_id(), ":public" => $public];
     $db = getDB();
-    $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username where id = :id");
+    $stmt = $db->prepare("UPDATE users set firstName = :fname, lastName = :lname, email = :email, username = :username, Public = :public where id = :id");
     try {
         $stmt->execute($params);
     } catch (Exception $e) {
@@ -90,8 +96,8 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
-$fname= fname();
-$lname= lname();
+$fname = fname();
+$lname = lname();
 ?>
 
 <head>
@@ -126,9 +132,21 @@ $lname= lname();
         </div>
     </div>
     <div class="flex-container">
-                <div class=container>
-        <h2>Password Reset</h2>
+        <div class=container>
+        <label for="Profile Visibility">Profile Visibility</label>
+
+            <select list="visibility" id="visibility" name="visibility"  >
+                    <option value="Public" selected>Public</option>
+                    <option value="Private">Private</option>
+
+            </select>
+            
+        </div>
     </div>
+    <div class="flex-container">
+        <div class=container>
+            <h2>Password Reset</h2>
+        </div>
     </div>
     <div class="flex-container">
         <div class=container>
