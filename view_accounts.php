@@ -41,7 +41,10 @@ if (!is_logged_in()) {
                             <th scope="row"><a href="./transaction_history.php?id=<?php echo $acctinfo["id"]; ?>&num=<?php echo $acctinfo["account_number"] ?>"><?php echo $acctinfo["account_number"] ?></a></th>
                             <td><?php echo $acctinfo["account_type"] ?></td>
                             <td>$<?php echo $acctinfo["balance"] ?></td>
-                            <td>$<?php echo $acctinfo["apy"] ?></td>
+                            <td><?php if(isset($acctinfo["apy"])){
+                                 echo $acctinfo["apy"];
+                            }else{ echo "-";}
+                            ?>%</td>
 
                         </tr>
                         <!-- <div id="accordion">
