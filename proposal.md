@@ -172,8 +172,9 @@ https://github.com/nayeemkamal/IT202450/pull/30
 
 **Milestone 4:**
 
-- [ ] User can set their profile to be public or private (will need another column in Users table)
-  - [ ] If public, hide email address from **other** users
+- [x] User can set their profile to be public or private (will need another column in Users table)
+  - [x] If public, hide email address from **other** users
+  https://github.com/nayeemkamal/IT202450/pull/32
 - [ ] User will be able open a savings account
   - [ ] System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
   - [ ] System will associate the account to the user
