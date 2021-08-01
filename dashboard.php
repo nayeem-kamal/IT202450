@@ -20,6 +20,7 @@ if (!is_logged_in()) {
 
 
 <div class="row">
+  
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
@@ -73,6 +74,8 @@ if (!is_logged_in()) {
         <a href="./profile.php" class="btn btn-primary">View Profile</a>
       </div>
     </div>
+
+    
     <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
@@ -80,6 +83,7 @@ if (!is_logged_in()) {
         <p class="card-text">Use this page to view your profile and change your password</p>
         <a href="./userhistory.php" class="btn btn-primary">View Profile</a>
       </div>
+    </div>
     </div>
     
     <div class="col-sm-6">
@@ -90,8 +94,7 @@ if (!is_logged_in()) {
         <a href="./add_loan.php" class="btn btn-primary">Get a Loan</a>
       </div>
     </div>
-    
-  
+    </div>
 
   </div>
   
