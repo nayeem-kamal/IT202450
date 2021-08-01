@@ -21,7 +21,7 @@ if (!is_logged_in()) {
 
 <div class="row">
   
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Create Account</h5>
@@ -30,7 +30,7 @@ if (!is_logged_in()) {
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">My Accounts</h5>
@@ -39,7 +39,7 @@ if (!is_logged_in()) {
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Deposit</h5>
@@ -48,7 +48,7 @@ if (!is_logged_in()) {
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Transfer/Withdraw</h5>
@@ -57,7 +57,7 @@ if (!is_logged_in()) {
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Transfer</h5>
@@ -66,7 +66,7 @@ if (!is_logged_in()) {
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">My Profile</h5>
@@ -76,7 +76,7 @@ if (!is_logged_in()) {
     </div>
 
     
-    <div class="col-sm-6">
+    <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">My Profile</h5>
@@ -86,7 +86,7 @@ if (!is_logged_in()) {
     </div>
     </div>
     
-    <div class="col-sm-8">
+    <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Loan application</h5>
