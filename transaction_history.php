@@ -26,10 +26,8 @@ if (!is_logged_in()) {
                     <h4>Account Type: <?php echo $acctinfo["account_type"] ?></h4>
                     <h4> Balance: $<?php echo $acctinfo["balance"] ?> </h4>
                     <h4>Date Created: <?php echo $acctinfo["created"] ?> </h4>
-                </div>
-            </div>
-            <table class="table">
-                <thead class="thead-dark">
+                    <h4> APY: %<?php echo $acctinfo["apy"] ?> </h4>
+                    <thead class="thead-dark">
                     <tr>
                         <th scope="col">Account</th>
                         <th scope="col">Type</th>
