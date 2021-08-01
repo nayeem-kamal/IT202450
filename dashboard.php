@@ -101,15 +101,7 @@ if (!is_logged_in()) {
 
    
 
-    <div class="col-sm">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Loan application</h5>
-          <p class="card-text">Use this page to take out a loan</p>
-          <a href="./add_loan.php" class="btn btn-primary">Get a Loan</a>
-        </div>
-      </div>
-    </div>
+
 
     <!-- deposit withdraw/transfer profile -->
   </div>

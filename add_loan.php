@@ -27,7 +27,7 @@ if (isset($_POST["submit"])) {
             $lastID = $db->lastInsertID();
              //if we got here it was a success, let's exit
              flash("Your account has been created successfully", "success");
-            if(transaction(1,$lastID,$balance,"Loan"," ")){
+            if(transaction(1,$lastID,intval($balance),"Loan"," ")){
 
             $created = true;
             die(header("Location: view_accounts.php" ));
