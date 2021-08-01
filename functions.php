@@ -309,3 +309,21 @@ function get_savings_apy(){
 return false;
 }
 
+function get_loan_apy(){
+   
+
+    $query = "SELECT value from sysprop where property = \"loanAPY\"";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result["value"];
+    }catch(PDOException $e){
+        flash("failed to get acct info", "warning");
+        return false;
+    }
+    
+
+return false;
+}
