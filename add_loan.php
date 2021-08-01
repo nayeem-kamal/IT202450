@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
     $db = getDB();
 
     $type = "Loan";
-    $balance = se($_POST["balance"]);
+    $balance = $_POST["balance"];
     $created = false;
     $query = "INSERT INTO Accounts (account_number, user_id, account_type,apy) VALUES (:an, :uid, :at,:apy)";
     $stmt = $db->prepare($query);
