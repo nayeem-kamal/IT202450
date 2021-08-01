@@ -207,7 +207,8 @@ https://github.com/nayeemkamal/IT202450/pull/30
   - [ ] User will see user-friendly error messages when appropriate
   - [ ] User will see user-friendly success message when account is created successfully
     - [ ] Redirect user to their Accounts page
-- [ ] Listing accounts and/or viewing Account Details should show any applicable APY or &quot;-&quot; if none is set for the particular account (may alternatively just hide the display for these types)
+- [x] Listing accounts and/or viewing Account Details should show any applicable APY or &quot;-&quot; if none is set for the particular account (may alternatively just hide the display for these types)
+- https://github.com/nayeemkamal/IT202450/pull/34
 - [ ] User will be able to close an account
   - [ ] User must transfer or withdraw all funds out of the account before doing so
   - [ ] Account should have a column &quot;active&quot; that will get set as false.
