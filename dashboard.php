@@ -73,14 +73,16 @@ if (!is_logged_in()) {
         <a href="./profile.php" class="btn btn-primary">View Profile</a>
       </div>
     </div>
+    
     <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Loan application</h5>
         <p class="card-text">Use this page to take out a loan</p>
-        <a href="./profile.php" class="btn btn-primary">Get a Loan/a>
+        <a href="./add_loan.php" class="btn btn-primary">Get a Loan</a>
       </div>
     </div>
+    
     <div class="col-sm-6">
 
     <div class="card">
@@ -92,6 +94,7 @@ if (!is_logged_in()) {
     </div>
     </div>
   </div>
+  
   <!-- deposit withdraw/transfer profile -->
 </div>
 </body>
