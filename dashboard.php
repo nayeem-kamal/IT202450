@@ -86,7 +86,7 @@ if (!is_logged_in()) {
     </div>
     </div>
     
-    <div class="col-sm-4">
+    <div class="col-sm">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Loan application</h5>
@@ -97,6 +97,26 @@ if (!is_logged_in()) {
     </div>
 
   </div>
+
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">My Profile</h5>
+        <p class="card-text">Use this page to view your profile and change your password</p>
+        <a href="./userhistory.php" class="btn btn-primary">View Profile</a>
+      </div>
+    </div>
+  </div>
+    
+    <div class="col-sm">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Loan application</h5>
+        <p class="card-text">Use this page to take out a loan</p>
+        <a href="./add_loan.php" class="btn btn-primary">Get a Loan</a>
+      </div>
+    </div>
+    </div>
   
   <!-- deposit withdraw/transfer profile -->
 </div>
