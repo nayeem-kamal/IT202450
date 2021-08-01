@@ -35,6 +35,8 @@ if (isset($_POST["submit"])) {
         }
             else{
                 flash("Error: We are unable to fund your account at this time", "danger");
+                die(header("Location: dashboard.php" ));
+
                 $created = true;
 
             }
