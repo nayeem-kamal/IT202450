@@ -212,13 +212,14 @@ https://github.com/nayeemkamal/IT202450/pull/30
     
 - [x] Listing accounts and/or viewing Account Details should show any applicable APY or &quot;-&quot; if none is set for the particular account (may alternatively just hide the display for these types)
 - https://github.com/nayeemkamal/IT202450/pull/34
-- [ ] User will be able to close an account
-  - [ ] User must transfer or withdraw all funds out of the account before doing so
-  - [ ] Account should have a column &quot;active&quot; that will get set as false.
-    - [ ] All queries for Accounts should be updated to pull only &quot;active&quot; = true accounts (i.e., dropdowns, My Accounts, etc)
-    - [ ] Do not delete the record, this is a soft delete so it doesn&#39;t break transactions
-  - [ ] Closed accounts don&#39;t show up anymore
-  - [ ] If the account is a loan, it must be paid off in full first
+- [x] User will be able to close an account
+  - [x] User must transfer or withdraw all funds out of the account before doing so
+  - [x] Account should have a column &quot;active&quot; that will get set as false.
+    - [x] All queries for Accounts should be updated to pull only &quot;active&quot; = true accounts (i.e., dropdowns, My Accounts, etc)
+    - [x] Do not delete the record, this is a soft delete so it doesn&#39;t break transactions
+  - [x] Closed accounts don&#39;t show up anymore
+  - [x] If the account is a loan, it must be paid off in full first
+  - https://github.com/nayeemkamal/IT202450/pull/36
 - [ ] Admin role (leave this section for last)
   - [ ] Will be able to search for users by firstname and/or lastname
   - [ ] Will be able to look-up specific account numbers (partial match).
@@ -233,24 +234,4 @@ https://github.com/nayeemkamal/IT202450/pull/30
     - [ ] Deactivated users will be restricted from logging in
       - [ ] &quot;Sorry your account is no longer active&quot;
 
-**Notes/References:**
 
-- [ ] **Account Number Requirements**
-  - [ ] Should be 12 characters long
-  - [ ] &quot;World&quot; account should be &quot;000000000000&quot; (this is used for deposit/withdraw showing the movement of money outside of the bank)
-  - [ ] Each transaction **must** be recorded as **two** separate inserts to the transaction table
-- [ ] \*Transaction Table Minimum Requirements
-  - [ ] Each action for a set of accounts will be in pairs. The colors in the table below highlight what this means.
-  - [ ] The first source/dest is the account that triggered the action to the dest account. This typically will be a negative change.
-  - [ ] The second source/dest is the dest account&#39;s half of the transaction info.
-    - [ ] source/dest will swap in the second half of the transaction
-    - [ ] **BalanceChange** will invert in the second half of the transaction
-    - [ ] This typically will be a positive change
-  - [ ] **Src/Dest** are the account id&#39;s affected (Accounts.id, not Accounts.account\_number).
-  - [ ] **BalanceChange** is the difference in the account balance (i.e., a deposit of $50) (deposit subtracts from source for the first part and adds to source for the second part.)
-  - [ ] **TransactionType** is a built-in identifier to track the action (i.e., deposit, withdraw, transfer, ext-transfer)
-  - [ ] **Memo** user-defined notes
-  - [ ] **ExpectedTotal** is the account&#39;s final value after the transaction, respectively. This is not to be used as the &quot;Account Balance&quot; it&#39;s recorded for bookkeeping and review purposes.
-  - [ ] **Created** is when the transaction occurred
-  - [ ] The below Transaction/Ledger table should total (SUM) up to zero to show that your bank is in balance. Otherwise, something bad happened with the transaction based on whether it&#39;s negative or positive. In that case we either lost money or stole money.
-- [ ] ![](RackMultipart20210705-4-rs6ksv_html_4d39bbd56ba70ba2.png)
