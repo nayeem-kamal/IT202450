@@ -20,11 +20,11 @@ if (!is_logged_in()) {
 ?>
     <form method="POST" style="margin: 100px;">
 
-        <legend class="text-center header">Choose an Account to transfer into</legend>
+        <legend class="text-center header">Choose a Loan Account to transfer into</legend>
 
         <div class="flex-container">
             <div class=container>
-                <label for="accountdst">Destination Account: </label>
+                <label for="accountdst">Payment Account: </label>
                 <input list="Accountdst" id="accountdst" name="accountdst" required />
                 <datalist id="Accountdst">
                     <?php
@@ -36,7 +36,7 @@ if (!is_logged_in()) {
 
                             <?php
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": " . $acct["balance"]; ?>">
                                 <?php
                             }
                         } catch (PDOException $e) {
@@ -49,7 +49,7 @@ if (!is_logged_in()) {
         </div>
         <div class="flex-container">
             <div class=container>
-                <label for="accountsrc">Source Account: </label>
+                <label for="accountsrc">Loan Account: </label>
                 <input list="Accountsrc" id="accountsrc" name="accountsrc" required />
                 <datalist id="Accountsrc">
                 <?php
@@ -62,7 +62,7 @@ if (!is_logged_in()) {
                             $accountnumbers2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
              
                             foreach ($accountnumbers2 as $acct) {
-                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": " . $acct["balance"]; ?>">
                                 <?php
                             }
                         } catch (PDOException $e) {
