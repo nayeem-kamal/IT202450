@@ -192,9 +192,15 @@ function transaction($src, $dst, $amt, $type,$memo){
         $srcinfo = get_acct_info($src);
         $dstinfo = get_acct_info($dst);
         if($srcinfo["balance"]>$amt || $srcinfo["id"] == 1){
+            if($type == "Loan Payment"){
+                $srcbal = $srcinfo["balance"]-$amt;
+                $dstbal = $dstinfo["balance"]-$amt;
+                $amt2 = $amt-($amt*2);
+            }else{
         $srcbal = $srcinfo["balance"]-$amt;
         $dstbal = $dstinfo["balance"]+$amt;
         $amt2 = $amt-($amt*2);
+            }
     }else{
         flash("Source account does not have sufficient funds","dange");
         return false;

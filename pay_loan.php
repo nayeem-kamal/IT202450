@@ -36,7 +36,7 @@ if (!is_logged_in()) {
 
                             <?php
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": " . $acct["balance"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": $" . $acct["balance"]; ?>">
                                 <?php
                             }
                         } catch (PDOException $e) {
@@ -62,7 +62,7 @@ if (!is_logged_in()) {
                             $accountnumbers2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
              
                             foreach ($accountnumbers2 as $acct) {
-                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": " . $acct["balance"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": $" . $acct["balance"]; ?>">
                                 <?php
                             }
                         } catch (PDOException $e) {
@@ -107,12 +107,12 @@ if (!is_logged_in()) {
 
                     }
                     if (isset($_POST["submit"])) {
-                        $destination = get_acct_id($_POST["accountdst"])["id"];
-                        $src = get_acct_id($_POST["accountsrc"])["id"];
+                        $destination = get_acct_id($_POST["accountsrc"])["id"];
+                        $src = get_acct_id($_POST["accountdst"])["id"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
 
-                        if(transaction($src,$destination,$amount,"transfer", $memo)){
+                        if(transaction($src,$destination,$amount,"Loan Payment", $memo)){
                             flash("Your transfer has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
 
