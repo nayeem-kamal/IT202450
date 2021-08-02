@@ -10,7 +10,7 @@ if (!is_logged_in()) {
 
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
+    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\") and closed = 0";
 
     $created = false;
     $stmt = $db->prepare($query);
@@ -54,7 +54,7 @@ if (!is_logged_in()) {
                 <datalist id="Accountsrc">
                     <?php
                         while (!$created) {
-                            $query2 = "SELECT * from Accounts where user_id = :uid and account_type = \"Loan\"";
+                            $query2 = "SELECT * from Accounts where user_id = :uid and account_type = \"Loan\" and closed = 0";
                             $stmt = $db->prepare($query2);
 
                             try {

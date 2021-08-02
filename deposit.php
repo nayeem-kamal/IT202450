@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
+    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\") and closed = 0";
 
     $created = false;
     $stmt = $db->prepare($query);
@@ -31,7 +31,7 @@ if (!is_logged_in()) {
                             $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
               
                             foreach ($accountnumbers as $acct) {
-                            ?><option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . " " . $acct["account_number"]; ?>">
+                            ?><option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . " " . $acct["balance"]; ?>">
                                 <?php
                             }
                                 ?>

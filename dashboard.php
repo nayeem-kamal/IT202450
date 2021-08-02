@@ -31,6 +31,15 @@ if (!is_logged_in()) {
       </div>
     </div>
     <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Close an Account</h5>
+            <p class="card-text">Use this page to close empty accounuts</p>
+            <a href="./close_account.php" class="btn btn-primary">Close Account</a>
+          </div>
+        </div>
+      </div>
+    <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">My Accounts</h5>
