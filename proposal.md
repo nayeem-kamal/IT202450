@@ -196,12 +196,12 @@ https://github.com/nayeemkamal/IT202450/pull/30
     - [x] This will be used to add interest to the loan account
     - [x] Recommended to create a table for &quot; **system properties**&quot; and have this value stored there and fetched when needed, this will allow you to have an admin account change the value in the future)
   - [x] Form will have a dropdown of the user&#39;s accounts of which to deposit the money into
-  - [ ] **Special Case for Loans:**
+  - [x] **Special Case for Loans:**
     - [x] Loans will show with a positive balance of what&#39;s required to pay off (although it is a negative since the user owes it)
     - [x] User will transfer funds to the loan account to pay it off
     - [x] Transfers will continue to be recorded in the Transactions table
     - [x] Loan account&#39;s balance will be the balance minus any transfers **to** this account
-    - [ ] Interest will be applied to the current loan balance and add to it (causing the user to owe more)
+    - [ ] Interest will be applied to the current loan balance and add to it (causing the user to owe more) (confused on implementation)
     - [x] A loan with 0 balance will be considered paid off and will not accrue interest and will be eligible to be marked as closed
     - [x] User can&#39;t transfer more money **from** a loan once it&#39;s been opened and a loan account should not appear in the Account Source dropdowns
   - [x] User will see user-friendly error messages when appropriate
