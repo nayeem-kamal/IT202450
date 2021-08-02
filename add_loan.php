@@ -90,7 +90,7 @@ if (!is_logged_in()) {
                                 $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 foreach ($accountnumbers as $acct) {
-                        ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
+                        ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . " " . $acct["account_number"]; ?>">
                                     <?php
                                 }
                                     ?>
