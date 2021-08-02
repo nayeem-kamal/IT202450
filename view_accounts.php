@@ -7,7 +7,7 @@ if (!is_logged_in()) {
     die(header("Location: index.php"));
     flash("Cannot access this page without logging in", "warning");
 } else {
-    $query = "SELECT * from Accounts where user_id = :uid ";
+    $query = "SELECT * from Accounts where user_id = :uid and closed = 0";
     $db = getDB();
     $stmt = $db->prepare($query);
     try {

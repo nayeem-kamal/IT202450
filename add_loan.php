@@ -26,7 +26,7 @@ if (!is_logged_in()) {
                             <?php
                             $db = getDB();
                             $user_id = get_user_id();
-                            $query2 = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
+                            $query2 = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\") and closed = 0";
                             $stmt = $db->prepare($query2);
                             $created = false;
                             ?>
