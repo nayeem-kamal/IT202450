@@ -15,7 +15,7 @@ if (!is_logged_in()) {
     $created = false;
     $stmt = $db->prepare($query);
     $user_id = get_user_id();
-    $accountnumbers=[];
+    $accountnumbers = [];
 
 ?>
     <form method="POST" style="margin: 100px;">
@@ -37,13 +37,13 @@ if (!is_logged_in()) {
                             <?php
                             foreach ($accountnumbers as $acct) {
                             ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": $" . $acct["balance"]; ?>">
-                                <?php
+                            <?php
                             }
                         } catch (PDOException $e) {
 
                             flash("Error: We are unable to create or access your account at this time" . $e, "danger");
                         }
-                                ?>
+                            ?>
                 </datalist>
             </div>
         </div>
@@ -52,47 +52,47 @@ if (!is_logged_in()) {
                 <label for="accountsrc">Loan Account: </label>
                 <input list="Accountsrc" id="accountsrc" name="accountsrc" required />
                 <datalist id="Accountsrc">
-                <?php
-                    while (!$created) {
-                        $query2 = "SELECT * from Accounts where user_id = :uid and account_type = \"Loan\"";
-                        $stmt = $db->prepare($query2);
+                    <?php
+                        while (!$created) {
+                            $query2 = "SELECT * from Accounts where user_id = :uid and account_type = \"Loan\"";
+                            $stmt = $db->prepare($query2);
 
-                        try {
-                            $stmt->execute([":uid" => $user_id]);
-                            $accountnumbers2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-             
-                            foreach ($accountnumbers2 as $acct) {
-                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": $" . $acct["balance"]; ?>">
-                                <?php
+                            try {
+                                $stmt->execute([":uid" => $user_id]);
+                                $accountnumbers2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                foreach ($accountnumbers2 as $acct) {
+                    ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . ": $" . $acct["balance"]; ?>">
+                            <?php
+                                }
+                            } catch (PDOException $e) {
+
+                                flash("Error: We are unable to create or access your account at this time" . $e, "danger");
                             }
-                        } catch (PDOException $e) {
-
-                            flash("Error: We are unable to create or access your account at this time" . $e, "danger");
-                        }
-                                ?>
+                            ?>
                 </datalist>
             </div>
         </div>
-                <legend class="text-center header">Choose an Amount to Transfer</legend>
+        <legend class="text-center header">Choose an Amount to Transfer</legend>
 
-                <div class="flex-container">
-                    <div class=container>
-                        <label for="amount">Amount ($): </label>
-                        <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100"  />
-                    </div>
-                </div>
-                <div class="flex-container">
-                    <div class=container>
-                        <label for="memo">Memo: </label>
-                        <input type="text" value=" " id="memo" name="memo" />
-                    </div>
-                </div>
-
-                <div class="flex-container">
-                <div class=container>
-                    <input type="submit" name="submit" value="Transfer" />
-                </div>
+        <div class="flex-container">
+            <div class=container>
+                <label for="amount">Amount ($): </label>
+                <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100" />
             </div>
+        </div>
+        <div class="flex-container">
+            <div class=container>
+                <label for="memo">Memo: </label>
+                <input type="text" value=" " id="memo" name="memo" />
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class=container>
+                <input type="submit" name="submit" value="Transfer" />
+            </div>
+        </div>
 
 
     </form>
@@ -103,29 +103,24 @@ if (!is_logged_in()) {
                             //if we got here it was a success, let's exit
 
                             $created = true;
-                        
+                        }
+                        if (isset($_POST["submit"])) {
+                            $destination = get_acct_id($_POST["accountsrc"])["id"];
+                            $src = get_acct_id($_POST["accountdst"])["id"];
+                            $amount = $_POST["amount"];
+                            $memo = $_POST["memo"];
 
-                    }
-                    if (isset($_POST["submit"])) {
-                        $destination = get_acct_id($_POST["accountsrc"])["id"];
-                        $src = get_acct_id($_POST["accountdst"])["id"];
-                        $amount = $_POST["amount"];
-                        $memo = $_POST["memo"];
-
-                        if(transaction($src,$destination,$amount,"Loan Payment", $memo)){
-                            flash("Your transfer has been created successfully", "success");
+                            if (transaction($src, $destination, $amount, "Loan Payment", $memo)) {
+                                flash("Your transfer has been created successfully", "success");
+                                
+                            } else {
+                                flash("Your transfer did not complete. Possibly insufficient funds.", "danger");
+                                die(header("Location: ./dashboard.php"));
+                            }
                             die(header("Location: ./view_accounts.php"));
-
-
-                    }
-                    else{
-                        flash("Your transfer did not complete. Possibly insufficient funds.","danger");
-                        die(header("Location: ./dashboard.php"));
-
+                        }
                     }
                 }
-            }
-        }
 
 ?>
 
