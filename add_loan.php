@@ -20,13 +20,13 @@ if (!is_logged_in()) {
                 <legend class="text-center header">Take out a Loan</legend>
                 <div class="flex-container">
                     <div class=container>
-                        <label for="accountdst">Account: </label>
+                        <label for="accountdst">Destination Account: </label>
                         <input list="Accountdst" id="accountdst" name="accountdst" required />
                         <datalist id="Accountdst">
                             <?php
                             $db = getDB();
                             $user_id = get_user_id();
-                            $query2 = "SELECT * from Accounts where user_id = :uid";
+                            $query2 = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
                             $stmt = $db->prepare($query2);
                             $created = false;
                             ?>
