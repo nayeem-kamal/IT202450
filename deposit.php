@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid LIMIT 5";
+    $query = "SELECT * from Accounts where user_id = :uid";
 
     $created = false;
     $stmt = $db->prepare($query);
@@ -29,9 +29,7 @@ if (!is_logged_in()) {
                         try {
                             $stmt->execute([":uid" => $user_id]);
                             $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    ?>
-
-                            <?php
+              
                             foreach ($accountnumbers as $acct) {
                             ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
                                 <?php

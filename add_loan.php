@@ -40,7 +40,7 @@ if (!is_logged_in()) {
                             $query = "INSERT INTO Accounts (account_number, user_id, account_type,apy) VALUES (:an, :uid, :at,:apy)";
                             $stmt = $db->prepare($query);
                             $account_number = "";
-                            $destination = $_POST["accountdst"];
+                            $destination = get_acct_id($_POST["accountdst"])["id"];
 
                             while (!$created) {
                                 try {
@@ -90,7 +90,7 @@ if (!is_logged_in()) {
                                 $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 foreach ($accountnumbers as $acct) {
-                        ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
+                        ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
                                     <?php
                                 }
                                     ?>
