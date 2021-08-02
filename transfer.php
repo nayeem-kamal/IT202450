@@ -10,7 +10,7 @@ if (!is_logged_in()) {
 
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid LIMIT 5";
+    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
 
     $created = false;
     $stmt = $db->prepare($query);
@@ -36,7 +36,7 @@ if (!is_logged_in()) {
 
                             <?php
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
                                 <?php
                             }
                         } catch (PDOException $e) {
@@ -56,7 +56,7 @@ if (!is_logged_in()) {
                     while (!$created) {
                       
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
                                 <?php
                             }
                                 ?>
@@ -97,8 +97,8 @@ if (!is_logged_in()) {
 
                     }
                     if (isset($_POST["submit"])) {
-                        $destination = $_POST["accountdst"];
-                        $src = $_POST["accountsrc"];
+                        $destination = get_acct_id($_POST["accountdst"])["id"];
+                        $src = get_acct_id($_POST["accountsrc"])["id"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
 

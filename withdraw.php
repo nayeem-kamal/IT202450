@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid LIMIT 5";
+    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
 
     $created = false;
     $stmt = $db->prepare($query);
