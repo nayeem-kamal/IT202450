@@ -40,6 +40,8 @@ if (!is_logged_in()) {
                             $query = "INSERT INTO Accounts (account_number, user_id, account_type,apy) VALUES (:an, :uid, :at,:apy)";
                             $stmt = $db->prepare($query);
                             $account_number = "";
+                            $destination = $_POST["accountdst"];
+
                             while (!$created) {
                                 try {
                                     $apy = get_loan_apy();
@@ -49,7 +51,7 @@ if (!is_logged_in()) {
                                     $lastID = $db->lastInsertID();
                                     //if we got here it was a success, let's exit
                                     flash("Your account has been created successfully", "success");
-                                    if (transaction(1, $lastID, intval($balance), "Loan", " ")) {
+                                    if (transaction(1, $lastID, intval($balance), "Loan", " ")&&transaction(1, $destination, intval($balance), "Loan", " ")) {
 
                                         $created = true;
                                         die(header("Location: view_accounts.php"));
