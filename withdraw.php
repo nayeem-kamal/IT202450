@@ -33,7 +33,7 @@ if (!is_logged_in()) {
 
                             <?php
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["balance"]; ?>">
                                 <?php
                             }
                                 ?>
@@ -77,7 +77,7 @@ if (!is_logged_in()) {
 
                     }
                     if (isset($_POST["submit"])) {
-                        $destination = $_POST["accountdst"];
+                        $destination = get_acct_id($_POST["accountdst"])["id"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
                         if(transaction(1,$destination,$amount,"deposit",$memo)){

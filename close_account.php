@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
+    $query = "SELECT * from Accounts where user_id = :uid and balance = 0 and closed = 0";
 
     $created = false;
     $stmt = $db->prepare($query);
@@ -17,8 +17,8 @@ if (!is_logged_in()) {
 ?>
     <form method="POST" style="margin: 100px;">
 
-        <legend class="text-center header">Choose an Account to deposit into</legend>
-
+        <legend class="text-center header">Choose an Account to Close</legend>
+        <h4>Accounts must be empty before closing. Loan accounts must be fully paid off in order to close. </h4>
         <div class="flex-container">
             <div class=container>
                 <label for="accountdst">Account: </label>
@@ -29,35 +29,23 @@ if (!is_logged_in()) {
                         try {
                             $stmt->execute([":uid" => $user_id]);
                             $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-              
+                    ?>
+
+                            <?php
                             foreach ($accountnumbers as $acct) {
-                            ?><option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . " " . $acct["balance"]; ?>">
+                            ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
                                 <?php
                             }
                                 ?>
                 </datalist>
             </div>
         </div>
-        <legend class="text-center header">Choose an Amount to Deposit</legend>
-
-        <div class="flex-container">
-            <div class=container>
-                <label for="amount">Amount ($): </label>
-                <input type="number" value="100" min="0" step="10" id="amount" name="amount" data-number-to-fixed="2" data-number-stepfactor="100" />
+               
+                <div class="flex-container">
+                <div class=container>
+                    <input type="submit" name="submit" value="Close Account" />
+                </div>
             </div>
-        </div>
-        <div class="flex-container">
-            <div class=container>
-                <label for="memo">Memo: </label>
-                <input type="text" value=" " id="memo" name="memo" />
-            </div>
-        </div>
-
-        <div class="flex-container">
-            <div class=container>
-                <input type="submit" name="submit" value="deposit" />
-            </div>
-        </div>
 
 
     </form>
@@ -72,20 +60,22 @@ if (!is_logged_in()) {
 
                             flash("Error: We are unable to create or access your account at this time" . $e, "danger");
                         }
+
                     }
                     if (isset($_POST["submit"])) {
-                        $destination = get_acct_id($_POST["accountdst"])["id"];
-                        $amount = $_POST["amount"];
-                        $memo = $_POST["memo"];
-
-                        if (transaction(1, $destination, $amount, "deposit", $memo)) {
-                            flash("Your deposit has been created successfully", "success");
+                        $destination = $_POST["accountdst"];
+                        
+                        if(close_account($destination)){
+                            flash("Your account has been closed successfully", "success");
                             die(header("Location: ./view_accounts.php"));
-                        } else {
-                            flash("Your deposit did not complete", "danger");
-                        }
+
+
+                    }
+                    else{
+                        flash("Your account closure did not complete","danger");
                     }
                 }
+            }
 
 ?>
 
