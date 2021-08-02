@@ -188,25 +188,28 @@ https://github.com/nayeemkamal/IT202450/pull/30
   - [x] User will see user-friendly success message when account is created successfully
     - [x] Redirect user to their Accounts page
   - https://github.com/nayeemkamal/IT202450/pull/33
-- [ ] User will be able to take out a loan
-  - [ ] System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
-  - [ ] Account type will be set as loan
-  - [ ] Will require a minimum value of $500
-  - [ ] System will show an APY (before the user submits the form)
-    - [ ] This will be used to add interest to the loan account
-    - [ ] Recommended to create a table for &quot; **system properties**&quot; and have this value stored there and fetched when needed, this will allow you to have an admin account change the value in the future)
-  - [ ] Form will have a dropdown of the user&#39;s accounts of which to deposit the money into
+- [x] User will be able to take out a loan
+  - [x] System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
+  - [x] Account type will be set as loan
+  - [x] Will require a minimum value of $500
+  - [x] System will show an APY (before the user submits the form)
+    - [x] This will be used to add interest to the loan account
+    - [x] Recommended to create a table for &quot; **system properties**&quot; and have this value stored there and fetched when needed, this will allow you to have an admin account change the value in the future)
+  - [x] Form will have a dropdown of the user&#39;s accounts of which to deposit the money into
   - [ ] **Special Case for Loans:**
-    - [ ] Loans will show with a positive balance of what&#39;s required to pay off (although it is a negative since the user owes it)
-    - [ ] User will transfer funds to the loan account to pay it off
-    - [ ] Transfers will continue to be recorded in the Transactions table
-    - [ ] Loan account&#39;s balance will be the balance minus any transfers **to** this account
+    - [x] Loans will show with a positive balance of what&#39;s required to pay off (although it is a negative since the user owes it)
+    - [x] User will transfer funds to the loan account to pay it off
+    - [x] Transfers will continue to be recorded in the Transactions table
+    - [x] Loan account&#39;s balance will be the balance minus any transfers **to** this account
     - [ ] Interest will be applied to the current loan balance and add to it (causing the user to owe more)
-    - [ ] A loan with 0 balance will be considered paid off and will not accrue interest and will be eligible to be marked as closed
-    - [ ] User can&#39;t transfer more money **from** a loan once it&#39;s been opened and a loan account should not appear in the Account Source dropdowns
-  - [ ] User will see user-friendly error messages when appropriate
-  - [ ] User will see user-friendly success message when account is created successfully
-    - [ ] Redirect user to their Accounts page
+    - [x] A loan with 0 balance will be considered paid off and will not accrue interest and will be eligible to be marked as closed
+    - [x] User can&#39;t transfer more money **from** a loan once it&#39;s been opened and a loan account should not appear in the Account Source dropdowns
+  - [x] User will see user-friendly error messages when appropriate
+  - [x] User will see user-friendly success message when account is created successfully
+    - [x] Redirect user to their Accounts page
+
+  -https://github.com/nayeemkamal/IT202450/pull/35
+    
 - [x] Listing accounts and/or viewing Account Details should show any applicable APY or &quot;-&quot; if none is set for the particular account (may alternatively just hide the display for these types)
 - https://github.com/nayeemkamal/IT202450/pull/34
 - [ ] User will be able to close an account
