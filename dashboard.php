@@ -51,9 +51,9 @@ if (!is_logged_in()) {
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Transfer/Withdraw</h5>
-          <p class="card-text">Use this page to withdraw or transfer money from your account</p>
-          <a href="#" class="btn btn-primary">Make a Transfer/Withdrawal</a>
+          <h5 class="card-title">Withdraw</h5>
+          <p class="card-text">Use this page to withdraw money from your account</p>
+          <a href="./withdraw.php" class="btn btn-primary">Make a Withdrawal</a>
         </div>
       </div>
     </div>

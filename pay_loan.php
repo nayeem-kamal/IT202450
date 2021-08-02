@@ -117,9 +117,9 @@ if (!is_logged_in()) {
                                 
                             } else {
                                 flash("Your transfer did not complete. Possibly insufficient funds.", "danger");
-                                die(header("Location: ./dashboard.php"));
-                            }
-                            die(header("Location: ./view_accounts.php"));
+                                $URL="https://nhk6-dev.herokuapp.com/dashboard.php";
+                                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                                                            }
                         }
                     }
                 }
