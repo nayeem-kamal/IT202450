@@ -96,6 +96,15 @@ if (!is_logged_in()) {
           </div>
         </div>
       </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Make a Loan Payment</h5>
+            <p class="card-text">Use this page to pay off a loan</p>
+            <a href="./pay_loan.php" class="btn btn-primary">Pay off a Loan</a>
+          </div>
+        </div>
+      </div>
 
     </div>
 

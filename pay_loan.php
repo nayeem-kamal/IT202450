@@ -52,13 +52,23 @@ if (!is_logged_in()) {
                 <label for="accountsrc">Source Account: </label>
                 <input list="Accountsrc" id="accountsrc" name="accountsrc" required />
                 <datalist id="Accountsrc">
-                    <?php
+                <?php
                     while (!$created) {
-                      
-                            foreach ($accountnumbers as $acct) {
+                        $query2 = "SELECT * from Accounts where user_id = :uid and account_type = \"Loan\"";
+                        $stmt = $db->prepare($query2);
+
+                        try {
+                            $stmt->execute([":uid" => $user_id]);
+                            $accountnumbers2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+             
+                            foreach ($accountnumbers2 as $acct) {
                             ?> <option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"]; ?>">
                                 <?php
                             }
+                        } catch (PDOException $e) {
+
+                            flash("Error: We are unable to create or access your account at this time" . $e, "danger");
+                        }
                                 ?>
                 </datalist>
             </div>

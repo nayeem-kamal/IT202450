@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid";
+    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\")";
 
     $created = false;
     $stmt = $db->prepare($query);
@@ -31,7 +31,7 @@ if (!is_logged_in()) {
                             $accountnumbers =  $stmt->fetchAll(PDO::FETCH_ASSOC);
               
                             foreach ($accountnumbers as $acct) {
-                            ?> <option value="<?php echo $acct["id"]; ?>" label="<?php echo $acct["account_number"]; ?>">
+                            ?><option value="<?php echo $acct["account_number"]; ?>" label="<?php echo $acct["account_type"] . " " . $acct["account_number"]; ?>">
                                 <?php
                             }
                                 ?>
@@ -74,7 +74,7 @@ if (!is_logged_in()) {
                         }
                     }
                     if (isset($_POST["submit"])) {
-                        $destination = $_POST["accountdst"];
+                        $destination = get_acct_id($_POST["accountdst"])["id"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
 
