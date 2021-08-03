@@ -363,3 +363,23 @@ function close_account($acctno){
 return false;
 
 }
+
+function freeze_account($acctno){
+
+    $query = "UPDATE Accounts SET freeze = 1 WHERE account_number = :acct";
+       $db = getDB();
+       $stmt = $db->prepare($query);
+       try {
+           $stmt->execute([":acct" => $acctno]);
+           $result = $stmt->fetch(PDO::FETCH_ASSOC);
+           return true;
+       }catch(PDOException $e){
+           flash("Account couldn't be frozen at this time", "warning");
+           die(header("Location: ./dashboard.php"));
+           return false;
+       }
+       
+   
+   return false;
+   
+   }
