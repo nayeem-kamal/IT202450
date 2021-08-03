@@ -42,7 +42,7 @@ function has_role($role) {
 }
 function is_admin() {
     if (is_logged_in() && isset($_SESSION["user"]["admin"])) {
-        if($_SESSION["user"]["admin"]>0){
+        if($_SESSION["user"]["admin"]){
             return true;
         }
         }

@@ -117,7 +117,8 @@ if (!is_logged_in()) {
 
 
       <?php 
-      flash("" . is_admin(),"warning");
+      $admin = $_SESSION["user"]["admin"];
+      flash("" . $admin,"warning");
       if(is_admin()){
         
 ?>
