@@ -1,6 +1,7 @@
 IT 202 Project Proposal
 
 **Project Name: Simple Bank**
+Video Link for Demo: https://youtu.be/RXTFR4fkPNw
 
 **Project Summary: This project will create a bank simulation for users. They&#39;ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user&#39;s accounts)/external(other user&#39;s accounts) transfers, and creating/closing accounts.**
 
