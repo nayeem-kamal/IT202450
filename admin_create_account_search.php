@@ -52,9 +52,9 @@ if (!is_logged_in() && !is_admin()) {
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col">Username</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Username</th>
 
                     </tr>
                 </thead>
