@@ -15,12 +15,12 @@ if (!is_logged_in()) {
 ?>
     <form method="POST" style="margin: 100px;">
 
-        <legend class="text-center header">Confirm Disabling User: <?php echo $name; ?></legend>
+        <legend class="text-center header">Confirm Deactivating User: <?php echo $name; ?></legend>
         
                
                 <div class="flex-container">
                 <div class=container>
-                    <input type="submit" name="submit" value="Freeze Account" />
+                    <input type="submit" name="submit" value="Deactivate Account" />
                 </div>
             </div>
 

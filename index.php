@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
     if ($isValid) {
         $db = getDB();
        
-        $stmt = $db->prepare("SELECT id, admin, email, IFNULL(username, email) as `username`, password, firstName, lastName from users where email = :email or username = :email LIMIT 1");
+        $stmt = $db->prepare("SELECT id,deactivated, admin, email, IFNULL(username, email) as `username`, password, firstName, lastName from users where email = :email or username = :email LIMIT 1");
         try {
             $stmt->execute([":email" => $email]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

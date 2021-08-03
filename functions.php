@@ -49,7 +49,15 @@ function is_admin() {
     
     return false;
 }
-
+function is_deactive() {
+    if (is_logged_in() && isset($_SESSION["user"]["deactivated"])) {
+        if($_SESSION["user"]["deactivated"]){
+            return true;
+        }
+        }
+    
+    return false;
+}
 function get_username() {
     if (is_logged_in()) { 
         return se($_SESSION["user"], "username", "", false);
