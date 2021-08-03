@@ -15,7 +15,7 @@ if (!is_logged_in() && !is_admin()) {
 ?>
     <form method="POST" style="margin: 100px;">
 
-        <legend class="text-center header">Search for an account</legend>
+        <legend class="text-center header">Search for a user</legend>
 
         <div class="flex-container">
             <div class=container>
