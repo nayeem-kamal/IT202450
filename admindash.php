@@ -44,7 +44,7 @@ if (!is_logged_in() && !is_admin()) {
         <div class="card-body">
           <h5 class="card-title">Freeze Accounts</h5>
           <p class="card-text">Use this page to freeze accounts</p>
-          <a href="./view_accounts.php" class="btn btn-primary">Freeze accounts</a>
+          <a href="./freeze_account_search.php" class="btn btn-primary">Freeze accounts</a>
         </div>
       </div>
     </div>
