@@ -383,3 +383,23 @@ function freeze_account($acctno){
    return false;
    
    }
+
+   function deactivate_user($id){
+
+    $query = "UPDATE users SET deactivated = 1 WHERE id = :id";
+       $db = getDB();
+       $stmt = $db->prepare($query);
+       try {
+           $stmt->execute([":id" => $id]);
+           $result = $stmt->fetch(PDO::FETCH_ASSOC);
+           return true;
+       }catch(PDOException $e){
+           flash("Account couldn't be frozen at this time", "warning");
+           die(header("Location: ./dashboard.php"));
+           return false;
+       }
+       
+   
+   return false;
+   
+   }

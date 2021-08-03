@@ -53,7 +53,16 @@ if (!is_logged_in() && !is_admin()) {
         <div class="card-body">
           <h5 class="card-title">Create Accounts for a user</h5>
           <p class="card-text">Use this page to create accounts for users</p>
-          <a href="./admin_create_account_search.php" class="btn btn-primary">Disable</a>
+          <a href="./admin_create_account_search.php" class="btn btn-primary">Create Account</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Deactivate Users</h5>
+          <p class="card-text">Use this page to deactivate users</p>
+          <a href="./deactivate_search.php" class="btn btn-primary">Deactivate</a>
         </div>
       </div>
     </div>
