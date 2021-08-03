@@ -80,14 +80,14 @@ if (!is_logged_in()) {
                         $destination = get_acct_id($_POST["accountdst"])["id"];
                         $amount = $_POST["amount"];
                         $memo = $_POST["memo"];
-                        if(transaction(1,$destination,$amount,"deposit",$memo)){
-                            flash("Your deposit has been created successfully", "success");
+                        if(transaction($destination,1,$amount,"withdrawal",$memo)){
+                            flash("Your withdrawal has been created successfully", "success");
                             die(header("Location: ./view_accounts.php"));
 
 
                     }
                     else{
-                        flash("Your deposit did not complete","danger");
+                        flash("Your withdrawal did not complete","danger");
                     }
                 }
             }
