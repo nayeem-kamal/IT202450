@@ -9,7 +9,7 @@ if (!is_logged_in() && !is_admin()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where account_number like %:account% ";
+    $query = "SELECT * from Accounts where account_number like :account ";
 
     $stmt = $db->prepare($query);
 ?>
@@ -43,7 +43,7 @@ if (!is_logged_in() && !is_admin()) {
 
 
     if (isset($_POST["submit"])) {
-        $search = $_POST["account"];
+        $search = "%".$_POST["account"]."%";
         try {
             $stmt->execute([":account" => $search]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
