@@ -117,8 +117,7 @@ if (!is_logged_in()) {
 
 
       <?php 
-      $admin = $_SESSION["user"]["admin"];
-      echo "<h1>" . $admin . "</h1>";
+      
       if(is_admin()){
         
 ?>
@@ -127,7 +126,7 @@ if (!is_logged_in()) {
           <div class="card-body">
             <h5 class="card-title">Admin Dashboard</h5>
             <p class="card-text">Use this page to Access admin features</p>
-            <a href="./pay_loan.php" class="btn btn-primary">Access Admin</a>
+            <a href="./admindash.php" class="btn btn-primary">Access Admin</a>
           </div>
         </div>
       </div>

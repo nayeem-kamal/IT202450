@@ -24,96 +24,40 @@ if (!is_logged_in() && !is_admin()) {
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Create Account</h5>
-          <p class="card-text">Use this page to create a new Account at NJIT Bank</p>
-          <a href="./add_account.php" class="btn btn-primary">Get Started Now</a>
+          <h5 class="card-title">Search Account</h5>
+          <p class="card-text">Use this page to Search Accounts at NJIT Bank</p>
+          <a href="./add_account.php" class="btn btn-primary">Search</a>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Close an Account</h5>
-            <p class="card-text">Use this page to close empty accounuts</p>
-            <a href="./close_account.php" class="btn btn-primary">Close Account</a>
+            <h5 class="card-title">Search Users</h5>
+            <p class="card-text">Use this page to search for users</p>
+            <a href="./close_account.php" class="btn btn-primary">Search</a>
           </div>
         </div>
       </div>
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">My Accounts</h5>
-          <p class="card-text">Use this page to view your accounts</p>
-          <a href="./view_accounts.php" class="btn btn-primary">View Accounts</a>
+          <h5 class="card-title">Freeze Accounts</h5>
+          <p class="card-text">Use this page to freeze accounts</p>
+          <a href="./view_accounts.php" class="btn btn-primary">Freeze accounts</a>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Deposit</h5>
-          <p class="card-text">Use this page to make a deposit</p>
-          <a href="./deposit.php" class="btn btn-primary">Make a Deposit</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Withdraw</h5>
-          <p class="card-text">Use this page to withdraw money from your account</p>
-          <a href="./withdraw.php" class="btn btn-primary">Make a Withdrawal</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Transfer</h5>
-          <p class="card-text">Use this page to transfer money between your account</p>
-          <a href="./transfer.php" class="btn btn-primary">Make a Transfer</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">My Profile</h5>
-          <p class="card-text">Use this page to view your profile and change your password</p>
-          <a href="./profile.php" class="btn btn-primary">View Profile</a>
+          <h5 class="card-title">Disable users</h5>
+          <p class="card-text">Use this page to Disable users</p>
+          <a href="./deposit.php" class="btn btn-primary">Disable</a>
         </div>
       </div>
     </div>
 
-
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Transaction History</h5>
-            <p class="card-text">Use this page to view your Transaction History</p>
-            <a href="./userhistory.php" class="btn btn-primary">View History</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Loan application</h5>
-            <p class="card-text">Use this page to take out a loan</p>
-            <a href="./add_loan.php" class="btn btn-primary">Get a Loan</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Make a Loan Payment</h5>
-            <p class="card-text">Use this page to pay off a loan</p>
-            <a href="./pay_loan.php" class="btn btn-primary">Pay off a Loan</a>
-          </div>
-        </div>
-      </div>
 
     </div>
 
