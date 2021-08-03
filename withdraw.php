@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\") and closed = 0";
+    $query = "SELECT * from Accounts where user_id = :uid and account_type in (\"Checking\",\"Savings\") and closed = 0 and freeze = 0";
 
     $created = false;
     $stmt = $db->prepare($query);

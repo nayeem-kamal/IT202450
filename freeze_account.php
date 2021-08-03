@@ -42,8 +42,8 @@ if (!is_logged_in()) {
                     if (isset($_POST["submit"])) {
                         
                         if(freeze_account($acct)){
-                            flash("Your account has been closed successfully", "success");
-                            die(header("Location: ./view_accounts.php"));
+                            flash("Your account has been frozen successfully", "success");
+                            die(header("Location: ./admindash.php"));
 
 
                     }
