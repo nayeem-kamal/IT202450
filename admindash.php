@@ -35,7 +35,7 @@ if (!is_logged_in() && !is_admin()) {
           <div class="card-body">
             <h5 class="card-title">Search Users</h5>
             <p class="card-text">Use this page to search for users</p>
-            <a href="./close_account.php" class="btn btn-primary">Search</a>
+            <a href="./admin_search_users.php" class="btn btn-primary">Search</a>
           </div>
         </div>
       </div>
