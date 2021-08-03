@@ -24,12 +24,13 @@ require_once("functions.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
-
+<div class="nav-wrapper">
+    <div class="topnav" id="theTopNav">
 
         <!-- <?php if (is_logged_in()) : ?>
             <?php endif; ?> -->
         <?php if (!is_logged_in()) : ?>
-           
+
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
                     <a href="./index.php">Login</a>
@@ -38,20 +39,21 @@ require_once("functions.php");
             </div>
 
         <?php endif; ?>
-        <!-- <?php if (has_role("Admin")) : ?>
-        
-        <?php endif; ?> -->
+        <?php if (is_admin()) : ?>
+         <a href="./admindash.php">Admin</a>
+
+
+        <?php endif; ?>
         <?php if (is_logged_in()) : ?>
-            <div class="nav-wrapper">
-                <div class="topnav" id="theTopNav">
-                    <a href="./profile.php">Profile</a>
-                    <a href="./logout.php">Logout</a>
-                    <a href="./dashboard.php">Dashboard</a>
+
+            <a href="./profile.php">Profile</a>
+            <a href="./logout.php">Logout</a>
+            <a href="./dashboard.php">Dashboard</a>
 
 
-                </div>
-            </div>
-          
-            </div>        <?php endif; ?>
+    </div>
+</div>
+
+</div> <?php endif; ?>
 
 <!-- </nav> -->

@@ -40,6 +40,16 @@ function has_role($role) {
     }
     return false;
 }
+function is_admin() {
+    if (is_logged_in() && isset($_SESSION["user"]["admin"])) {
+        if($_SESSION["user"]["admin"]>0){
+            return true;
+        }
+        }
+    
+    return false;
+}
+
 function get_username() {
     if (is_logged_in()) { 
         return se($_SESSION["user"], "username", "", false);
