@@ -220,18 +220,19 @@ https://github.com/nayeemkamal/IT202450/pull/30
   - [x] Closed accounts don&#39;t show up anymore
   - [x] If the account is a loan, it must be paid off in full first
   - https://github.com/nayeemkamal/IT202450/pull/36
-- [ ] Admin role (leave this section for last)
-  - [ ] Will be able to search for users by firstname and/or lastname
-  - [ ] Will be able to look-up specific account numbers (partial match).
-  - [ ] Will be able to see the transaction history of an account
-  - [ ] Will be able to freeze an account (this is similar to disable/delete but it&#39;s a different column)
-    - [ ] Frozen accounts still show in results, but they can&#39;t be interacted with.
-    - [ ] [Dev note]: Will want to add a column to Accounts table called frozen and default it to false
-      - [ ] Update transactions logic to not allow frozen accounts to be used for a transaction
-  - [ ] Will be able to open accounts for specific users
-  - [ ] Will be able to deactivate a user
-    - [ ] Requires a new column on the Users table (i.e., is\_active)
-    - [ ] Deactivated users will be restricted from logging in
-      - [ ] &quot;Sorry your account is no longer active&quot;
+- [x] Admin role (leave this section for last)
+  - [x] Will be able to search for users by firstname and/or lastname
+  - [x] Will be able to look-up specific account numbers (partial match).
+  - [x] Will be able to see the transaction history of an account
+  - [x] Will be able to freeze an account (this is similar to disable/delete but it&#39;s a different column)
+    - [x] Frozen accounts still show in results, but they can&#39;t be interacted with.
+    - [x] [Dev note]: Will want to add a column to Accounts table called frozen and default it to false
+      - [x] Update transactions logic to not allow frozen accounts to be used for a transaction
+  - [x] Will be able to open accounts for specific users
+  - [x] Will be able to deactivate a user
+    - [x] Requires a new column on the Users table (i.e., is\_active)
+    - [x] Deactivated users will be restricted from logging in
+      - [x] &quot;Sorry your account is no longer active&quot;
+      - https://github.com/nayeemkamal/IT202450/pull/37
 
 
