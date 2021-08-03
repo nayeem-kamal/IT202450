@@ -9,7 +9,7 @@ if (!is_logged_in() && !is_admin()) {
 } else {
 
     $db = getDB();
-    $query = "SELECT * from Accounts where account_number like :account ";
+    $query = "SELECT * from Accounts where account_number like %:account% ";
 
     $stmt = $db->prepare($query);
 ?>
@@ -28,7 +28,7 @@ if (!is_logged_in() && !is_admin()) {
 
         <div class="flex-container">
             <div class=container>
-                <input type="submit" name="submit" value="deposit" />
+                <input type="submit" name="submit" value="Search" />
             </div>
         </div>
 
@@ -75,7 +75,7 @@ if (!is_logged_in() && !is_admin()) {
                             ?>%</td>
 
                         </tr>
-                        
+
                         <?php
             }
         } catch (PDOException $e) {
