@@ -116,7 +116,10 @@ if (!is_logged_in()) {
       </div>
 
 
-      <?php if(is_admin()){
+      <?php 
+      flash("" . is_admin(),"warning");
+      if(is_admin()){
+        
 ?>
 <div class="col-sm-6">
         <div class="card">
