@@ -26,7 +26,7 @@ if (!is_logged_in() && !is_admin()) {
         <div class="card-body">
           <h5 class="card-title">Search Account</h5>
           <p class="card-text">Use this page to Search Accounts at NJIT Bank</p>
-          <a href="./add_account.php" class="btn btn-primary">Search</a>
+          <a href="./admin_search_account.php" class="btn btn-primary">Search</a>
         </div>
       </div>
     </div>
