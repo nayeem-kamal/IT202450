@@ -39,7 +39,7 @@ require_once("functions.php");
 
         <?php endif; ?>
        
-        <?php if (is_logged_in()) : ?>
+        <?php if (is_logged_in()&&!is_deactive()) : ?>
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
                     <a href="./profile.php">Profile</a>
