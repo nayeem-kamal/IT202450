@@ -38,9 +38,16 @@ require_once("functions.php");
             </div>
 
         <?php endif; ?>
-        <!-- <?php if (is_admin()) : ?>
-        
-        <?php endif; ?> -->
+        <?php if (is_admin()) : ?>
+            <div class="nav-wrapper">
+                <div class="topnav" id="theTopNav">
+                    <a href="./admindash.php">Admin Dashboard</a>
+                    
+
+
+                </div>
+            </div>
+        <?php endif; ?> 
         <?php if (is_logged_in()) : ?>
             <div class="nav-wrapper">
                 <div class="topnav" id="theTopNav">
