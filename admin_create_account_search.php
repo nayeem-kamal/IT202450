@@ -64,7 +64,7 @@ if (!is_logged_in() && !is_admin()) {
                     <?php
                     foreach ($results as $result) { ?>
                         <tr>
-                        <a href="./admin_create_account.php?id=<?php echo $result["id"]; ?>"><?php echo $result["username"];?></a></th>
+                        <td><a href="./admin_create_account.php?id=<?php echo $result["id"]; ?>"><?php echo $result["username"];?></a></td>
 
                             <td><?php echo $result["firstName"] . " " . $result["lastName"] ?></td>
                             <td><?php echo $result["email"] ?></td>
