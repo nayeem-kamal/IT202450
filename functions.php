@@ -40,6 +40,24 @@ function has_role($role) {
     }
     return false;
 }
+function is_admin() {
+    if (is_logged_in() && isset($_SESSION["user"]["admin"])) {
+        if($_SESSION["user"]["admin"]){
+            return true;
+        }
+        }
+    
+    return false;
+}
+function is_deactive() {
+    if (is_logged_in() && isset($_SESSION["user"]["deactivated"])) {
+        if($_SESSION["user"]["deactivated"]){
+            return true;
+        }
+        }
+    
+    return false;
+}
 function get_username() {
     if (is_logged_in()) { 
         return se($_SESSION["user"], "username", "", false);
@@ -353,3 +371,43 @@ function close_account($acctno){
 return false;
 
 }
+
+function freeze_account($acctno){
+
+    $query = "UPDATE Accounts SET freeze = 1 WHERE account_number = :acct";
+       $db = getDB();
+       $stmt = $db->prepare($query);
+       try {
+           $stmt->execute([":acct" => $acctno]);
+           $result = $stmt->fetch(PDO::FETCH_ASSOC);
+           return true;
+       }catch(PDOException $e){
+           flash("Account couldn't be frozen at this time", "warning");
+           die(header("Location: ./dashboard.php"));
+           return false;
+       }
+       
+   
+   return false;
+   
+   }
+
+   function deactivate_user($id){
+
+    $query = "UPDATE users SET deactivated = 1 WHERE id = :id";
+       $db = getDB();
+       $stmt = $db->prepare($query);
+       try {
+           $stmt->execute([":id" => $id]);
+           $result = $stmt->fetch(PDO::FETCH_ASSOC);
+           return true;
+       }catch(PDOException $e){
+           flash("Account couldn't be frozen at this time", "warning");
+           die(header("Location: ./dashboard.php"));
+           return false;
+       }
+       
+   
+   return false;
+   
+   }
