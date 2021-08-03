@@ -57,7 +57,7 @@ if (!is_logged_in()) {
                 </div>
                 <div class="flex-container">
                 <div class=container>
-                    <input type="submit" name="submit" value="Deposit" />
+                    <input type="submit" name="submit" value="Withdraw" />
                 </div>
             </div>
 
