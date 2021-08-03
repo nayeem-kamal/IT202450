@@ -27,8 +27,6 @@ require_once("functions.php");
 <div class="nav-wrapper">
     <div class="topnav" id="theTopNav">
 
-        <!-- <?php if (is_logged_in()) : ?>
-            <?php endif; ?> -->
         <?php if (!is_logged_in()) : ?>
 
             <div class="nav-wrapper">
@@ -39,11 +37,11 @@ require_once("functions.php");
             </div>
 
         <?php endif; ?>
-        <?php if (is_admin()) : ?>
+        <!-- <?php if (is_admin()) : ?>
          <a href="./admindash.php">Admin</a>
 
 
-        <?php endif; ?>
+        <?php endif; ?> -->
         <?php if (is_logged_in()) : ?>
 
             <a href="./profile.php">Profile</a>
