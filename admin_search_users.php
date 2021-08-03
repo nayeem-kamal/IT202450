@@ -43,7 +43,7 @@ if (!is_logged_in() && !is_admin()) {
 
 
     if (isset($_POST["submit"])) {
-        $search = "%".$_POST["name"]."%";
+        $search = "%" . $_POST["name"] . "%";
         try {
             $stmt->execute([":name" => $search]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -61,27 +61,24 @@ if (!is_logged_in() && !is_admin()) {
                 <tbody>
 
 
-        <?php
-            foreach ($results as $result) {?>
-                <tr>
-                            <th scope="row">
-                            
-                            <td><?php echo $result["firstName"]." ".$result["lastName"] ?></td>
+                    <?php
+                    foreach ($results as $result) { ?>
+                        <tr>
+
+                            <td><?php echo $result["firstName"] . " " . $result["lastName"] ?></td>
                             <td><?php echo $result["email"] ?></td>
-                            <td><?php 
-                                 echo $result["username"];
-                            ?>%</td>
+                            <td><?php echo $result["username"];?></td>
 
                         </tr>
 
-                        <?php
+        <?php
+                    }
+                } catch (PDOException $e) {
+                    flash("Search could not be completed", "danger");
+                    die(header("Location: ./admindash.php"));
+                }
             }
-        } catch (PDOException $e) {
-            flash("Search could not be completed", "danger");
-            die(header("Location: ./admindash.php"));
         }
-    }
-}
 
         ?>
 
